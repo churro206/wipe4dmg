@@ -24,8 +24,8 @@ describe("status fitted", () => {
 
   it("marks every value that comes from a row of the Aegis tab Weapons", () => {
     const aegis = sourcesOf(rawPackages).filter((s) => s.name.startsWith(WEAPON_TAB));
-    // 95 after W2 (five packages became items, 100+ before), 86 after W3 Anarchy, 74 after W4, 53 after W6a (five packages lost their override), 33 after W6b (five items, three overrides); falls further with every item until A2
-    expect(aegis.length).toBeGreaterThan(25);
+    // 95 after W2 (five packages became items, 100+ before), 86 after W3 Anarchy, 74 after W4, 53 after W6a (five packages lost their override), 33 after W6b (five items, three overrides), 17 after W6c (four items); falls further with every item until A2
+    expect(aegis.length).toBeGreaterThan(12);
     for (const s of aegis) {
       expect(s.status, s.name).toBe("fitted");
       expect(s.row, s.name).toBeDefined();

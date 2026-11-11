@@ -228,9 +228,9 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Adaptive frame, Charge MW, Accelerated Coils | übersprungen | legendary frame (owner 2026-10-25) |
 | Aggressive frame, Charge MW, Accelerated Coils | übersprungen | legendary frame (owner 2026-10-25) |
 | Bastion | im Modell | base row of the package |
-| Cull's Shadow | übersprungen | ohne average, with corruption der Basiszeile |
-| Cull's Shadow, average, with corruption | im Modell | base row of the package |
-| Cull's Shadow, with corruption | übersprungen | ohne average der Basiszeile |
+| Cull's Shadow | im Modell | base row of the package |
+| Cull's Shadow, average, with corruption | übersprungen | the item file uses another row |
+| Cull's Shadow, with corruption | übersprungen | the item file uses another row |
 | Delicate Tomb, hipfire | im Modell | base row of the package |
 | Delicate Tomb, ADS | übersprungen | the item file uses another row |
 | High-impact frame, Charge MW, Accelerated Coils | übersprungen | legendary frame (owner 2026-10-25) |
@@ -593,7 +593,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Lodestar, ADS, burst | übersprungen | the item file uses another row |
 | Lodestar, hipfire | im Modell | base row of the package |
 | Microcosm | im Modell | base row of the package |
-| Prometheus Lens, average, with ignition, Ember of Ashes | übersprungen | gleiche Annahmen wie die Basiszeile |
+| Prometheus Lens, average, with ignition, Ember of Ashes | übersprungen | the item file uses another row |
 | Prometheus Lens, average, with ignition | im Modell | base row of the package |
 | Ruinous Effigy | im Modell | base row of the package |
 | Ruinous Effigy | übersprungen | the item file uses another row |

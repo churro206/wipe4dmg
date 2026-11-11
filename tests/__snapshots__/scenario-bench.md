@@ -6,15 +6,15 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 ## Key figures
 
 - **Delta pairs (check set): 1 of 4 within 2 percentage points**
-- Rank (check set): Spearman 0.98 over 46 rows
-- Absolute, information only: within ±3 % 26 of 46 (check set), 98 of 180 (all counted rows, mostly Eichung)
-- Rows: 182 scenarios (32 by hand, 150 generated); fitted 20; calibration set 114; check set 46; not counted 2; core cannot run 0
+- Rank (check set): Spearman 0.98 over 45 rows
+- Absolute, information only: within ±3 % 26 of 45 (check set), 95 of 180 (all counted rows, mostly Eichung)
+- Rows: 182 scenarios (32 by hand, 150 generated); fitted 18; calibration set 117; check set 45; not counted 2; core cannot run 0
 
 ## Delta pairs (check set)
 
 | Row with the extra assumption | Extra | Aegis | Model | Gap |
 | --- | --- | ---: | ---: | ---: |
-| prometheus-lens, average, with ignition, Ember of Ashes | Ember of Ashes | −22.2 | −29.5 | −7.2 |
+| prometheus-lens, average, with ignition, Ember of Ashes | Ember of Ashes | −22.2 | −27.5 | −5.3 |
 | one-thousand-voices, average, catalyst | catalyst | +174.3 | +171.0 | −3.3 |
 | barrow-dyad, average, Taken Ambition, with Blighted Seekers, Peacekeepers, Target Lock | Peacekeepers | +32.0 | +29.3 | −2.7 |
 | one-thousand-voices, average, Ember of Ashes | Ember of Ashes | +17.3 | +15.9 | −1.5 |
@@ -35,7 +35,6 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 | gen-bow-trinity-ghoul | bow-trinity-ghoul | 218 | 219 | +0.3 % |
 | gen-bow-verglas-curve | bow-verglas-curve | 208 | 209 | +0.3 % |
 | gen-fusion-rifle-bastion | fusion-rifle-bastion | 6359 | 6384 | +0.4 % |
-| gen-fusion-rifle-cull-s-shadow | fusion-rifle-cull-s-shadow | 4873 | 6575 | +34.9 % |
 | gen-fusion-rifle-delicate-tomb-ads | fusion-rifle-delicate-tomb-ads | 13399 | 13536 | +1.0 % |
 | gen-fusion-rifle-telesto | fusion-rifle-telesto | 7653 | 7938 | +3.7 % |
 | gen-fusion-rifle-vex-mythoclast | fusion-rifle-vex-mythoclast | 93 | 113 | +21.0 % |
@@ -67,7 +66,7 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 | gen-smg-osteo-striga-average-with-successive-poison | smg-osteo-striga-average-with-successive-poison | 8413 | 8029 | −4.6 % |
 | gen-smg-riskrunner-average-arc-conductor-peacekeepers | smg-riskrunner-average-arc-conductor-peacekeepers | 3849 | 2701 | −29.8 % |
 | gen-sniper-rifle-borealis | sniper-rifle-borealis | 831 | 833 | +0.2 % |
-| gen-trace-rifle-prometheus-lens-average-with-ignition-ember-of-ashes | trace-rifle-prometheus-lens-average-with-ignition-ember-of-ashes | 2692 | 2445 | −9.2 % |
+| gen-trace-rifle-prometheus-lens-average-with-ignition-ember-of-ashes | trace-rifle-prometheus-lens-average-with-ignition-ember-of-ashes | 2692 | 1927 | −28.4 % |
 | gen-trace-rifle-ruinous-effigy | trace-rifle-ruinous-effigy | 40 | 41 | +2.3 % |
 
 ## Scenarios by hand
@@ -164,7 +163,7 @@ Rows by what they check (column "Prüft" of `docs/product.md`). Coverage: Aegis 
 
 | Group | Aegis rows | Covered | Coverage | Fitted | Check set | Spearman | Top 3 in 5 | Delta pairs |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Weapons | 417 | 180 | 43 % | 20 | 46 | 0.98 | 3/3 | 1 of 4 |
+| Weapons | 417 | 180 | 43 % | 18 | 45 | 0.98 | 3/3 | 1 of 4 |
 | Supers | 68 | 18 | 26 % | 0 | 18 | 0.99 | 3/3 | 4 of 6 |
 | Heavy | 95 | 21 | 22 % | 0 | 21 | 0.94 | 2/3 | 5 of 5 |
 | Special | 84 | 10 | 12 % | 4 | 6 | 0.94 | 3/3 | 0 of 0 |
@@ -174,7 +173,7 @@ Rows by what they check (column "Prüft" of `docs/product.md`). Coverage: Aegis 
 
 | Group | Row | Extra assumption | Aegis | Model | Gap | Reason of the deviation |
 | --- | --- | --- | ---: | ---: | ---: | --- |
-| Weapons | prometheus-lens, average, with ignition, Ember of Ashes | Ember of Ashes | −22.2 | −29.5 | −7.2 |  |
+| Weapons | prometheus-lens, average, with ignition, Ember of Ashes | Ember of Ashes | −22.2 | −27.5 | −5.3 |  |
 | Weapons | one-thousand-voices, average, catalyst | catalyst | +174.3 | +171.0 | −3.3 |  |
 | Weapons | barrow-dyad, average, Taken Ambition, with Blighted Seekers, Peacekeepers, Target Lock | Peacekeepers | +32.0 | +29.3 | −2.7 |  |
 | Weapons | one-thousand-voices, average, Ember of Ashes | Ember of Ashes | +17.3 | +15.9 | −1.5 |  |
@@ -211,7 +210,6 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Weapons | bow-trinity-ghoul | 218 | 219 | +0.3 % |
 | Weapons | bow-verglas-curve | 208 | 209 | +0.3 % |
 | Weapons | fusion-rifle-bastion | 6359 | 6384 | +0.4 % |
-| Weapons | fusion-rifle-cull-s-shadow | 4873 | 6575 | +34.9 % |
 | Weapons | fusion-rifle-delicate-tomb-ads | 13399 | 13536 | +1.0 % |
 | Weapons | fusion-rifle-one-thousand-voices-average-catalyst | 27000 | 28709 | +6.3 % |
 | Weapons | fusion-rifle-one-thousand-voices-average-ember-of-ashes | 11550 | 12274 | +6.3 % |
@@ -248,7 +246,7 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Weapons | smg-osteo-striga-average-with-successive-poison | 8413 | 8029 | −4.6 % |
 | Weapons | smg-riskrunner-average-arc-conductor-peacekeepers | 3849 | 2701 | −29.8 % |
 | Weapons | sniper-rifle-borealis | 831 | 833 | +0.2 % |
-| Weapons | trace-rifle-prometheus-lens-average-with-ignition-ember-of-ashes | 2692 | 2445 | −9.2 % |
+| Weapons | trace-rifle-prometheus-lens-average-with-ignition-ember-of-ashes | 2692 | 1927 | −28.4 % |
 | Weapons | trace-rifle-ruinous-effigy | 40 | 41 | +2.3 % |
 | Supers | swap-arc-staff-raiden-flux-shieldcrush | 84169 | 56113 | −33.3 % |
 | Supers | swap-blade-barrage-knock-em-down-feast-of-light-x6-limit-break | 47833 | 47151 | −1.4 % |
@@ -292,7 +290,7 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Special | sustained-arbalest | 58835 | 56154 | −4.6 % |
 | Special | sustained-forerunner | 51349 | 51363 | +0.0 % |
 | Special | sustained-ice-breaker-sniper-s-meditation | 34643 | 34659 | +0.0 % |
-| Special | sustained-j-tunn | 61950 | 61950 | −0.0 % |
+| Special | sustained-j-tunn | 61950 | 67281 | +8.6 % |
 | Special | sustained-merciless | 54552 | 54034 | −0.9 % |
 | Special | sustained-telesto | 51208 | 53052 | +3.6 % |
 | Abilities | grenade-tripmine-average-ember-of-ashes-with-ignition | 1242 | 805 | −35.2 % |

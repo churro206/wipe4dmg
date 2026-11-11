@@ -201,10 +201,10 @@
       "600s buffed catalyst": 280905.29
     },
     "cull-s-shadow": {
-      "30s plain": 26298.07,
-      "30s buffed": 44275.43,
-      "600s plain": 26298.07,
-      "600s buffed": 44275.43
+      "30s plain": 21234.33,
+      "30s buffed": 35750.12,
+      "600s plain": 21234.33,
+      "600s buffed": 35750.12
     },
     "d-a-r-c-i": {
       "30s plain": 24676,
@@ -553,14 +553,14 @@
       "600s buffed catalyst": 22189.85
     },
     "j-tunn": {
-      "30s plain": 23063,
-      "30s buffed": 38828.86,
-      "30s plain catalyst": 23063,
-      "30s buffed catalyst": 38828.86,
-      "600s plain": 25159.63,
-      "600s buffed": 42358.76,
-      "600s plain catalyst": 25159.63,
-      "600s buffed catalyst": 42358.76
+      "30s plain": 22652.82,
+      "30s buffed": 38138.28,
+      "30s plain catalyst": 22652.82,
+      "30s buffed catalyst": 38138.28,
+      "600s plain": 27325.01,
+      "600s buffed": 46004.38,
+      "600s plain catalyst": 27325.01,
+      "600s buffed catalyst": 46004.38
     },
     "khvostov-7g-0x": {
       "30s plain": 9264,
@@ -705,14 +705,14 @@
       "600s buffed catalyst": 117784.66
     },
     "new-malpais": {
-      "30s plain": 31317.95,
-      "30s buffed": 52726.9,
-      "30s plain catalyst": 31317.95,
-      "30s buffed catalyst": 52726.9,
-      "600s plain": 31317.95,
-      "600s buffed": 52726.9,
-      "600s plain catalyst": 31317.95,
-      "600s buffed catalyst": 52726.9
+      "30s plain": 29080.03,
+      "30s buffed": 48959.13,
+      "30s plain catalyst": 29627.85,
+      "30s buffed catalyst": 49589.12,
+      "600s plain": 29080.03,
+      "600s buffed": 48959.13,
+      "600s plain catalyst": 29627.85,
+      "600s buffed catalyst": 49589.12
     },
     "no-time-to-explain": {
       "30s plain": 10359,
@@ -775,14 +775,14 @@
       "600s buffed catalyst": 479234.19
     },
     "prometheus-lens": {
-      "30s plain": 14083.6,
-      "30s buffed": 23711.14,
-      "30s plain catalyst": 14083.6,
-      "30s buffed catalyst": 23711.14,
-      "600s plain": 18243,
-      "600s buffed": 30713.91,
-      "600s plain catalyst": 18243,
-      "600s buffed catalyst": 30713.91
+      "30s plain": 12477.35,
+      "30s buffed": 21006.87,
+      "30s plain catalyst": 12477.35,
+      "30s buffed catalyst": 21006.87,
+      "600s plain": 16851.59,
+      "600s buffed": 28371.33,
+      "600s plain catalyst": 16851.59,
+      "600s buffed catalyst": 28371.33
     },
     "quicksilver-storm": {
       "30s plain": 9544,

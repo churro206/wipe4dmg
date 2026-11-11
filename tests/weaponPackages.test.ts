@@ -316,9 +316,10 @@ describe("catalyst paragraphs against one boss without adds", () => {
   // W3: Third Iteration ("none") became an item: 9 packages.
   // W6a: Cerberus+1, SUROS Regime and Sweet Business (all "none") became items: 6 packages.
   // W6b: Wavesplitter, No Time to Explain, Finality's Auger ("none") became items: 4 packages.
-  it("lock until A2: at least 4 of the remaining packages keep a catalyst without effect (value after W6b)", () => {
+  // W6c: Jötunn and Prometheus Lens ("none") became items: 2 packages.
+  it("lock until A2: at least 2 of the remaining packages keep a catalyst without effect (value after W6c)", () => {
     const none = remainingPackages().filter((w) => w.catalyst?.effect === "none");
-    expect(none.length).toBeGreaterThanOrEqual(4);
+    expect(none.length).toBeGreaterThanOrEqual(2);
   });
 });
 

@@ -1,18 +1,5 @@
 [
   {
-    "weapon": "Cull's Shadow",
-    "reason": "Optimal gespielt mit Corruption, wie Aegis Sustained (Base 1096 = Weapons „average, with corruption“ 1095,8).",
-    "quotes": [
-      {
-        "source": "aegis",
-        "entry": "cull-s-shadow-with-corruption",
-        "text": "533ms charge; 1983ms reload"
-      }
-    ],
-    "base": "fusion-rifle-cull-s-shadow-average-with-corruption",
-    "timing": { "from": "Aegis", "row": "cull-s-shadow-with-corruption" }
-  },
-  {
     "weapon": "Turncoat",
     "reason": "Keine Timing-Zeile. Manifest: 140 rpm, Magazin 13. Reload 1,64 s wie bei Quantum für jede Hand Cannon mit 140 rpm (Ace of Spades, Lumina, Thorn, Hawkmoon); Quantum rechnet den Reload pro Waffentyp, unabhängig vom Reload-Stat. Schaden aus Aegis „average“.",
     "quotes": [
@@ -37,39 +24,6 @@
         "totalShots": null,
         "intervalSeconds": 0.4286,
         "reloadSeconds": 1.64
-      }
-    }
-  },
-  {
-    "weapon": "Prometheus Lens",
-    "reason": "Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“). Catalyst: Stabilität, Handling und Kill-Explosionen, gegen einen Boss ohne Adds keine Wirkung.",
-    "catalystEffect": "none",
-    "quotes": [
-      {
-        "source": "manifest",
-        "entry": "Prometheus Lens",
-        "text": "\"Magazine\":100"
-      },
-      {
-        "source": "quantum",
-        "entry": "specials-trace-rifle-wavesplitter-average",
-        "text": "\"totalShots\":500"
-      },
-      {
-        "source": "quantum",
-        "entry": "specials-trace-rifle-wavesplitter-average",
-        "text": "\"rpm\":900"
-      }
-    ],
-    "aegisWins": true,
-    "base": "trace-rifle-prometheus-lens-average-with-ignition",
-    "timing": {
-      "from": "Aegis",
-      "values": {
-        "magazine": 100,
-        "totalShots": 500,
-        "intervalSeconds": 0.0667,
-        "reloadSeconds": 1.44
       }
     }
   },
@@ -103,17 +57,5 @@
         "reloadSeconds": 1.7665
       }
     }
-  },
-  {
-    "weapon": "Jötunn",
-    "reason": "Cornered braucht 2 Gegner in der Nähe, Incandescent Kills; gegen einen Boss ohne Adds keine Wirkung.",
-    "quotes": [
-      {
-        "source": "clarity",
-        "entry": "Jötunn Catalyst",
-        "text": "Weapon Kills trigger a Solar explosion"
-      }
-    ],
-    "catalystEffect": "none"
   }
 ]

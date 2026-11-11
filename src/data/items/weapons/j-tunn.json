@@ -1,0 +1,77 @@
+{
+  "id": "j-tunn",
+  "kind": "exoticWeapon",
+  "name": "Jötunn",
+  "texts": [
+    { "source": "clarity", "entry": "Charge Shot", "hash": "8680e04a" },
+    { "source": "clarity", "entry": "Jötunn Catalyst", "hash": "52e346c3" }
+  ],
+  "chargeTimeMs": "$manifest[Jötunn].stat(\"Charge Time\")",
+  "fireRateRpm": "$quantum[specials-fusion-rifle-jotunn].timing.fireRateRpm",
+  "magazine": "$quantum[specials-fusion-rifle-jotunn].timing.magazine",
+  "totalShots": "$quantum[specials-fusion-rifle-jotunn].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-fusion-rifle-jotunn].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Cornered, Incandescent, Jötunn Catalyst",
+    "description": "Grants the Cornered trait: Grants 15% decreased Charge/Draw Time while within 15 meters of 2 enemies. Buff lingers for 1.5 seconds once no longer surrounded.\nGrants the Incandescent trait: Weapon Kills trigger a Solar explosion that applies 30 Scorch Stacks (40 with Ember of Ashes) and deals up to 30 damage to enemies within 4 meters of the target.",
+    "effect": "none"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[specials-fusion-rifle-jotunn].bodyDamage",
+      "delivery": "impact"
+    },
+    "pool": {
+      "name": "Lingering pool",
+      "damage": {
+        "expr": "$quantum[specials-fusion-rifle-jotunn].bodyDamage * $clarity[Charge Shot](\"Lingering pool deals 46\") / ($clarity[Charge Shot](\"deals 1184\") + $clarity[Charge Shot](\"and 269\"))",
+        "note": "Clarity's tick (46) on Quantum's scale: Quantum's 932 stands for Clarity's 1 184 + 269 of the projectile, so 29.5 per tick (Quantum's tab Weapon Specifics: 30 per tick; Aegis 97 / 3.31 = 29.3)"
+      },
+      "delivery": "dot"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "pool",
+      "on": { "on": "hit", "part": "shot" },
+      "do": [
+        {
+          "type": "spawn",
+          "part": "pool",
+          "delayMs": {
+            "expr": "$clarity[Charge Shot](\"every 0.25 seconds\") * 1000",
+            "note": "the first tick one interval after the impact, seconds to milliseconds"
+          },
+          "count": {
+            "expr": "$clarity[Charge Shot](\"for 1.75 seconds\") / $clarity[Charge Shot](\"every 0.25 seconds\")",
+            "note": "duration divided by the interval: 7 ticks"
+          },
+          "intervalMs": {
+            "expr": "$clarity[Charge Shot](\"every 0.25 seconds\") * 1000",
+            "note": "seconds to milliseconds"
+          }
+        }
+      ],
+      "source": {
+        "name": "Item file j-tunn",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "detonates on impact and creates a burning pool of fire",
+        "note": "Derived: the boss stands in the pool of every shot; pools of successive shots tick side by side (Clarity says nothing else). Aegis \"successive shots\" counts about 4 ticks per shot (1 048 - 930 = 118 / 29.3), known-inaccuracies W6c"
+      }
+    }
+  ],
+  "notModelled": [
+    { "quote": "This is reduced to 0% damage at the edge of the radius", "reason": "no falloff on a direct hit: inside Quantum's value of the projectile" },
+    { "quote": "Grants 15% decreased Charge/Draw Time while within 15 meters of 2 enemies", "reason": "needs 2 enemies nearby (one boss, no adds, ADR 0015)" },
+    { "quote": "Buff lingers for 1.5 seconds once no longer surrounded", "reason": "needs 2 enemies nearby (one boss, no adds, ADR 0015)" },
+    { "quote": "Weapon Kills trigger a Solar explosion", "reason": "needs a kill (one boss, no adds, ADR 0015)" },
+    { "quote": "Killing Elite or higher tier Combatants", "reason": "needs a kill (one boss, no adds, ADR 0015)" }
+  ]
+}

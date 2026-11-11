@@ -1,0 +1,161 @@
+{
+  "id": "cull-s-shadow",
+  "kind": "exoticWeapon",
+  "name": "Cull's Shadow",
+  "texts": [
+    { "source": "clarity", "entry": "Soulburn", "hash": "71fa1667" },
+    { "source": "clarity", "entry": "Soulforge", "hash": "80ef8c0f" },
+    { "source": "clarity", "entry": "Blades of Unmaking", "hash": "7d90ce83" }
+  ],
+  "chargeTimeMs": "$manifest[Cull's Shadow].stat(\"Charge Time\")",
+  "fireRateRpm": "$aegisSustained[cull-s-shadow-with-corruption].timing.fireRateRpm",
+  "magazine": "$aegisSustained[cull-s-shadow-with-corruption].timing.magazine",
+  "totalShots": "$aegisSustained[cull-s-shadow-with-corruption].timing.totalShots",
+  "reloadTimeMs": "$aegisSustained[cull-s-shadow-with-corruption].timing.reloadTimeMs",
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": {
+        "expr": "$aegis[fusion-rifle-cull-s-shadow].perShot",
+        "note": "Owner's exception (ADR 0019, W6c): no Quantum row; the Compendium's 143 per projectile lies on another scale (2.11 x Aegis' 224 / 3.31). One shot is 3 bursts of 4 projectiles (Compendium), 12 x 224 / 3.31 = 813"
+      },
+      "delivery": "impact"
+    },
+    "corruption-start": {
+      "name": "Potent Corruption (reset)",
+      "damage": {
+        "expr": "$aegis[fusion-rifle-cull-s-shadow].perShot * $clarity[Soulburn](\"Potent Corruption deals 65\") / ($compendium[Cull's Shadow](\"wider 3 round burst\") * $compendium[Cull's Shadow](\"of 4 projectiles\") * $compendium[Cull's Shadow](\"Projectiles deal 143\"))",
+        "note": "Clarity's first tick (65) on Aegis' scale of the shot: 813 stands for the Compendium's 12 x 143, so 30.8. The first ticks of an application that the next shot resets"
+      },
+      "delivery": "dot"
+    },
+    "corruption-early": {
+      "name": "Potent Corruption (ticks 1 to 10)",
+      "damage": {
+        "expr": "$aegis[fusion-rifle-cull-s-shadow].perShot * $clarity[Soulburn](\"In total, one application of Potent Corruption deals 2,985\") / (1 + 2.3036) / 10 / ($compendium[Cull's Shadow](\"wider 3 round burst\") * $compendium[Cull's Shadow](\"of 4 projectiles\") * $compendium[Cull's Shadow](\"Projectiles deal 143\"))",
+        "note": "the ramp (Clarity: 8.7 % per tick, compounding over 20 ticks) in two halves of 10 ticks: the first half is 1 / (1 + 1.087^10) = 1 / (1 + 2.3036) = 30.3 % of Clarity's 2 985, per tick on Aegis' scale (see corruption-start) 42.8"
+      },
+      "delivery": "dot"
+    },
+    "corruption-late": {
+      "name": "Potent Corruption (ticks 11 to 20)",
+      "damage": {
+        "expr": "$aegis[fusion-rifle-cull-s-shadow].perShot * $clarity[Soulburn](\"In total, one application of Potent Corruption deals 2,985\") * 2.3036 / (1 + 2.3036) / 10 / ($compendium[Cull's Shadow](\"wider 3 round burst\") * $compendium[Cull's Shadow](\"of 4 projectiles\") * $compendium[Cull's Shadow](\"Projectiles deal 143\"))",
+        "note": "the second half of the ramp, 1.087^10 / (1 + 1.087^10) = 69.7 % of 2 985, per tick on Aegis' scale 98.6"
+      },
+      "delivery": "dot"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "corruption-last-charge",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "soulfire-used",
+          "op": "=",
+          "value": {
+            "expr": "$clarity[Soulburn](\"Maximum of 6 stacks\") - 1",
+            "note": "the 6th charge: the counter stands at 5"
+          }
+        }
+      ],
+      "do": [
+        { "type": "addStacks", "counter": "soulfire-used" },
+        {
+          "type": "spawn",
+          "part": "corruption-early",
+          "delayMs": { "expr": "$clarity[Soulburn](\"once every 0.5 seconds\") * 1000", "note": "the first tick one interval after the hit" },
+          "count": { "expr": "$clarity[Soulburn](\"over 20 ticks\") / 2", "note": "the first half of the 20 ticks" },
+          "intervalMs": { "expr": "$clarity[Soulburn](\"once every 0.5 seconds\") * 1000", "note": "seconds to milliseconds" }
+        },
+        {
+          "type": "spawn",
+          "part": "corruption-late",
+          "delayMs": {
+            "expr": "$clarity[Soulburn](\"once every 0.5 seconds\") * 1000 * ($clarity[Soulburn](\"over 20 ticks\") / 2 + 1)",
+            "note": "the 11th tick, 5.5 s after the hit"
+          },
+          "count": { "expr": "$clarity[Soulburn](\"over 20 ticks\") / 2", "note": "the second half of the 20 ticks" },
+          "intervalMs": { "expr": "$clarity[Soulburn](\"once every 0.5 seconds\") * 1000", "note": "seconds to milliseconds" }
+        }
+      ],
+      "source": {
+        "name": "Item file cull-s-shadow",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "Firing this weapon consumes one stack of Soulfire Charge to apply Potent Corruption",
+        "note": "Derived: the last of the 6 charges built before the phase runs its full 10 s, since no shot after it resets it"
+      }
+    },
+    {
+      "id": "corruption-reset",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "soulfire-used",
+          "op": "<",
+          "value": {
+            "expr": "$clarity[Soulburn](\"Maximum of 6 stacks\") - 1",
+            "note": "charges 1 to 5: the counter stands at 0 to 4"
+          }
+        }
+      ],
+      "do": [
+        { "type": "addStacks", "counter": "soulfire-used" },
+        {
+          "type": "spawn",
+          "part": "corruption-start",
+          "delayMs": { "expr": "$clarity[Soulburn](\"once every 0.5 seconds\") * 1000", "note": "the first tick one interval after the hit" },
+          "count": {
+            "value": 2,
+            "source": {
+              "name": "Item file cull-s-shadow",
+              "retrieved": "2026-11-11",
+              "status": "derived",
+              "quote": "Reapplying the poison resets it back to the first stack.",
+              "note": "Derived: Clarity says this of Potent Corruption on Osteo Striga, the same keyword. The next shot comes 1.04 s later (Aegis Sustained), so two ticks of 0.5 s run before the reset; the second (70.7 of Clarity) counts as the first (65), below 2 %"
+            }
+          },
+          "intervalMs": { "expr": "$clarity[Soulburn](\"once every 0.5 seconds\") * 1000", "note": "seconds to milliseconds" }
+        }
+      ],
+      "source": {
+        "name": "Item file cull-s-shadow",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "Maximum of 6 stacks.",
+        "note": "Derived: optimal play as Aegis (\"with corruption\"): 6 charges are built before the phase; every shot consumes one, so the first 6 shots corrupt. New charges need Frontal Blade hits (melee, not modelled)"
+      }
+    }
+  ],
+  "notModelled": [
+    {
+      "quote": "Landing two Frontal Blade hits within 2 seconds of each other",
+      "reason": "needs the weapon's melee (Frontal Blades are not in the model); charges after the first 6 are missing, above 2 % (Aegis Sustained corrupts every magazine), open in W8, known-inaccuracies W6c"
+    },
+    { "quote": "heals you for 40 HP", "reason": "no damage against a boss" },
+    {
+      "quote": "ending at 300 [?] damage on the final tick",
+      "reason": "carried by the parts corruption-early and corruption-late (Clarity's total 2 985 in two halves; 65 x 1.087^19 = 317 against 300, a small conflict inside the text)"
+    },
+    {
+      "quote": "Frontal Blades deal 50% increased melee damage against corrupted",
+      "reason": "needs the weapon's melee (not modelled), see \"Landing two Frontal Blade hits\""
+    },
+    { "quote": "Soulfire Crystals have 400 HP and linger in the world for 15 seconds", "reason": "needs a kill (one boss, no adds, ADR 0015)" },
+    { "quote": "the crystals explode for 1,065 [?] damage in an 8 meter radius", "reason": "needs a kill (one boss, no adds, ADR 0015)" },
+    {
+      "quote": "Replaces your melee ability with a 2-hit combo blade attack",
+      "reason": "needs the weapon's melee (not modelled), see \"Landing two Frontal Blade hits\""
+    },
+    { "quote": "Each stab deals 543 [84] damage", "reason": "needs the weapon's melee (not modelled), see \"Landing two Frontal Blade hits\"" }
+  ]
+}

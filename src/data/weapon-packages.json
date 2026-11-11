@@ -3944,9 +3944,8 @@
       "value": 533,
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Charge Time\" of Cull's Shadow",
-        "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "The interval already contains it: the charge delays the first shot and every shot after a cast"
+        "retrieved": "2026-10-31",
+        "status": "verified"
       }
     },
     "fireRateRpm": {
@@ -3955,8 +3954,9 @@
         "name": "Aegis Boss Damage sheet (tab Sustained), row cull-s-shadow-with-corruption",
         "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Derived: (TtE 27.282 s − 0.533 s charge − 3 reloads × 1.983 s) ÷ 20 intervals within magazines (ADR 0013)"
+        "status": "fitted",
+        "row": "cull-s-shadow-with-corruption",
+        "note": "timing.fireRateRpm: Derived: (TtE 27.282 s − 0.533 s charge − 3 reloads × 1.983 s) ÷ 20 intervals within magazines (ADR 0013)"
       }
     },
     "magazine": {
@@ -3965,7 +3965,9 @@
         "name": "Aegis Boss Damage sheet (tab Sustained), row cull-s-shadow-with-corruption",
         "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "fitted",
+        "row": "cull-s-shadow-with-corruption",
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
@@ -3974,7 +3976,9 @@
         "name": "Aegis Boss Damage sheet (tab Sustained), row cull-s-shadow-with-corruption",
         "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "fitted",
+        "row": "cull-s-shadow-with-corruption",
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
@@ -3983,10 +3987,363 @@
         "name": "Aegis Boss Damage sheet (tab Sustained), row cull-s-shadow-with-corruption",
         "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Reload 1.983 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+        "status": "fitted",
+        "row": "cull-s-shadow-with-corruption",
+        "note": "timing.reloadTimeMs"
       }
     },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file cull-s-shadow",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 813.006,
+          "source": {
+            "name": "Expression over Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-cull-s-shadow",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "fusion-rifle-cull-s-shadow",
+            "note": "Derived: $aegis[fusion-rifle-cull-s-shadow].perShot (Owner's exception (ADR 0019, W6c): no Quantum row; the Compendium's 143 per projectile lies on another scale (2.11 x Aegis' 224 / 3.31). One shot is 3 bursts of 4 projectiles (Compendium), 12 x 224 / 3.31 = 813); $aegis[fusion-rifle-cull-s-shadow].perShot = 813.006 (Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-cull-s-shadow)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file cull-s-shadow",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file cull-s-shadow",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "aegisVisual"
+      },
+      {
+        "id": "corruption-start",
+        "name": "Potent Corruption (reset)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file cull-s-shadow",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 30.796,
+          "source": {
+            "name": "Expression over Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-cull-s-shadow; Clarity (Live-Clarity-Database, descriptions/clarity.json): Soulburn; Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Cull's Shadow Soulburn Soulforge Blades of Unmaking ↑Selectable Trait",
+            "retrieved": "2026-10-24",
+            "status": "fitted",
+            "row": "fusion-rifle-cull-s-shadow",
+            "note": "Derived: $aegis[fusion-rifle-cull-s-shadow].perShot * $clarity[Soulburn](\"Potent Corruption deals 65\") / ($compendium[Cull's Shadow](\"wider 3 round burst\") * $compendium[Cull's Shadow](\"of 4 projectiles\") * $compendium[Cull's Shadow](\"Projectiles deal 143\")) (Clarity's first tick (65) on Aegis' scale of the shot: 813 stands for the Compendium's 12 x 143, so 30.8. The first ticks of an application that the next shot resets); $aegis[fusion-rifle-cull-s-shadow].perShot = 813.006 (Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-cull-s-shadow); $clarity[Soulburn](\"Potent Corruption deals 65\") = 65 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Soulburn); $compendium[Cull's Shadow](\"wider 3 round burst\") = 3 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Cull's Shadow Soulburn Soulforge Blades of Unmaking ↑Selectable Trait); $compendium[Cull's Shadow](\"of 4 projectiles\") = 4 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Cull's Shadow Soulburn Soulforge Blades of Unmaking ↑Selectable Trait); $compendium[Cull's Shadow](\"Projectiles deal 143\") = 143 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Cull's Shadow Soulburn Soulforge Blades of Unmaking ↑Selectable Trait)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file cull-s-shadow",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file cull-s-shadow",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "dot",
+        "scale": "aegisVisual"
+      },
+      {
+        "id": "corruption-early",
+        "name": "Potent Corruption (ticks 1 to 10)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file cull-s-shadow",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 42.809,
+          "source": {
+            "name": "Expression over Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-cull-s-shadow; Clarity (Live-Clarity-Database, descriptions/clarity.json): Soulburn; Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Cull's Shadow Soulburn Soulforge Blades of Unmaking ↑Selectable Trait",
+            "retrieved": "2026-10-24",
+            "status": "fitted",
+            "row": "fusion-rifle-cull-s-shadow",
+            "note": "Derived: $aegis[fusion-rifle-cull-s-shadow].perShot * $clarity[Soulburn](\"In total, one application of Potent Corruption deals 2,985\") / (1 + 2.3036) / 10 / ($compendium[Cull's Shadow](\"wider 3 round burst\") * $compendium[Cull's Shadow](\"of 4 projectiles\") * $compendium[Cull's Shadow](\"Projectiles deal 143\")) (the ramp (Clarity: 8.7 % per tick, compounding over 20 ticks) in two halves of 10 ticks: the first half is 1 / (1 + 1.087^10) = 1 / (1 + 2.3036) = 30.3 % of Clarity's 2 985, per tick on Aegis' scale (see corruption-start) 42.8); $aegis[fusion-rifle-cull-s-shadow].perShot = 813.006 (Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-cull-s-shadow); $clarity[Soulburn](\"In total, one application of Potent Corruption deals 2,985\") = 2985 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Soulburn); $compendium[Cull's Shadow](\"wider 3 round burst\") = 3 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Cull's Shadow Soulburn Soulforge Blades of Unmaking ↑Selectable Trait); $compendium[Cull's Shadow](\"of 4 projectiles\") = 4 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Cull's Shadow Soulburn Soulforge Blades of Unmaking ↑Selectable Trait); $compendium[Cull's Shadow](\"Projectiles deal 143\") = 143 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Cull's Shadow Soulburn Soulforge Blades of Unmaking ↑Selectable Trait)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file cull-s-shadow",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file cull-s-shadow",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "dot",
+        "scale": "aegisVisual"
+      },
+      {
+        "id": "corruption-late",
+        "name": "Potent Corruption (ticks 11 to 20)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file cull-s-shadow",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 98.614,
+          "source": {
+            "name": "Expression over Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-cull-s-shadow; Clarity (Live-Clarity-Database, descriptions/clarity.json): Soulburn; Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Cull's Shadow Soulburn Soulforge Blades of Unmaking ↑Selectable Trait",
+            "retrieved": "2026-10-24",
+            "status": "fitted",
+            "row": "fusion-rifle-cull-s-shadow",
+            "note": "Derived: $aegis[fusion-rifle-cull-s-shadow].perShot * $clarity[Soulburn](\"In total, one application of Potent Corruption deals 2,985\") * 2.3036 / (1 + 2.3036) / 10 / ($compendium[Cull's Shadow](\"wider 3 round burst\") * $compendium[Cull's Shadow](\"of 4 projectiles\") * $compendium[Cull's Shadow](\"Projectiles deal 143\")) (the second half of the ramp, 1.087^10 / (1 + 1.087^10) = 69.7 % of 2 985, per tick on Aegis' scale 98.6); $aegis[fusion-rifle-cull-s-shadow].perShot = 813.006 (Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-cull-s-shadow); $clarity[Soulburn](\"In total, one application of Potent Corruption deals 2,985\") = 2985 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Soulburn); $compendium[Cull's Shadow](\"wider 3 round burst\") = 3 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Cull's Shadow Soulburn Soulforge Blades of Unmaking ↑Selectable Trait); $compendium[Cull's Shadow](\"of 4 projectiles\") = 4 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Cull's Shadow Soulburn Soulforge Blades of Unmaking ↑Selectable Trait); $compendium[Cull's Shadow](\"Projectiles deal 143\") = 143 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Cull's Shadow Soulburn Soulforge Blades of Unmaking ↑Selectable Trait)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file cull-s-shadow",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file cull-s-shadow",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "dot",
+        "scale": "aegisVisual"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "corruption-last-charge",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "soulfire-used",
+            "op": "=",
+            "value": {
+              "value": 5,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Soulburn",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Soulburn](\"Maximum of 6 stacks\") - 1 (the 6th charge: the counter stands at 5); $clarity[Soulburn](\"Maximum of 6 stacks\") = 6 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Soulburn)"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "addStacks", "counter": "soulfire-used" },
+          {
+            "type": "spawn",
+            "part": "corruption-early",
+            "delayMs": {
+              "value": 500,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Soulburn",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Soulburn](\"once every 0.5 seconds\") * 1000 (the first tick one interval after the hit); $clarity[Soulburn](\"once every 0.5 seconds\") = 0.5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Soulburn)"
+              }
+            },
+            "count": {
+              "value": 10,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Soulburn",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Soulburn](\"over 20 ticks\") / 2 (the first half of the 20 ticks); $clarity[Soulburn](\"over 20 ticks\") = 20 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Soulburn)"
+              }
+            },
+            "intervalMs": {
+              "value": 500,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Soulburn",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Soulburn](\"once every 0.5 seconds\") * 1000 (seconds to milliseconds); $clarity[Soulburn](\"once every 0.5 seconds\") = 0.5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Soulburn)"
+              }
+            }
+          },
+          {
+            "type": "spawn",
+            "part": "corruption-late",
+            "delayMs": {
+              "value": 5500,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Soulburn",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Soulburn](\"once every 0.5 seconds\") * 1000 * ($clarity[Soulburn](\"over 20 ticks\") / 2 + 1) (the 11th tick, 5.5 s after the hit); $clarity[Soulburn](\"once every 0.5 seconds\") = 0.5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Soulburn); $clarity[Soulburn](\"over 20 ticks\") = 20 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Soulburn)"
+              }
+            },
+            "count": {
+              "value": 10,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Soulburn",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Soulburn](\"over 20 ticks\") / 2 (the second half of the 20 ticks); $clarity[Soulburn](\"over 20 ticks\") = 20 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Soulburn)"
+              }
+            },
+            "intervalMs": {
+              "value": 500,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Soulburn",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Soulburn](\"once every 0.5 seconds\") * 1000 (seconds to milliseconds); $clarity[Soulburn](\"once every 0.5 seconds\") = 0.5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Soulburn)"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file cull-s-shadow",
+          "retrieved": "2026-11-11",
+          "status": "derived",
+          "note": "Derived: the last of the 6 charges built before the phase runs its full 10 s, since no shot after it resets it",
+          "quote": "Firing this weapon consumes one stack of Soulfire Charge to apply Potent Corruption"
+        }
+      },
+      {
+        "id": "corruption-reset",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "soulfire-used",
+            "op": "<",
+            "value": {
+              "value": 5,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Soulburn",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Soulburn](\"Maximum of 6 stacks\") - 1 (charges 1 to 5: the counter stands at 0 to 4); $clarity[Soulburn](\"Maximum of 6 stacks\") = 6 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Soulburn)"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "addStacks", "counter": "soulfire-used" },
+          {
+            "type": "spawn",
+            "part": "corruption-start",
+            "delayMs": {
+              "value": 500,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Soulburn",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Soulburn](\"once every 0.5 seconds\") * 1000 (the first tick one interval after the hit); $clarity[Soulburn](\"once every 0.5 seconds\") = 0.5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Soulburn)"
+              }
+            },
+            "count": {
+              "value": 2,
+              "source": {
+                "name": "Item file cull-s-shadow",
+                "retrieved": "2026-11-11",
+                "status": "derived",
+                "note": "Derived: Clarity says this of Potent Corruption on Osteo Striga, the same keyword. The next shot comes 1.04 s later (Aegis Sustained), so two ticks of 0.5 s run before the reset; the second (70.7 of Clarity) counts as the first (65), below 2 %",
+                "quote": "Reapplying the poison resets it back to the first stack."
+              }
+            },
+            "intervalMs": {
+              "value": 500,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Soulburn",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Soulburn](\"once every 0.5 seconds\") * 1000 (seconds to milliseconds); $clarity[Soulburn](\"once every 0.5 seconds\") = 0.5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Soulburn)"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file cull-s-shadow",
+          "retrieved": "2026-11-11",
+          "status": "derived",
+          "note": "Derived: optimal play as Aegis (\"with corruption\"): 6 charges are built before the phase; every shot consumes one, so the first 6 shots corrupt. New charges need Frontal Blade hits (melee, not modelled)",
+          "quote": "Maximum of 6 stacks."
+        }
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "soulburn",
+        "name": "Soulburn",
+        "description": "Final blows or rapid hits with this weapon's frontal blades heal you and provide Soulfire Charges, which cause rounds fired by this weapon to inflict potent corruption. These frontal blades deal increased damage to targets afflicted by corruption.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
     "reloadDurationIncluded": {
       "value": 0.9,
       "source": {
@@ -3997,77 +4354,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-cull-s-shadow-average-with-corruption",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "fusion-rifle-cull-s-shadow-average-with-corruption",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 1095.753,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-cull-s-shadow-average-with-corruption",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "fusion-rifle-cull-s-shadow-average-with-corruption",
-            "note": "visual Value; assumptions: average, with corruption"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-cull-s-shadow-average-with-corruption",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "fusion-rifle-cull-s-shadow-average-with-corruption"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-cull-s-shadow-average-with-corruption",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "fusion-rifle-cull-s-shadow-average-with-corruption"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "soulburn",
-        "name": "Soulburn",
-        "description": "Final blows or rapid hits with this weapon's frontal blades heal you and provide Soulfire Charges, which cause rounds fired by this weapon to inflict potent corruption. These frontal blades deal increased damage to targets afflicted by corruption.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "d-a-r-c-i",
@@ -11696,7 +11983,7 @@
     "code": 41,
     "name": "Jötunn",
     "manifestHash": 417164956,
-    "gameVersion": "9.7.0.3",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "fusionRifle",
     "element": "solar",
     "ammo": "special",
@@ -11704,48 +11991,207 @@
       "value": 833,
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Charge Time\" of Jötunn",
-        "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "The interval already contains it: the charge delays the first shot and every shot after a cast"
+        "retrieved": "2026-10-31",
+        "status": "verified"
       }
     },
     "fireRateRpm": {
-      "value": 50.463,
+      "value": 47.917,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row j-tunn",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-fusion-rifle-jotunn",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "Derived: (TtE 31.676 s − 0.817 s charge − 4 reloads × 2.067 s) ÷ 19 intervals within magazines (ADR 0013)"
+        "note": "timing.fireRateRpm: Derived: (Time to Empty 34.8 s − 4 reloads × 1.5 s) ÷ 23 intervals (ADR 0013)"
       }
     },
     "magazine": {
       "value": 5,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row j-tunn",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-fusion-rifle-jotunn",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "verified",
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
       "value": 24,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row j-tunn",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-fusion-rifle-jotunn",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "verified",
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
-      "value": 878,
+      "value": 1500,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row j-tunn",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-fusion-rifle-jotunn",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "Reload 2.067 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+        "note": "timing.reloadTimeMs"
       }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file j-tunn",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 932,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-fusion-rifle-jotunn",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "bodyDamage"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file j-tunn",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file j-tunn",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "quantum"
+      },
+      {
+        "id": "pool",
+        "name": "Lingering pool",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file j-tunn",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 29.506,
+          "source": {
+            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-fusion-rifle-jotunn; Clarity (Live-Clarity-Database, descriptions/clarity.json): Charge Shot",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $quantum[specials-fusion-rifle-jotunn].bodyDamage * $clarity[Charge Shot](\"Lingering pool deals 46\") / ($clarity[Charge Shot](\"deals 1184\") + $clarity[Charge Shot](\"and 269\")) (Clarity's tick (46) on Quantum's scale: Quantum's 932 stands for Clarity's 1 184 + 269 of the projectile, so 29.5 per tick (Quantum's tab Weapon Specifics: 30 per tick; Aegis 97 / 3.31 = 29.3)); $quantum[specials-fusion-rifle-jotunn].bodyDamage = 932 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-fusion-rifle-jotunn); $clarity[Charge Shot](\"Lingering pool deals 46\") = 46 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Charge Shot); $clarity[Charge Shot](\"deals 1184\") = 1184 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Charge Shot); $clarity[Charge Shot](\"and 269\") = 269 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Charge Shot)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file j-tunn",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file j-tunn",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "dot",
+        "scale": "quantum"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "pool",
+        "on": { "on": "hit", "part": "shot" },
+        "do": [
+          {
+            "type": "spawn",
+            "part": "pool",
+            "delayMs": {
+              "value": 250,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Charge Shot",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Charge Shot](\"every 0.25 seconds\") * 1000 (the first tick one interval after the impact, seconds to milliseconds); $clarity[Charge Shot](\"every 0.25 seconds\") = 0.25 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Charge Shot)"
+              }
+            },
+            "count": {
+              "value": 7,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Charge Shot",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Charge Shot](\"for 1.75 seconds\") / $clarity[Charge Shot](\"every 0.25 seconds\") (duration divided by the interval: 7 ticks); $clarity[Charge Shot](\"for 1.75 seconds\") = 1.75 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Charge Shot); $clarity[Charge Shot](\"every 0.25 seconds\") = 0.25 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Charge Shot)"
+              }
+            },
+            "intervalMs": {
+              "value": 250,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Charge Shot",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Charge Shot](\"every 0.25 seconds\") * 1000 (seconds to milliseconds); $clarity[Charge Shot](\"every 0.25 seconds\") = 0.25 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Charge Shot)"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file j-tunn",
+          "retrieved": "2026-11-11",
+          "status": "derived",
+          "note": "Derived: the boss stands in the pool of every shot; pools of successive shots tick side by side (Clarity says nothing else). Aegis \"successive shots\" counts about 4 ticks per shot (1 048 - 930 = 118 / 29.3), known-inaccuracies W6c",
+          "quote": "detonates on impact and creates a burning pool of fire"
+        }
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "charge-shot",
+        "name": "Charge Shot",
+        "description": "Hold down the trigger to charge up a tracking shot that explodes and burns on impact.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Cornered, Incandescent, Jötunn Catalyst",
+      "description": "Grants the Cornered trait: Grants 15% decreased Charge/Draw Time while within 15 meters of 2 enemies. Buff lingers for 1.5 seconds once no longer surrounded.\nGrants the Incandescent trait: Weapon Kills trigger a Solar explosion that applies 30 Scorch Stacks (40 with Ember of Ashes) and deals up to 30 damage to enemies within 4 meters of the target.",
+      "effect": "none"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -11757,82 +12203,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-j-tunn-average-successive-shots",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "fusion-rifle-j-tunn-average-successive-shots",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 1048.318,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-j-tunn-average-successive-shots",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "fusion-rifle-j-tunn-average-successive-shots",
-            "note": "visual Value; assumptions: average, successive shots"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-j-tunn-average-successive-shots",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "fusion-rifle-j-tunn-average-successive-shots"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-j-tunn-average-successive-shots",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "fusion-rifle-j-tunn-average-successive-shots"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "charge-shot",
-        "name": "Charge Shot",
-        "description": "Hold down the trigger to charge up a tracking shot that explodes and burns on impact.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "catalyst": {
-      "name": "Cornered, Incandescent, Jötunn Catalyst",
-      "description": "Grants the Cornered trait:\nGrants 15% decreased Charge/Draw Time while within 15 meters of 2 enemies.\nBuff lingers for 1.5 seconds once no longer surrounded.\nAlso grants the Incandescent trait:\nWeapon Kills trigger a Solar explosion that applies 30 Scorch Stacks (40 with Ember of Ashes) and deals up to 30 damage to enemies within 4 meters of the target.\nKilling Elite or higher tier Combatants and Players increases the radius to 8 meters and applies 10 more Scorch Stacks.\nScorch damage can be increased through Weapon Damage Buffs.",
-      "effect": "none"
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "khvostov-7g-0x",
@@ -14763,11 +15134,10 @@
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row new-malpais-assumes-suspend-tick-every-3-shots",
-        "url": "https://destiny2.science/boss-damage",
-        "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file new-malpais",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "note": "Derived: a pulse rifle has no charge; Aegis' time to empty counts from the first burst"
       }
     },
     "fireRateRpm": {
@@ -14776,8 +15146,9 @@
         "name": "Aegis Boss Damage sheet (tab Sustained), row new-malpais-assumes-suspend-tick-every-3-shots",
         "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Derived: (TtE 24.657 s − 3 reloads × 1.383 s) ÷ 23 intervals within magazines (ADR 0013)"
+        "status": "fitted",
+        "row": "new-malpais-assumes-suspend-tick-every-3-shots",
+        "note": "timing.fireRateRpm: Derived: (TtE 24.657 s − 3 reloads × 1.383 s) ÷ 23 intervals within magazines (ADR 0013)"
       }
     },
     "magazine": {
@@ -14786,7 +15157,9 @@
         "name": "Aegis Boss Damage sheet (tab Sustained), row new-malpais-assumes-suspend-tick-every-3-shots",
         "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "fitted",
+        "row": "new-malpais-assumes-suspend-tick-every-3-shots",
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
@@ -14795,7 +15168,9 @@
         "name": "Aegis Boss Damage sheet (tab Sustained), row new-malpais-assumes-suspend-tick-every-3-shots",
         "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "fitted",
+        "row": "new-malpais-assumes-suspend-tick-every-3-shots",
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
@@ -14804,9 +15179,270 @@
         "name": "Aegis Boss Damage sheet (tab Sustained), row new-malpais-assumes-suspend-tick-every-3-shots",
         "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Reload 1.383 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+        "status": "fitted",
+        "row": "new-malpais-assumes-suspend-tick-every-3-shots",
+        "note": "timing.reloadTimeMs"
       }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Round",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file new-malpais",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 161.329,
+          "source": {
+            "name": "Expression over Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel",
+            "note": "Derived: $aegis[pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel].critShot (Owner's exception (ADR 0019, W6c): no Quantum row; the Compendium's 271 lies on another scale (2.03 x Aegis' body hit 443 / 3.31, the same for the explosion 321 against 524 / 3.31). A shot is one round, three per burst); $aegis[pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel].critShot = 161.329 (Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file new-malpais",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file new-malpais",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "aegisVisual"
+      },
+      {
+        "id": "explosion",
+        "name": "Detonation",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file new-malpais",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 158.308,
+          "source": {
+            "name": "Expression over Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel",
+            "note": "Derived: $aegis[pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel].tick(\"explosion\") (Owner's exception (ADR 0019, W6c): Aegis' explosion per embedded round, 524 / 3.31); $aegis[pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel].tick(\"explosion\") = 158.308 (Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file new-malpais",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file new-malpais",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "splash",
+        "scale": "aegisVisual"
+      },
+      {
+        "id": "suspend",
+        "name": "Suspending Blast",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file new-malpais",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 354.381,
+          "source": {
+            "name": "Expression over Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel",
+            "note": "Derived: $aegis[pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel].tick(\"suspend\") (Owner's exception (ADR 0019, W6c): no text names the damage of the suspend against a boss; Aegis 1 173 / 3.31 per detonation); $aegis[pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel].tick(\"suspend\") = 354.381 (Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file new-malpais",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file new-malpais",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "splash",
+        "scale": "aegisVisual"
+      }
+    ],
+    "rules": [
+      {
+        "id": "burst",
+        "on": { "on": "shot" },
+        "do": [
+          {
+            "type": "spawn",
+            "part": "shot",
+            "count": {
+              "value": 3,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Atomizing Rounds",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "Fires a 3-round burst"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "embed",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "embedded-bursts",
+            "op": "<",
+            "value": {
+              "value": 2,
+              "source": {
+                "name": "Item file new-malpais",
+                "retrieved": "2026-11-11",
+                "status": "derived",
+                "note": "Derived: playstyle as Aegis (\"assumes suspend tick every 3 shots\", its rate holds the hold of [Reload]): detonate after every 3rd burst, 9 rounds, at least 6 as Clarity asks; the counter stands at 0 and 1 for the bursts before"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "embedded-bursts" }]
+      },
+      {
+        "id": "detonate",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "embedded-bursts",
+            "op": ">=",
+            "value": {
+              "value": 2,
+              "source": {
+                "name": "Item file new-malpais",
+                "retrieved": "2026-11-11",
+                "status": "derived",
+                "note": "Derived: the 3rd burst (see rule embed)"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "embedded-bursts" },
+          {
+            "type": "spawn",
+            "part": "explosion",
+            "count": {
+              "value": 9,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Atomizing Rounds",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 3 * $clarity[Atomizing Rounds](\"Fires a 3-round burst\") (3 bursts of 3 rounds; a burst left over at the reload is still embedded (6 s) and goes off with the next detonation (magazines 7, 7, 7, 6 give 9 detonations)); $clarity[Atomizing Rounds](\"Fires a 3-round burst\") = 3 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Atomizing Rounds)"
+              }
+            }
+          },
+          { "type": "spawn", "part": "suspend" }
+        ],
+        "source": {
+          "name": "Item file new-malpais",
+          "retrieved": "2026-11-11",
+          "status": "derived",
+          "note": "Derived: detonated by hand, never after the 6 s; with at least 6 rounds it suspends (Suspending Blast)",
+          "quote": "Hold [Reload] to instantly detonate all fired rounds."
+        }
+      },
+      {
+        "id": "unraveling-blast",
+        "on": { "on": "hit", "part": "explosion" },
+        "if": [{ "type": "hasItem", "id": "catalyst" }],
+        "do": [
+          {
+            "type": "applyStatus",
+            "status": "unravel",
+            "durationMs": {
+              "value": 8000,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): New Malpais Catalyst",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[New Malpais Catalyst](\"Unravel targets for 8 seconds\") * 1000 (seconds to milliseconds); $clarity[New Malpais Catalyst](\"Unravel targets for 8 seconds\") = 8 (Clarity (Live-Clarity-Database, descriptions/clarity.json): New Malpais Catalyst)"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "atomizing-rounds",
+        "name": "Atomizing Rounds",
+        "description": "Rounds fired embed themselves in targets. [Alternate Weapon Action]  to detonate embedded rounds.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Unraveling Blast, New Malpais Catalyst",
+      "description": "Embedded projectiles Unravel targets for 8 seconds upon detonation.",
+      "effect": "damage"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -14818,82 +15454,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 1159.924,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel",
-            "note": "visual Value; assumptions: average, 3 bursts, includes suspend, excludes unravel"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "atomizing-rounds",
-        "name": "Atomizing Rounds",
-        "description": "Rounds fired embed themselves in targets. [Alternate Weapon Action]  to detonate embedded rounds.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "catalyst": {
-      "name": "Unraveling Blast, New Malpais Catalyst",
-      "description": "Embedded projectiles Unravel targets for 8 seconds upon detonation.",
-      "effect": "unknown"
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "no-time-to-explain",
@@ -16766,54 +17327,230 @@
     "code": 134,
     "name": "Prometheus Lens",
     "manifestHash": 19024058,
-    "gameVersion": "9.7.0.3",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "traceRifle",
     "element": "solar",
     "ammo": "special",
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Prometheus Lens",
-        "retrieved": "2026-10-20",
+        "name": "Item file prometheus-lens",
+        "retrieved": "2026-11-11",
         "status": "derived",
-        "note": "Derived (override): Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“). Catalyst: Stabilität, Handling und Kill-Explosionen, gegen einen Boss ohne Adds keine Wirkung.; The time to empty counts from the first shot"
+        "note": "Derived: a trace rifle has no charge; Quantum's time to empty counts from the first hit"
       }
     },
     "fireRateRpm": {
-      "value": 899.55,
+      "value": 906.174,
       "source": {
-        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Prometheus Lens",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-prometheous-lens-2",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "derived",
-        "note": "Derived (override): Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“). Catalyst: Stabilität, Handling und Kill-Explosionen, gegen einen Boss ohne Adds keine Wirkung.; Values of the override"
+        "status": "verified",
+        "note": "timing.fireRateRpm: Derived: (Time to Empty 38.8 s − 4 reloads × 1.44 s) ÷ 499 intervals (ADR 0013)"
       }
     },
     "magazine": {
       "value": 100,
       "source": {
-        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Prometheus Lens",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-prometheous-lens-2",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "derived",
-        "note": "Derived (override): Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“). Catalyst: Stabilität, Handling und Kill-Explosionen, gegen einen Boss ohne Adds keine Wirkung."
+        "status": "verified",
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
       "value": 500,
       "source": {
-        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Prometheus Lens",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-prometheous-lens-2",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "derived",
-        "note": "Derived (override): Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“). Catalyst: Stabilität, Handling und Kill-Explosionen, gegen einen Boss ohne Adds keine Wirkung."
+        "status": "verified",
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
       "value": 1440,
       "source": {
-        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Prometheus Lens",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-prometheous-lens-2",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "derived",
-        "note": "Derived (override): Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“). Catalyst: Stabilität, Handling und Kill-Explosionen, gegen einen Boss ohne Adds keine Wirkung."
+        "status": "verified",
+        "note": "timing.reloadTimeMs"
       }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Beam",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file prometheus-lens",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 26,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-prometheous-lens-2",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "precisionDamage"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file prometheus-lens",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file prometheus-lens",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "quantum"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "prismatic-inferno",
+        "on": { "on": "phaseStart" },
+        "do": [{ "type": "grantBuff", "buff": "prismatic-inferno" }],
+        "source": {
+          "name": "Item file prometheus-lens",
+          "retrieved": "2026-11-11",
+          "status": "derived",
+          "note": "Derived: a trait of the weapon, it holds the whole phase",
+          "quote": "Scorch and Ignitions that originate from this weapon deal 15% increased damage."
+        }
+      },
+      {
+        "id": "scorch-count",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "inferno",
+            "op": "<",
+            "value": {
+              "value": 19,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Prismatic Inferno",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Prismatic Inferno](\"Scoring 20 hits\") - 1 (the counter stands at 0 to 18 for the hits before the 20th); $clarity[Prismatic Inferno](\"Scoring 20 hits\") = 20 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Prismatic Inferno)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "inferno" }]
+      },
+      {
+        "id": "scorch",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "inferno",
+            "op": ">=",
+            "value": {
+              "value": 19,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Prismatic Inferno",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Prismatic Inferno](\"Scoring 20 hits\") - 1 (the 20th hit); $clarity[Prismatic Inferno](\"Scoring 20 hits\") = 20 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Prismatic Inferno)"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "inferno" },
+          {
+            "type": "applyStatus",
+            "status": "scorch",
+            "stacks": {
+              "value": 20,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Prismatic Inferno",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "applies 20 Scorch stacks"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file prometheus-lens",
+          "retrieved": "2026-11-11",
+          "status": "derived",
+          "note": "Derived: the beam hits 15 times a second and the reload (1.44 s) is shorter than 1.5 s, so the window always holds; only beam hits count, the Solar Field is not modelled. Ember of Ashes x1.5 gives the 30 of the text",
+          "quote": "within 1.5 seconds of each with this weapon's beam or Solar Field"
+        }
+      }
+    ],
+    "buffs": [
+      {
+        "id": "prismatic-inferno",
+        "name": "Prismatic Inferno",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.15,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Prismatic Inferno",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Prismatic Inferno](\"deal 15% increased damage\") / 100 (percent to factor; on ignitions only: the burn of Scorch is no keyword of its own (below 2 %), and an ignition of another source in the build gets it too); $clarity[Prismatic Inferno](\"deal 15% increased damage\") = 15 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Prismatic Inferno)"
+              }
+            },
+            "damageSources": ["keyword"],
+            "keywordIds": ["ignition"]
+          }
+        ]
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "prismatic-inferno",
+        "name": "Prismatic Inferno",
+        "description": "Fires a Solar trace beam that creates a field of heat energy that grows as the weapon is fired. Sustained damage applies scorch to the target.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Incandescent, Prometheus Catalyst",
+      "description": "Grants 20 Stability and 20 Handling.\nGrants the Incandescent trait: Weapon Kills trigger a Solar explosion that applies 30 Scorch Stacks (40 with Ember of Ashes) and deals up to 30 damage to enemies within 4 meters of the target.",
+      "effect": "none"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -16825,82 +17562,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-prometheus-lens-average-with-ignition",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "trace-rifle-prometheus-lens-average-with-ignition",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 36.486,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-prometheus-lens-average-with-ignition",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "trace-rifle-prometheus-lens-average-with-ignition",
-            "note": "visual Value; assumptions: average, with ignition"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-prometheus-lens-average-with-ignition",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "trace-rifle-prometheus-lens-average-with-ignition"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-prometheus-lens-average-with-ignition",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "trace-rifle-prometheus-lens-average-with-ignition"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "prismatic-inferno",
-        "name": "Prismatic Inferno",
-        "description": "Fires a Solar trace beam that creates a field of heat energy that grows as the weapon is fired. Sustained damage applies scorch to the target.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "catalyst": {
-      "name": "Prometheus Catalyst",
-      "description": "Grants 20 Stability and 20 Handling.\nGrants the Incandescent trait:\nWeapon Kills trigger a Solar explosion that applies 30 Scorch Stacks (40 with Ember of Ashes) and deals up to 30 damage to enemies within 4 meters of the target.\nKilling Elite or higher tier Combatants and Players increases the radius to 8 meters and applies 10 more Scorch Stacks.\nScorch damage can be increased through Weapon Damage Buffs.",
-      "effect": "none"
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "quicksilver-storm",

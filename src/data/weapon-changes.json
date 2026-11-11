@@ -1,67 +1,55 @@
 {
-  "baseline": "227f6f1",
+  "baseline": "1b907d3",
   "changes": [
     {
-      "id": "finality-s-auger",
-      "name": "Finality's Auger",
-      "kind": "damage",
-      "time": "s10",
-      "catalyst": false,
-      "from": 11500.1,
-      "to": 10224
-    },
-    {
-      "id": "finality-s-auger",
-      "name": "Finality's Auger",
-      "kind": "status",
-      "from": "Estimated",
-      "to": "Complete"
-    },
-    {
-      "id": "ice-breaker",
-      "name": "Ice Breaker",
-      "kind": "status",
-      "from": "Estimated",
-      "to": "Complete"
-    },
-    {
-      "id": "new-land-beyond",
-      "name": "New Land Beyond",
+      "id": "cull-s-shadow",
+      "name": "Cull's Shadow",
       "kind": "damage",
       "time": "s30",
-      "catalyst": true,
-      "from": 16463.4,
-      "to": 45474
+      "catalyst": false,
+      "from": 26298.1,
+      "to": 21234.3
     },
     {
-      "id": "new-land-beyond",
-      "name": "New Land Beyond",
+      "id": "j-tunn",
+      "name": "Jötunn",
+      "kind": "damage",
+      "time": "s60",
+      "catalyst": false,
+      "from": 25159.6,
+      "to": 27325
+    },
+    {
+      "id": "j-tunn",
+      "name": "Jötunn",
       "kind": "status",
       "from": "Estimated",
       "to": "Partial"
     },
     {
-      "id": "no-time-to-explain",
-      "name": "No Time to Explain",
+      "id": "new-malpais",
+      "name": "New Malpais",
       "kind": "damage",
       "time": "s10",
       "catalyst": false,
-      "from": 5908.2,
-      "to": 3314.4
+      "from": 12759.2,
+      "to": 10661.3
     },
     {
-      "id": "no-time-to-explain",
-      "name": "No Time to Explain",
+      "id": "prometheus-lens",
+      "name": "Prometheus Lens",
+      "kind": "damage",
+      "time": "s10",
+      "catalyst": false,
+      "from": 4706.7,
+      "to": 4156.5
+    },
+    {
+      "id": "prometheus-lens",
+      "name": "Prometheus Lens",
       "kind": "status",
       "from": "Estimated",
       "to": "Partial"
-    },
-    {
-      "id": "wavesplitter",
-      "name": "Wavesplitter",
-      "kind": "status",
-      "from": "Estimated",
-      "to": "Complete"
     }
   ]
 }

@@ -1,0 +1,153 @@
+{
+  "id": "new-malpais",
+  "kind": "exoticWeapon",
+  "name": "New Malpais",
+  "texts": [
+    { "source": "clarity", "entry": "Atomizing Rounds", "hash": "776ccd96" },
+    { "source": "clarity", "entry": "Suspending Blast", "hash": "526a7583" },
+    { "source": "clarity", "entry": "New Malpais Catalyst", "hash": "0a720007" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file new-malpais",
+      "retrieved": "2026-11-11",
+      "status": "derived",
+      "note": "Derived: a pulse rifle has no charge; Aegis' time to empty counts from the first burst"
+    }
+  },
+  "fireRateRpm": "$aegisSustained[new-malpais-assumes-suspend-tick-every-3-shots].timing.fireRateRpm",
+  "magazine": "$aegisSustained[new-malpais-assumes-suspend-tick-every-3-shots].timing.magazine",
+  "totalShots": "$aegisSustained[new-malpais-assumes-suspend-tick-every-3-shots].timing.totalShots",
+  "reloadTimeMs": "$aegisSustained[new-malpais-assumes-suspend-tick-every-3-shots].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Unraveling Blast, New Malpais Catalyst",
+    "description": "Embedded projectiles Unravel targets for 8 seconds upon detonation.",
+    "effect": "damage"
+  },
+  "parts": {
+    "shot": {
+      "name": "Round",
+      "damage": {
+        "expr": "$aegis[pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel].critShot",
+        "note": "Owner's exception (ADR 0019, W6c): no Quantum row; the Compendium's 271 lies on another scale (2.03 x Aegis' body hit 443 / 3.31, the same for the explosion 321 against 524 / 3.31). A shot is one round, three per burst"
+      },
+      "precision": true,
+      "delivery": "impact"
+    },
+    "explosion": {
+      "name": "Detonation",
+      "damage": {
+        "expr": "$aegis[pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel].tick(\"explosion\")",
+        "note": "Owner's exception (ADR 0019, W6c): Aegis' explosion per embedded round, 524 / 3.31"
+      },
+      "delivery": "splash"
+    },
+    "suspend": {
+      "name": "Suspending Blast",
+      "damage": {
+        "expr": "$aegis[pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel].tick(\"suspend\")",
+        "note": "Owner's exception (ADR 0019, W6c): no text names the damage of the suspend against a boss; Aegis 1 173 / 3.31 per detonation"
+      },
+      "delivery": "splash"
+    }
+  },
+  "rules": [
+    {
+      "id": "burst",
+      "on": { "on": "shot" },
+      "do": [
+        {
+          "type": "spawn",
+          "part": "shot",
+          "count": "$clarity[Atomizing Rounds](\"Fires a 3-round burst\")"
+        }
+      ]
+    },
+    {
+      "id": "embed",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "embedded-bursts",
+          "op": "<",
+          "value": {
+            "value": 2,
+            "source": {
+              "name": "Item file new-malpais",
+              "retrieved": "2026-11-11",
+              "status": "derived",
+              "note": "Derived: playstyle as Aegis (\"assumes suspend tick every 3 shots\", its rate holds the hold of [Reload]): detonate after every 3rd burst, 9 rounds, at least 6 as Clarity asks; the counter stands at 0 and 1 for the bursts before"
+            }
+          }
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "embedded-bursts" }]
+    },
+    {
+      "id": "detonate",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "embedded-bursts",
+          "op": ">=",
+          "value": {
+            "value": 2,
+            "source": {
+              "name": "Item file new-malpais",
+              "retrieved": "2026-11-11",
+              "status": "derived",
+              "note": "Derived: the 3rd burst (see rule embed)"
+            }
+          }
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "embedded-bursts" },
+        {
+          "type": "spawn",
+          "part": "explosion",
+          "count": {
+            "expr": "3 * $clarity[Atomizing Rounds](\"Fires a 3-round burst\")",
+            "note": "3 bursts of 3 rounds; a burst left over at the reload is still embedded (6 s) and goes off with the next detonation (magazines 7, 7, 7, 6 give 9 detonations)"
+          }
+        },
+        { "type": "spawn", "part": "suspend" }
+      ],
+      "source": {
+        "name": "Item file new-malpais",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "Hold [Reload] to instantly detonate all fired rounds.",
+        "note": "Derived: detonated by hand, never after the 6 s; with at least 6 rounds it suspends (Suspending Blast)"
+      }
+    },
+    {
+      "id": "unraveling-blast",
+      "on": { "on": "hit", "part": "explosion" },
+      "if": [{ "type": "hasItem", "id": "catalyst" }],
+      "do": [
+        {
+          "type": "applyStatus",
+          "status": "unravel",
+          "durationMs": {
+            "expr": "$clarity[New Malpais Catalyst](\"Unravel targets for 8 seconds\") * 1000",
+            "note": "seconds to milliseconds"
+          }
+        }
+      ]
+    }
+  ],
+  "notModelled": [
+    {
+      "quote": "detonate after 6 seconds of being embedded",
+      "reason": "not played: the rounds are detonated by hand every 3rd burst (rule detonate)"
+    },
+    {
+      "quote": "Suspends them for 6 seconds (8 with Thread of Continuity)",
+      "reason": "the duration does nothing against a boss (it is not suspended); the damage of the suspend is the part suspend from Aegis"
+    }
+  ]
+}

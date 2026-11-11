@@ -4,7 +4,7 @@ Generiert von `npm run build:weapons` (ADR 0013), nicht von Hand bearbeiten.
 
 Stand: Aegis 2026-10-20, Quantum 2026-10-20 (Quantum nennt keinen Patch pro Zeile), Manifest 245114.26.10.13.2000-1-bnet.66137.
 
-Umfang: exotische Special- und Heavy-Waffen. **6 Pakete**, 131 Items, 4 Lücken.
+Umfang: exotische Special- und Heavy-Waffen. **2 Pakete**, 135 Items, 4 Lücken.
 
 ## Pakete
 
@@ -12,11 +12,7 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 
 | Waffe | Typ | Element | Basiszeile (Annahmen) | pro Shot | Timing | Shots | Magazin | Reload | Zeit bis leer | rpm Quantum → abgeleitet | Skala | Hinweise |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Cull's Shadow | fusionRifle | kinetic | average, with corruption (6 Shots) | 1.095,8 | Aegis | 24 | 6 | 1,98 s | 27,3 s | – → 58 | 0,0 % | Override: Optimal gespielt mit Corruption, wie Aegis Sustained (Base 1096 = Weapons „average, with corruption“ 1095,8).; Timing aus Zeile cull-s-shadow-with-corruption (Override); Timing nur aus Aegis |
 | Fafnir | linearFusionRifle | void | keine (1 Shot) | 2.528,4 | Quantum | 9 | 3 | 1,77 s | 16,3 s | – → 38 | 0,0 % | Override: Aegis Sustained zählt 18 Treffer (Detonation und Quantum Nova) für 9 Munition, Magazine 3-3-3, 1,6 s zwischen Schüssen, 16,333 s bis leer. Daraus der Reload: (16,333 − 6 × 1,6) ÷ 2 = 3,37 s nach dem letzten Schuss, also 1,77 s nach dessen Intervall. Grundwert 2528 pro Munition (Base = Weapons-Zeile).; Timing aus Override-Werten (Manifest, Quantum); Timing nur aus Quantum |
-| Jötunn | fusionRifle | solar | average, successive shots (10 Shots) | 1.048,3 | Aegis | 24 | 5 | 2,07 s | 31,7 s | – → 50 | 0,0 % | Override: Cornered braucht 2 Gegner in der Nähe, Incandescent Kills; gegen einen Boss ohne Adds keine Wirkung.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; ⚠ Timing mit Katalysator: keine Quelle ohne; der Katalysator ändert laut Clarity Magazin oder Reload, nicht die Munition; Timing nur aus Aegis |
-| New Malpais | pulseRifle | strand | average, 3 bursts, includes suspend, excludes unravel (3 Shots) | 1.159,9 | Aegis | 27 | 7 | 1,38 s | 24,7 s | – → 67 | 0,0 % | Timing nur aus Aegis |
-| Prometheus Lens | traceRifle | solar | average, with ignition (95 Shots) | 36,5 | Quantum | 500 | 100 | 1,44 s | 39,0 s | – → 900 | – | Override: Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“). Catalyst: Stabilität, Handling und Kill-Explosionen, gegen einen Boss ohne Adds keine Wirkung.; Timing aus Override-Werten (Manifest, Quantum); Timing nur aus Quantum |
 | Turncoat | handCannon | void | average (12 Shots) | 127,4 | Quantum |  | 13 | 1,64 s | – | – → 140 | – | Override: Keine Timing-Zeile. Manifest: 140 rpm, Magazin 13. Reload 1,64 s wie bei Quantum für jede Hand Cannon mit 140 rpm (Ace of Spades, Lumina, Thorn, Hawkmoon); Quantum rechnet den Reload pro Waffentyp, unabhängig vom Reload-Stat. Schaden aus Aegis „average“.; Timing aus Override-Werten (Manifest, Quantum); Timing nur aus Quantum |
 
 ## Items
@@ -47,6 +43,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **569**. D
 | Conditional Finality | `src/data/items/weapons/conditional-finality.json` | 0 | – |
 | Crimson | `src/data/items/weapons/crimson.json` | 7 | – |
 | Cryosthesia 77K | `src/data/items/weapons/cryosthesia-77k.json` | 2 | – |
+| Cull's Shadow | `src/data/items/weapons/cull-s-shadow.json` | 0 | – |
 | D.A.R.C.I. | `src/data/items/weapons/d-a-r-c-i.json` | 12 | – |
 | Dead Man's Tale | `src/data/items/weapons/dead-man-s-tale.json` | 0 | – |
 | Dead Messenger | `src/data/items/weapons/dead-messenger.json` | 3 | – |
@@ -81,6 +78,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **569**. D
 | Hierarchy of Needs | `src/data/items/weapons/hierarchy-of-needs.json` | 12 | – |
 | Ice Breaker | `src/data/items/weapons/ice-breaker.json` | 0 | – |
 | Izanagi's Burden | `src/data/items/weapons/izanagi-s-burden.json` | 0 | – |
+| Jötunn | `src/data/items/weapons/j-tunn.json` | 0 | – |
 | Khvostov 7G-0X | `src/data/items/weapons/khvostov-7g-0x.json` | 0 | – |
 | Le Monarque | `src/data/items/weapons/le-monarque.json` | 0 | – |
 | Legend of Acrius | `src/data/items/weapons/legend-of-acrius.json` | 0 | – |
@@ -96,12 +94,14 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **569**. D
 | Monte Carlo | `src/data/items/weapons/monte-carlo.json` | 0 | – |
 | Necrochasm | `src/data/items/weapons/necrochasm.json` | 10 | – |
 | New Land Beyond | `src/data/items/weapons/new-land-beyond.json` | 0 | – |
+| New Malpais | `src/data/items/weapons/new-malpais.json` | 0 | – |
 | No Time to Explain | `src/data/items/weapons/no-time-to-explain.json` | 0 | – |
 | One Thousand Voices | `src/data/items/weapons/one-thousand-voices.json` | 0 | – |
 | Osteo Striga | `src/data/items/weapons/osteo-striga.json` | 0 | – |
 | Outbreak Perfected | `src/data/items/weapons/outbreak-perfected.json` | 0 | – |
 | Parasite | `src/data/items/weapons/parasite.json` | 6 | – |
 | Polaris Lance | `src/data/items/weapons/polaris-lance.json` | 0 | – |
+| Prometheus Lens | `src/data/items/weapons/prometheus-lens.json` | 0 | – |
 | Quicksilver Storm | `src/data/items/weapons/quicksilver-storm.json` | 0 | – |
 | Rat King | `src/data/items/weapons/rat-king.json` | 8 | – |
 | Red Death Reformed | `src/data/items/weapons/red-death-reformed.json` | 12 | – |
@@ -173,9 +173,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Waffe | Munition | Wirkung | Timing ohne → mit | Text (Anfang) |
 | --- | --- | --- | --- | --- |
 | Fafnir | heavy | keine | – | Grants 35% Flinch Resistance after 1 second of Aiming Down Sights (ADS) without firing. Remains active until you're no l |
-| Jötunn | special | keine | – | Grants the Cornered trait: |
-| New Malpais | special | unbekannt | – | Embedded projectiles Unravel targets for 8 seconds upon detonation. |
-| Prometheus Lens | special | keine | – | Grants 20 Stability and 20 Handling. |
 | Turncoat | primary | keine | – | Upon exiting Void Empowerment, gain a Void Overshield for 10 seconds (15 with Echo of Persistence). |
 
 ## Lücken
@@ -198,8 +195,8 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Black Talon | light | the item file uses another row |
 | Choir of One | hitscan | the item file uses another row |
 | Choir of One | projectile - point blank | the item file uses another row |
-| Cull's Shadow |  | ohne average, with corruption der Basiszeile |
-| Cull's Shadow | with corruption | ohne average der Basiszeile |
+| Cull's Shadow | average, with corruption | the item file uses another row |
+| Cull's Shadow | with corruption | the item file uses another row |
 | D.A.R.C.I. | average, Target Acquired, Networked Targeting x5, with spaced jolt | Katalysator: Networked Targeting x5 |
 | D.A.R.C.I. | average, Target Acquired, Networked Targeting x5, with spaced jolt, first mag | Katalysator: Networked Targeting x5 |
 | Delicate Tomb | ADS | the item file uses another row |
@@ -251,7 +248,7 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Praxic Blade | average, 3L1H, Offensive Form, Forceful Blade III, Impact Core (solar) | gleiche Annahmen wie die Basiszeile |
 | Praxic Blade | average, double hit throw, Offensive Form, Forceful Blade III, Gyro Core (solar) | ohne 3L1H der Basiszeile |
 | Praxic Blade | average, double hit throw, Offensive Form, Forceful Blade III, Gyro Core (solar), Upper Hand | ohne 3L1H der Basiszeile |
-| Prometheus Lens | average, with ignition, Ember of Ashes | gleiche Annahmen wie die Basiszeile |
+| Prometheus Lens | average, with ignition, Ember of Ashes | the item file uses another row |
 | Quicksilver Storm | Grenades Prepped | nicht modelliert: Grenades Prepped |
 | Revision Zero | Hunter's Trace, Vorpal Weapon, includes shockwave | the item file uses another row |
 | Revision Zero | burst - light 4-burst mode, Vorpal Weapon | the item file uses another row |

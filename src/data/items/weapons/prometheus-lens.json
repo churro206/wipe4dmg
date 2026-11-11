@@ -1,0 +1,127 @@
+{
+  "id": "prometheus-lens",
+  "kind": "exoticWeapon",
+  "name": "Prometheus Lens",
+  "texts": [
+    { "source": "clarity", "entry": "Prismatic Inferno", "hash": "2767566a" },
+    { "source": "clarity", "entry": "Prometheus Catalyst", "hash": "53af2594" },
+    { "source": "clarity", "entry": "Flame Refraction", "hash": "939902d7" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file prometheus-lens",
+      "retrieved": "2026-11-11",
+      "status": "derived",
+      "note": "Derived: a trace rifle has no charge; Quantum's time to empty counts from the first hit"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-trace-rifle-prometheous-lens-2].timing.fireRateRpm",
+  "magazine": "$quantum[specials-trace-rifle-prometheous-lens-2].timing.magazine",
+  "totalShots": "$quantum[specials-trace-rifle-prometheous-lens-2].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-trace-rifle-prometheous-lens-2].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Incandescent, Prometheus Catalyst",
+    "description": "Grants 20 Stability and 20 Handling.\nGrants the Incandescent trait: Weapon Kills trigger a Solar explosion that applies 30 Scorch Stacks (40 with Ember of Ashes) and deals up to 30 damage to enemies within 4 meters of the target.",
+    "effect": "none"
+  },
+  "parts": {
+    "shot": {
+      "name": "Beam",
+      "damage": "$quantum[specials-trace-rifle-prometheous-lens-2].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "buffs": [
+    {
+      "id": "prismatic-inferno",
+      "name": "Prismatic Inferno",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[Prismatic Inferno](\"deal 15% increased damage\") / 100",
+            "note": "percent to factor; on ignitions only: the burn of Scorch is no keyword of its own (below 2 %), and an ignition of another source in the build gets it too"
+          },
+          "damageSources": ["keyword"],
+          "keywordIds": ["ignition"]
+        }
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "prismatic-inferno",
+      "on": { "on": "phaseStart" },
+      "do": [{ "type": "grantBuff", "buff": "prismatic-inferno" }],
+      "source": {
+        "name": "Item file prometheus-lens",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "Scorch and Ignitions that originate from this weapon deal 15% increased damage.",
+        "note": "Derived: a trait of the weapon, it holds the whole phase"
+      }
+    },
+    {
+      "id": "scorch-count",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "inferno",
+          "op": "<",
+          "value": {
+            "expr": "$clarity[Prismatic Inferno](\"Scoring 20 hits\") - 1",
+            "note": "the counter stands at 0 to 18 for the hits before the 20th"
+          }
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "inferno" }]
+    },
+    {
+      "id": "scorch",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "inferno",
+          "op": ">=",
+          "value": {
+            "expr": "$clarity[Prismatic Inferno](\"Scoring 20 hits\") - 1",
+            "note": "the 20th hit"
+          }
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "inferno" },
+        { "type": "applyStatus", "status": "scorch", "stacks": "$clarity[Prismatic Inferno](\"applies 20 Scorch stacks\")" }
+      ],
+      "source": {
+        "name": "Item file prometheus-lens",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "within 1.5 seconds of each with this weapon's beam or Solar Field",
+        "note": "Derived: the beam hits 15 times a second and the reload (1.44 s) is shorter than 1.5 s, so the window always holds; only beam hits count, the Solar Field is not modelled. Ember of Ashes x1.5 gives the 30 of the text"
+      }
+    }
+  ],
+  "notModelled": [
+    {
+      "quote": "Holding down the trigger for 0.45 seconds",
+      "reason": "Solar Field not modelled: Clarity's 19 per 0.1 s is on no source's scale with the beam (Quantum's rows have no field, Aegis no field tick); above 2 %, open, known-inaccuracies W6c"
+    },
+    { "quote": "The radius grows up to 4?", "reason": "see \"Holding down the trigger\": Solar Field, open" },
+    { "quote": "dealing 19 [6] damage every 0.1 seconds", "reason": "see \"Holding down the trigger\": Solar Field, open" },
+    { "quote": "Grants 20 Stability and 20 Handling", "reason": "no damage against a boss" },
+    { "quote": "Weapon Kills trigger a Solar explosion", "reason": "needs a kill (one boss, no adds, ADR 0015)" },
+    { "quote": "Killing Elite or higher tier Combatants", "reason": "needs a kill (one boss, no adds, ADR 0015)" },
+    { "quote": "Kills refill 75 rounds", "reason": "needs a kill (one boss, no adds, ADR 0015)" }
+  ]
+}

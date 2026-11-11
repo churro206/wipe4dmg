@@ -103,7 +103,7 @@
         "name": "Cull's Shadow",
         "group": "Kinetic",
         "inGame": "Soulburn: This is a Weapon of Sorrow.\nLanding two Frontal Blade hits within 2 seconds of each other, or scoring a Frontal Blade kill, heals you for 40 HP and grants one stack of 'Soulfire Charge'. Maximum of 6 stacks.\nFiring this weapon consumes one stack of Soulfire Charge to apply Potent Corruption (poison) that increases in DOT over time.\nPotent Corruption deals 65 [?] Kinetic damage once every 0.5 seconds for 10 seconds, ramping up in damage by 8.7% for each tick over 20 ticks, ending at 300 [?] damage on the final tick. In total, one application of Potent Corruption deals 2,985 [?] damage.\nFrontal Blades deal 50% increased melee damage against corrupted (poisoned) enemies.\nSoulforge: Enemies that are afflicted by this weapon's Potent Corruption create a 'Soulfire Crystal' upon death.\nSoulfire Crystals have 400 HP and linger in the world for 15 seconds upon creation. Upon destruction, the crystals explode for 1,065 [?] damage in an 8 meter radius, experiencing up to 25% damage falloff at the edge of the blast radius.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "4 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:cull-s-shadow",
         "status": "full"
       },
@@ -240,7 +240,7 @@
         "name": "New Malpais",
         "group": "Kinetic",
         "inGame": "Atomizing Rounds: Fires a 3-round burst of delayed Micro-Missile projectiles that detonate after 6 seconds of being embedded into a target.\nHold [Reload] to instantly detonate all fired rounds.\nSuspending Blast: Manually detonating at least 6 rounds that are embedded into a target Suspends them for 6 seconds (8 with Thread of Continuity).\nSuspend duration is halved against Minibosses.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "3 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:new-malpais",
         "status": "full"
       },
@@ -609,7 +609,7 @@
         "name": "Jötunn",
         "group": "Energy",
         "inGame": "Charge Shot: Fires a single tracking projectile that detonates on impact and creates a burning pool of fire.\nProjectile deals 1184 [?] impact damage and 269 [?] explosive damage over 7 meters. This is reduced to 0% damage at the edge of the radius.\nLingering pool deals 46 [8] damage every 0.25 seconds for 1.75 seconds.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "2 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:j-tunn",
         "status": "full"
       },
@@ -1353,8 +1353,8 @@
         "group": "Kinetic",
         "inGame": "Embedded projectiles Unravel targets for 8 seconds upon detonation.",
         "iconHash": 3466807461,
-        "inCalculator": "Not in the calculator yet: no source measured it",
-        "status": "missing",
+        "inCalculator": "Adds weapon damage.",
+        "status": "full",
         "iconKey": "named:new-malpais-catalyst"
       },
       {

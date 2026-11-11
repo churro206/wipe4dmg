@@ -2146,53 +2146,68 @@
       "trust": "estimated",
       "damage": {
         "base": {
-          "s10": 9861.8,
-          "s30": 26298.1,
-          "s60": 26298.1
+          "s10": 7967.5,
+          "s30": 21234.3,
+          "s60": 21234.3
         },
         "catalyst": null
       },
       "cause": {
         "class": "mechanic-missing",
-        "why": "Aegis -49.8 % with with corruption."
+        "why": "Aegis -60.0 % with with corruption."
       },
-      "ruleShares": [],
+      "ruleShares": [
+        {
+          "id": "corruption-last-charge",
+          "share": 0.0666
+        },
+        {
+          "id": "corruption-reset",
+          "share": 0.0811
+        }
+      ],
       "sentences": [
         {
           "text": "Landing two Frontal Blade hits within 2 seconds of each other, or scoring a Frontal Blade kill, heals you for 40 HP and grants one stack of 'Soulfire Charge'.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs the weapon's melee (Frontal Blades are not in the model); charges after the first 6 are missing, above 2 % (Aegis Sustained corrupts every magazine), open in W8, known-inaccuracies W6c"
         },
         {
           "text": "Maximum of 6 stacks.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Potent Corruption deals 65 [?] Kinetic damage once every 0.5 seconds for 10 seconds, ramping up in damage by 8.7% for each tick over 20 ticks, ending at 300 [?] damage on the final tick.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "In total, one application of Potent Corruption deals 2,985 [?] damage.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Frontal Blades deal 50% increased melee damage against corrupted (poisoned) enemies.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs the weapon's melee (not modelled), see \"Landing two Frontal Blade hits\""
         },
         {
           "text": "Soulfire Crystals have 400 HP and linger in the world for 15 seconds upon creation.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill (one boss, no adds, ADR 0015)"
         },
         {
           "text": "Upon destruction, the crystals explode for 1,065 [?] damage in an 8 meter radius, experiencing up to 25% damage falloff at the edge of the blast radius.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill (one boss, no adds, ADR 0015)"
         },
         {
           "text": "Replaces your melee ability with a 2-hit combo blade attack.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs the weapon's melee (not modelled), see \"Landing two Frontal Blade hits\""
         },
         {
           "text": "Each stab deals 543 [84] damage and has an extended lunge range of 7 meters.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs the weapon's melee (not modelled), see \"Landing two Frontal Blade hits\""
         }
       ],
       "quantum": null,
@@ -2200,11 +2215,14 @@
         "check": "checked",
         "rows": [
           {
-            "row": "fusion-rifle-cull-s-shadow",
-            "assumptions": [],
-            "measured": 4872.5,
-            "model": 6574.5,
-            "deviation": 0.3493
+            "row": "fusion-rifle-cull-s-shadow-average-with-corruption",
+            "assumptions": [
+              "average",
+              "with corruption"
+            ],
+            "measured": 6567.1,
+            "model": 6600.2,
+            "deviation": 0.005
           },
           {
             "row": "fusion-rifle-cull-s-shadow-with-corruption",
@@ -2212,12 +2230,12 @@
               "with corruption"
             ],
             "measured": 2184.3,
-            "model": 1095.8,
-            "deviation": -0.4983
+            "model": 874.6,
+            "deviation": -0.5996
           }
         ]
       },
-      "planBlock": "W6c"
+      "planBlock": null
     },
     {
       "id": "d-a-r-c-i",
@@ -4551,7 +4569,7 @@
           }
         ]
       },
-      "planBlock": "W6b"
+      "planBlock": null
     },
     {
       "id": "forerunner",
@@ -5839,7 +5857,7 @@
           }
         ]
       },
-      "planBlock": "W6b"
+      "planBlock": null
     },
     {
       "id": "izanagi-s-burden",
@@ -5971,69 +5989,106 @@
     {
       "id": "j-tunn",
       "name": "Jötunn",
-      "status": "estimated",
-      "trust": "estimated",
+      "status": "partial",
+      "trust": "derived",
       "damage": {
         "base": {
-          "s10": 7338.2,
-          "s30": 23063,
-          "s60": 25159.6
+          "s10": 7704.2,
+          "s30": 22652.8,
+          "s60": 27325
         },
         "catalyst": {
-          "s10": 7338.2,
-          "s30": 23063,
-          "s60": 25159.6
+          "s10": 7704.2,
+          "s30": 22652.8,
+          "s60": 27325
         }
       },
       "cause": {
-        "class": "ok",
-        "why": "Within the limit: Aegis 0.0 %."
+        "class": "rule-too-strong",
+        "why": "Everything on top of the hits ×1.22 against the Quantum row."
       },
-      "ruleShares": [],
+      "ruleShares": [
+        {
+          "id": "pool",
+          "share": 0.1814
+        }
+      ],
       "sentences": [
         {
           "text": "Grants 15% decreased Charge/Draw Time while within 15 meters of 2 enemies.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs 2 enemies nearby (one boss, no adds, ADR 0015)"
         },
         {
           "text": "Buff lingers for 1.5 seconds once no longer surrounded.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs 2 enemies nearby (one boss, no adds, ADR 0015)"
         },
         {
           "text": "Weapon Kills trigger a Solar explosion that applies 30 Scorch Stacks (40 with Ember of Ashes) and deals up to 30 damage to enemies within 4 meters of the target.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill (one boss, no adds, ADR 0015)"
         },
         {
           "text": "Killing Elite or higher tier Combatants and Players increases the radius to 8 meters and applies 10 more Scorch Stacks.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill (one boss, no adds, ADR 0015)"
         },
         {
           "text": "Projectile deals 1184 [?] impact damage and 269 [?] explosive damage over 7 meters.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "This is reduced to 0% damage at the edge of the radius.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no falloff on a direct hit: inside Quantum's value of the projectile"
         },
         {
           "text": "Lingering pool deals 46 [8] damage every 0.25 seconds for 1.75 seconds.",
-          "state": "open"
+          "state": "rule"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "specials-fusion-rifle-jotunn",
+        "rowNote": "Creates a small field of fire",
+        "basis": "total",
+        "measured": 22368,
+        "model": 27325,
+        "deviation": 0.2216,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1.2216115879828355,
+          "rowPlain": true
+        }
+      },
       "aegis": {
         "check": "checked",
         "rows": [
           {
+            "row": "fusion-rifle-j-tunn-average-successive-shots",
+            "assumptions": [
+              "average",
+              "successive shots"
+            ],
+            "measured": 10471.3,
+            "model": 11385.4,
+            "deviation": 0.0873
+          },
+          {
             "row": "sustained-j-tunn",
             "assumptions": [],
             "measured": 61950,
-            "model": 61949.7,
-            "deviation": 0
+            "model": 67281.4,
+            "deviation": 0.0861
           }
         ]
       },
-      "planBlock": "W6c"
+      "planBlock": null
     },
     {
       "id": "khvostov-7g-0x",
@@ -7501,7 +7556,7 @@
           }
         ]
       },
-      "planBlock": "W6b"
+      "planBlock": null
     },
     {
       "id": "new-malpais",
@@ -7510,33 +7565,43 @@
       "trust": "estimated",
       "damage": {
         "base": {
-          "s10": 12759.2,
-          "s30": 31317.9,
-          "s60": 31317.9
+          "s10": 10661.3,
+          "s30": 29080,
+          "s60": 29080
         },
         "catalyst": {
-          "s10": 12759.2,
-          "s30": 31317.9,
-          "s60": 31317.9
+          "s10": 10857,
+          "s30": 29627.8,
+          "s60": 29627.8
         }
       },
       "cause": {
         "class": "no-check",
         "why": "Neither a Quantum row nor an independent Aegis row."
       },
-      "ruleShares": [],
+      "ruleShares": [
+        {
+          "id": "embed",
+          "share": 0.5506
+        },
+        {
+          "id": "detonate",
+          "share": 0.5506
+        }
+      ],
       "sentences": [
         {
           "text": "Manually detonating at least 6 rounds that are embedded into a target Suspends them for 6 seconds (8 with Thread of Continuity).",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "the duration does nothing against a boss (it is not suspended); the damage of the suspend is the part suspend from Aegis"
         },
         {
           "text": "Fires a 3-round burst of delayed Micro-Missile projectiles that detonate after 6 seconds of being embedded into a target.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Embedded projectiles Unravel targets for 8 seconds upon detonation.",
-          "state": "open"
+          "state": "rule"
         }
       ],
       "quantum": null,
@@ -7544,7 +7609,7 @@
         "check": "no independent check",
         "rows": []
       },
-      "planBlock": "W6c"
+      "planBlock": null
     },
     {
       "id": "no-time-to-explain",
@@ -7624,7 +7689,7 @@
           }
         ]
       },
-      "planBlock": "W6b"
+      "planBlock": null
     },
     {
       "id": "one-thousand-voices",
@@ -8341,64 +8406,97 @@
     {
       "id": "prometheus-lens",
       "name": "Prometheus Lens",
-      "status": "estimated",
-      "trust": "estimated",
+      "status": "partial",
+      "trust": "derived",
       "damage": {
         "base": {
-          "s10": 4706.7,
-          "s30": 14083.6,
-          "s60": 18243
+          "s10": 4156.5,
+          "s30": 12477.4,
+          "s60": 16851.6
         },
         "catalyst": {
-          "s10": 4706.7,
-          "s30": 14083.6,
-          "s60": 18243
+          "s10": 4156.5,
+          "s30": 12477.4,
+          "s60": 16851.6
         }
       },
       "cause": {
-        "class": "mechanic-missing",
-        "why": "Aegis -9.2 % with average, with ignition, Ember of Ashes."
+        "class": "source-conflict",
+        "why": "Quantum +11.4 %, Aegis -28.4 %: only a test in game can tell."
       },
-      "ruleShares": [],
+      "ruleShares": [
+        {
+          "id": "scorch-count",
+          "share": 0.2286
+        },
+        {
+          "id": "scorch",
+          "share": 0.2286
+        }
+      ],
       "sentences": [
         {
           "text": "Scorch and Ignitions that originate from this weapon deal 15% increased damage.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Holding down the trigger for 0.45 seconds creates a focused 'Solar Field' that continuously expands from the point of impact.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "Solar Field not modelled: Clarity's 19 per 0.1 s is on no source's scale with the beam (Quantum's rows have no field, Aegis no field tick); above 2 %, open, known-inaccuracies W6c"
         },
         {
           "text": "The radius grows up to 4?",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "see \"Holding down the trigger\": Solar Field, open"
         },
         {
           "text": "meters wide over the course of 4 seconds, dealing 19 [6] damage every 0.1 seconds to all enemies within it.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "see \"Holding down the trigger\": Solar Field, open"
         },
         {
           "text": "Scoring 20 hits within 1.5 seconds of each with this weapon's beam or Solar Field applies 20 Scorch stacks (30 with Ember of Ashes).",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Grants 20 Stability and 20 Handling.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss"
         },
         {
           "text": "Weapon Kills trigger a Solar explosion that applies 30 Scorch Stacks (40 with Ember of Ashes) and deals up to 30 damage to enemies within 4 meters of the target.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill (one boss, no adds, ADR 0015)"
         },
         {
           "text": "Killing Elite or higher tier Combatants and Players increases the radius to 8 meters and applies 10 more Scorch Stacks.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill (one boss, no adds, ADR 0015)"
         },
         {
           "text": "Kills refill 75 rounds into the magazine from reserves.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill (one boss, no adds, ADR 0015)"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "specials-trace-rifle-prometheous-lens-2",
+        "rowNote": "With ignitions",
+        "basis": "total",
+        "measured": 15130,
+        "model": 16851.6,
+        "deviation": 0.1138,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1.1137861863846672,
+          "rowPlain": false
+        }
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -8410,12 +8508,22 @@
               "Ember of Ashes"
             ],
             "measured": 2692.1,
-            "model": 2444.6,
-            "deviation": -0.092
+            "model": 1926.8,
+            "deviation": -0.2843
+          },
+          {
+            "row": "trace-rifle-prometheus-lens-average-with-ignition",
+            "assumptions": [
+              "average",
+              "with ignition"
+            ],
+            "measured": 3462.2,
+            "model": 2657.7,
+            "deviation": -0.2324
           }
         ]
       },
-      "planBlock": "W6c"
+      "planBlock": null
     },
     {
       "id": "quicksilver-storm",
@@ -13748,7 +13856,7 @@
           }
         ]
       },
-      "planBlock": "W6b"
+      "planBlock": null
     },
     {
       "id": "whirling-ovation",
