@@ -54,6 +54,30 @@
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "weaken",
+      "on": { "on": "hit", "part": "shot" },
+      "do": [
+        {
+          "type": "applyStatus",
+          "status": "strongWeaken",
+          "durationMs": {
+            "expr": "$clarity[Repulsor Force](\"for 10 seconds\") * 1000",
+            "note": "seconds to milliseconds"
+          }
+        }
+      ],
+      "source": {
+        "name": "Item file tractor-cannon",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "Hits apply Suppression as well as a higher tier Weaken that increases all damage dealt to the target by 30% for 10 seconds",
+        "note": "Derived: the higher tier Weaken is the Strong Weaken of keywords.json (30 %, as Fafnir's; debuffs take the highest), here for 10 s; the first hit lands before it"
+      }
     }
+  ],
+  "notModelled": [
+    { "quote": "Dealing damage grants 'Scientific Method' for 5 seconds", "reason": "no damage against a boss (handling, movement)" }
   ]
 }

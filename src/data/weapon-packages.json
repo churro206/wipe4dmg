@@ -14092,7 +14092,7 @@
     "damageInstances": [
       {
         "id": "shot",
-        "name": "Shot",
+        "name": "Beam, hipfire",
         "delayMs": {
           "value": 0,
           "source": {
@@ -14133,13 +14133,95 @@
         "canPrecision": true,
         "delivery": "impact",
         "scale": "quantum"
+      },
+      {
+        "id": "shot-ads",
+        "name": "Pulse, ADS",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file lodestar",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 48,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-trace-rifle-lodestar-2",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "precisionDamage"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file lodestar",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file lodestar",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "quantum"
       }
     ],
     "rules": [
       {
+        "id": "ads-rate",
+        "on": { "on": "phaseStart" },
+        "if": [{ "type": "playstyle", "id": "ads" }],
+        "do": [
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "rpm",
+              "value": {
+                "value": 540,
+                "source": {
+                  "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-trace-rifle-lodestar-2",
+                  "url": "https://destiny2.science/quantum-damage-ics",
+                  "retrieved": "2026-10-20",
+                  "status": "verified",
+                  "note": "timing.fireRateRpm: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+                }
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file lodestar",
+          "retrieved": "2026-11-11",
+          "status": "derived",
+          "note": "Derived: Quantum's ADS row (540 RPM, 48 per precision hit) is the Pulse Rifle mode; it deals more per second than hipfire (900 RPM, 25), so ADS is the optimal playstyle",
+          "quote": "While Aiming Down Sights, this gun becomes a Rapid-Fire Pulse Rifle"
+        }
+      },
+      {
         "id": "shot",
         "on": { "on": "shot" },
+        "if": [{ "type": "playstyle", "id": "ads", "not": true }],
         "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "shot-ads",
+        "on": { "on": "shot" },
+        "if": [{ "type": "playstyle", "id": "ads" }],
+        "do": [{ "type": "spawn", "part": "shot-ads" }]
       }
     ],
     "intrinsics": [
@@ -14155,10 +14237,14 @@
         }
       }
     ],
+    "playstyles": [
+      { "id": "ads", "label": "ADS" },
+      { "id": "hipfire", "label": "Hipfire" }
+    ],
     "catalyst": {
       "name": "Supercharged Matrix, Lodestar Catalyst",
       "description": "While Amplified:\n• 10 Aim Assist\n• ? Reload Speed\n• ?% decreased ADS Movement Speed Penalty",
-      "effect": "unknown"
+      "effect": "none"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -19723,9 +19809,63 @@
     ],
     "rules": [
       {
+        "id": "arc-conductor",
+        "on": { "on": "phaseStart" },
+        "if": [{ "type": "playstyle", "id": "arc-conductor" }],
+        "do": [
+          { "type": "grantBuff", "buff": "superconductor" },
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "reload",
+              "factor": {
+                "value": 0,
+                "source": {
+                  "name": "Item file riskrunner",
+                  "retrieved": "2026-11-11",
+                  "status": "derived",
+                  "note": "Derived: with a 33 % chance per shot, 47 shots without a refill happen with 0.67^47 < 1e-8, so the magazine never runs dry",
+                  "quote": "each shot fired has a 33% chance to fully refill the magazine"
+                }
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file riskrunner",
+          "retrieved": "2026-11-11",
+          "status": "derived",
+          "note": "Derived: the playstyle Arc Conductor (as Aegis measures it) holds the buff the whole phase; it needs Arc damage from the boss or a teammate, so it is not the default",
+          "quote": "Recieving Arc Damage activates 'Arc Conductor' for 6 seconds"
+        }
+      },
+      {
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ],
+    "buffs": [
+      {
+        "id": "superconductor",
+        "name": "Superconductor",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.1,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Superconductor",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Superconductor](\"Gain 10% increased damage\") / 100 (percent to factor (Quantum's row Arc Conductor: 31 ÷ 28)); $clarity[Superconductor](\"Gain 10% increased damage\") = 10 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Superconductor)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ]
       }
     ],
     "intrinsics": [
@@ -19741,10 +19881,14 @@
         }
       }
     ],
+    "playstyles": [
+      { "id": "plain", "label": "Without Arc Conductor" },
+      { "id": "arc-conductor", "label": "Arc Conductor" }
+    ],
     "catalyst": {
       "name": "Chain Reaction, Riskrunner Catalyst",
       "description": "Grants 30 Range.\nWeapon Kills trigger an elemental explosion, dealing up to 114 [?] damage in a 3 meter radius.\nThis explosion can deal self-damage and trigger Arc Conductor.",
-      "effect": "unknown"
+      "effect": "none"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -27086,6 +27230,32 @@
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "weaken",
+        "on": { "on": "hit", "part": "shot" },
+        "do": [
+          {
+            "type": "applyStatus",
+            "status": "strongWeaken",
+            "durationMs": {
+              "value": 10000,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Repulsor Force",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Repulsor Force](\"for 10 seconds\") * 1000 (seconds to milliseconds); $clarity[Repulsor Force](\"for 10 seconds\") = 10 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Repulsor Force)"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file tractor-cannon",
+          "retrieved": "2026-11-11",
+          "status": "derived",
+          "note": "Derived: the higher tier Weaken is the Strong Weaken of keywords.json (30 %, as Fafnir's; debuffs take the highest), here for 10 s; the first hit lands before it",
+          "quote": "Hits apply Suppression as well as a higher tier Weaken that increases all damage dealt to the target by 30% for 10 seconds"
+        }
       }
     ],
     "intrinsics": [

@@ -43,5 +43,16 @@
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
     }
+  ],
+  "notModelled": [
+    { "quote": "Grants 10% increased damage to marked targets", "reason": "needs the charged burst (mark): no source gives its fire rate (Quantum's burst rows have no time to empty, the Compendium none), over 2 %, known-inaccuracies W8" },
+    { "quote": "Minibosses and Bosses only receive 5% more damage", "reason": "needs the charged burst (mark), see \"Grants 10% increased damage\"" },
+    { "quote": "have an 85%|25% chance to refund one ammo", "reason": "needs the charged burst (mark), see \"Grants 10% increased damage\"" },
+    { "quote": "deal 100% increased critical damage to marked targets", "reason": "needs the charged burst (mark): Quantum's row \"Full burst, ADS\" measures it (231 per precision hit), its fire rate has no source; over 2 %, known-inaccuracies W8" },
+    { "quote": "deal 20% increased bodyshot damage to marked targets", "reason": "needs the charged burst (mark); hip-fire body shots are below ADS precision" },
+    { "quote": "Shots dissipate after 50 meters", "reason": "no damage against a boss (range)" },
+    { "quote": "Holding down the trigger for 0.5 seconds begins loading a burst of 10 shots", "reason": "needs the charged burst, see \"deal 100% increased critical damage\"" },
+    { "quote": "Shots load over the course of 0.9 seconds", "reason": "needs the charged burst, see \"deal 100% increased critical damage\"" },
+    { "quote": "Grants 30 Stability during the burst", "reason": "no damage against a boss (stability)" }
   ]
 }

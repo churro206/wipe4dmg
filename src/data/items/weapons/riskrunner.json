@@ -23,8 +23,12 @@
   "catalyst": {
     "name": "Chain Reaction, Riskrunner Catalyst",
     "description": "Grants 30 Range.\nWeapon Kills trigger an elemental explosion, dealing up to 114 [?] damage in a 3 meter radius.\nThis explosion can deal self-damage and trigger Arc Conductor.",
-    "effect": "unknown"
+    "effect": "none"
   },
+  "playstyles": [
+    { "id": "plain", "label": "Without Arc Conductor" },
+    { "id": "arc-conductor", "label": "Arc Conductor" }
+  ],
   "parts": {
     "shot": {
       "name": "Shot",
@@ -33,11 +37,70 @@
       "delivery": "impact"
     }
   },
+  "buffs": [
+    {
+      "id": "superconductor",
+      "name": "Superconductor",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[Superconductor](\"Gain 10% increased damage\") / 100",
+            "note": "percent to factor (Quantum's row Arc Conductor: 31 ÷ 28)"
+          },
+          "damageSources": ["weapon"]
+        }
+      ]
+    }
+  ],
   "rules": [
+    {
+      "id": "arc-conductor",
+      "on": { "on": "phaseStart" },
+      "if": [{ "type": "playstyle", "id": "arc-conductor" }],
+      "do": [
+        { "type": "grantBuff", "buff": "superconductor" },
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "reload",
+            "factor": {
+              "value": 0,
+              "source": {
+                "name": "Item file riskrunner",
+                "retrieved": "2026-11-11",
+                "status": "derived",
+                "quote": "each shot fired has a 33% chance to fully refill the magazine",
+                "note": "Derived: with a 33 % chance per shot, 47 shots without a refill happen with 0.67^47 < 1e-8, so the magazine never runs dry"
+              }
+            }
+          }
+        }
+      ],
+      "source": {
+        "name": "Item file riskrunner",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "Recieving Arc Damage activates 'Arc Conductor' for 6 seconds",
+        "note": "Derived: the playstyle Arc Conductor (as Aegis measures it) holds the buff the whole phase; it needs Arc damage from the boss or a teammate, so it is not the default"
+      }
+    },
     {
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
     }
+  ],
+  "notModelled": [
+    { "quote": "Grants 30 Range", "reason": "no damage against a boss (range)" },
+    { "quote": "dealing up to 114 [?] damage", "reason": "no adds (ADR 0015): needs a kill" },
+    { "quote": "Gain 10% increased damage, 100 Handling", "reason": "carried by the rule arc-conductor (damage, refill); handling is no damage against a boss" },
+    { "quote": "Scoring 2 to 3 hits within 0.2 seconds", "reason": "needs a second enemy for the chain (one boss, ADR 0015); Aegis' average row counts chains on the boss (+17 % over Peacekeepers), no text says the boss chains to itself, known-inaccuracies W8" },
+    { "quote": "striking up to 4 targets in an 8 meter radius", "reason": "needs other enemies (one boss, ADR 0015)" },
+    { "quote": "haven't been hit by them for 0.33 seconds", "reason": "needs other enemies (one boss, ADR 0015)" },
+    { "quote": "Direct Weapon Kills extend the buff by 3 seconds", "reason": "no adds (ADR 0015)" },
+    { "quote": "gain 50% [15%] Arc Damage Resistance", "reason": "no damage against a boss (resistance)" }
   ]
 }

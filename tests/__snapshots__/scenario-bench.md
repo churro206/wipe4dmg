@@ -7,7 +7,7 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 
 - **Delta pairs (check set): 1 of 4 within 2 percentage points**
 - Rank (check set): Spearman 0.98 over 45 rows
-- Absolute, information only: within ±3 % 26 of 45 (check set), 94 of 180 (all counted rows, mostly Eichung)
+- Absolute, information only: within ±3 % 26 of 45 (check set), 95 of 180 (all counted rows, mostly Eichung)
 - Rows: 182 scenarios (32 by hand, 150 generated); fitted 18; calibration set 117; check set 45; not counted 2; core cannot run 0
 
 ## Delta pairs (check set)
@@ -64,7 +64,7 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 | gen-sidearm-rat-king | sidearm-rat-king | 79 | 79 | +0.6 % |
 | gen-sidearm-trespasser | sidearm-trespasser | 152 | 153 | +0.9 % |
 | gen-smg-osteo-striga-average-with-successive-poison | smg-osteo-striga-average-with-successive-poison | 8413 | 8029 | −4.6 % |
-| gen-smg-riskrunner-average-arc-conductor-peacekeepers | smg-riskrunner-average-arc-conductor-peacekeepers | 3849 | 2701 | −29.8 % |
+| gen-smg-riskrunner-average-arc-conductor-peacekeepers | smg-riskrunner-average-arc-conductor-peacekeepers | 3849 | 3178 | −17.4 % |
 | gen-sniper-rifle-borealis | sniper-rifle-borealis | 831 | 833 | +0.2 % |
 | gen-trace-rifle-prometheus-lens-average-with-ignition-ember-of-ashes | trace-rifle-prometheus-lens-average-with-ignition-ember-of-ashes | 2692 | 1927 | −28.4 % |
 | gen-trace-rifle-ruinous-effigy | trace-rifle-ruinous-effigy | 40 | 41 | +2.3 % |
@@ -244,7 +244,7 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Weapons | sidearm-trespasser | 152 | 153 | +0.9 % |
 | Weapons | smg-barrow-dyad-average-taken-ambition-with-blighted-seekers-peacekeepers-target-lock | 5483 | 6268 | +14.3 % |
 | Weapons | smg-osteo-striga-average-with-successive-poison | 8413 | 8029 | −4.6 % |
-| Weapons | smg-riskrunner-average-arc-conductor-peacekeepers | 3849 | 2701 | −29.8 % |
+| Weapons | smg-riskrunner-average-arc-conductor-peacekeepers | 3849 | 3178 | −17.4 % |
 | Weapons | sniper-rifle-borealis | 831 | 833 | +0.2 % |
 | Weapons | trace-rifle-prometheus-lens-average-with-ignition-ember-of-ashes | 2692 | 1927 | −28.4 % |
 | Weapons | trace-rifle-ruinous-effigy | 40 | 41 | +2.3 % |

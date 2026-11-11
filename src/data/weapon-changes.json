@@ -1,21 +1,44 @@
 {
-  "baseline": "e52fe5a",
+  "baseline": "1f3aff2",
   "changes": [
     {
-      "id": "ager-s-scepter",
-      "name": "Ager's Scepter",
-      "kind": "damage",
-      "time": "s60",
-      "catalyst": true,
-      "from": 18430,
-      "to": 24327.6
-    },
-    {
-      "id": "ager-s-scepter",
-      "name": "Ager's Scepter",
+      "id": "final-warning",
+      "name": "Final Warning",
       "kind": "status",
       "from": "Partial",
       "to": "Complete"
+    },
+    {
+      "id": "lodestar",
+      "name": "Lodestar",
+      "kind": "damage",
+      "time": "s60",
+      "catalyst": false,
+      "from": 18600,
+      "to": 22944
+    },
+    {
+      "id": "lodestar",
+      "name": "Lodestar",
+      "kind": "status",
+      "from": "Partial",
+      "to": "Complete"
+    },
+    {
+      "id": "riskrunner",
+      "name": "Riskrunner",
+      "kind": "status",
+      "from": "Partial",
+      "to": "Complete"
+    },
+    {
+      "id": "tractor-cannon",
+      "name": "Tractor Cannon",
+      "kind": "damage",
+      "time": "s30",
+      "catalyst": false,
+      "from": 8928,
+      "to": 11457.6
     }
   ]
 }

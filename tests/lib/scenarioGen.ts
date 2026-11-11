@@ -136,9 +136,10 @@ export function generateScenarios(
       const armor = armorByName.get(key);
       const stacked = intrinsicArmor.get(norm(assumption.replace(/\s+x\d+$/, "")));
       const playstyle = playstyleNamed(weapon, name);
+      // A playstyle named like the intrinsic wins (Riskrunner: "Arc Conductor" is the frame and the state)
       if (key === "catalyst" || catalystOptions.has(key) || catalystPerks.has(key)) {
         build.catalyst = true;
-      } else if (intrinsics.has(key)) continue;
+      } else if (intrinsics.has(key) && !playstyle) continue;
       else if (playstyle) {
         // One build plays one playstyle; a second word of that kind has no switch.
         if (playstyled) unmapped.push(assumption);

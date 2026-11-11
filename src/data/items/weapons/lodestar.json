@@ -8,6 +8,10 @@
     { "source": "clarity", "entry": "Arc Alignment", "hash": "88342142" },
     { "source": "clarity", "entry": "Starlight Beam", "hash": "8e870597" }
   ],
+  "quantumCheck": {
+    "row": "primaries-trace-rifle-lodestar-2",
+    "reason": "The optimal playstyle is ADS (Pulse Rifle mode); Quantum's ADS row holds what it models, the first row is hipfire"
+  },
   "chargeTimeMs": {
     "value": 0,
     "source": {
@@ -24,21 +28,70 @@
   "catalyst": {
     "name": "Supercharged Matrix, Lodestar Catalyst",
     "description": "While Amplified:\n• 10 Aim Assist\n• ? Reload Speed\n• ?% decreased ADS Movement Speed Penalty",
-    "effect": "unknown"
+    "effect": "none"
   },
+  "playstyles": [
+    { "id": "ads", "label": "ADS" },
+    { "id": "hipfire", "label": "Hipfire" }
+  ],
   "parts": {
     "shot": {
-      "name": "Shot",
+      "name": "Beam, hipfire",
       "damage": "$quantum[primaries-trace-rifle-lodestar].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    },
+    "shot-ads": {
+      "name": "Pulse, ADS",
+      "damage": "$quantum[primaries-trace-rifle-lodestar-2].precisionDamage",
       "precision": true,
       "delivery": "impact"
     }
   },
   "rules": [
     {
+      "id": "ads-rate",
+      "on": { "on": "phaseStart" },
+      "if": [{ "type": "playstyle", "id": "ads" }],
+      "do": [
+        {
+          "type": "modifyStat",
+          "modifier": { "type": "stat", "stat": "rpm", "value": "$quantum[primaries-trace-rifle-lodestar-2].timing.fireRateRpm" }
+        }
+      ],
+      "source": {
+        "name": "Item file lodestar",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "While Aiming Down Sights, this gun becomes a Rapid-Fire Pulse Rifle",
+        "note": "Derived: Quantum's ADS row (540 RPM, 48 per precision hit) is the Pulse Rifle mode; it deals more per second than hipfire (900 RPM, 25), so ADS is the optimal playstyle"
+      }
+    },
+    {
       "id": "shot",
       "on": { "on": "shot" },
+      "if": [{ "type": "playstyle", "id": "ads", "not": true }],
       "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "shot-ads",
+      "on": { "on": "shot" },
+      "if": [{ "type": "playstyle", "id": "ads" }],
+      "do": [{ "type": "spawn", "part": "shot-ads" }]
     }
+  ],
+  "notModelled": [
+    { "quote": "deals 30% increased damage to Arc-Debuffed targets", "reason": "needs Jolt from hip-fired shots under Arc Alignment, then ADS: no source gives the rotation; over 2 %, known-inaccuracies W8" },
+    { "quote": "explosion that deals 100 [?] damage", "reason": "no adds (ADR 0015): needs a kill" },
+    { "quote": "meter radius and Blinds for 10 seconds", "reason": "no adds (ADR 0015): needs a kill" },
+    { "quote": "Damage falls to 0% at the edge of the radius", "reason": "no adds (ADR 0015): needs a kill" },
+    { "quote": "10 Aim Assist", "reason": "no damage against a boss (aim assist; the reload speed is \"?\")" },
+    { "quote": "Pulse Rifle Mode: 3%", "reason": "needs Arc Alignment (refill of the magazine once charged): whether hits charge it while active, no source says; over 2 %, known-inaccuracies W8" },
+    { "quote": "Trace Rifle Mode: 1%", "reason": "needs Arc Alignment, see \"Pulse Rifle Mode: 3%\"" },
+    { "quote": "All other Arc-damage sources: 1%", "reason": "needs Arc Alignment, see \"Pulse Rifle Mode: 3%\"" },
+    { "quote": "grants 75% reduced recoil", "reason": "needs Arc Alignment, see \"Pulse Rifle Mode: 3%\"" },
+    { "quote": "drains at a rate of 14% per second", "reason": "needs Arc Alignment, see \"Pulse Rifle Mode: 3%\"" },
+    { "quote": "down to 4.62% per second", "reason": "needs Arc Alignment, see \"Pulse Rifle Mode: 3%\"" },
+    { "quote": "approximately 85% the damage of Legendary Trace Rifles", "reason": "carried by Quantum's hipfire row" }
   ]
 }

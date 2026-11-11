@@ -625,7 +625,7 @@
         "name": "Lodestar",
         "group": "Energy",
         "inGame": "Starlight Beam: While firing from the hip, this gun become an Adaptive Trace Rifle that deals approximately 85% the damage of Legendary Trace Rifles.\nArc Alignment: Dealing Arc Damage charges 'Arc Alignment'.\nEnergy is granted by the following on a per-hit basis:\n• Pulse Rifle Mode: 3%\n• Trace Rifle Mode: 1%\n• All other Arc-damage sources: 1%\nAt full energy, hold [Reload] to enter Arc Alignment. Doing so instantly refills the magazine and grants 75% reduced recoil.\nArc Alignment energy drains at a rate of 14% per second, and causes hip-fired shots to apply Jolt. Aiming Down Sights reduces energy drain by 67%, down to 4.62% per second.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "2 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:lodestar",
         "status": "full"
       },
@@ -1722,8 +1722,8 @@
         "group": "Energy",
         "inGame": "While Amplified:\n• 10 Aim Assist\n• ? Reload Speed\n• ?% decreased ADS Movement Speed Penalty",
         "iconHash": 2018366981,
-        "inCalculator": "Not in the calculator yet: no source measured it",
-        "status": "missing",
+        "inCalculator": "No effect against one boss without adds",
+        "status": "leftOut",
         "iconKey": "named:lodestar-catalyst"
       },
       {
@@ -1767,8 +1767,8 @@
         "group": "Energy",
         "inGame": "Grants 30 Range.\nWeapon Kills trigger an elemental explosion, dealing up to 114 [?] damage in a 3 meter radius.\nThis explosion can deal self-damage and trigger Arc Conductor.",
         "iconHash": 484491717,
-        "inCalculator": "Not in the calculator yet: no source measured it",
-        "status": "missing",
+        "inCalculator": "No effect against one boss without adds",
+        "status": "leftOut",
         "iconKey": "named:riskrunner-catalyst"
       },
       {

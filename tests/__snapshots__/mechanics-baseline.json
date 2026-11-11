@@ -599,14 +599,14 @@
       "600s buffed catalyst": 51807.74
     },
     "lodestar": {
-      "30s plain": 9375,
-      "30s buffed": 15783.75,
-      "30s plain catalyst": 9375,
-      "30s buffed catalyst": 15783.75,
-      "600s plain": 182825,
-      "600s buffed": 307804.17,
-      "600s plain catalyst": 182825,
-      "600s buffed catalyst": 307804.17
+      "30s plain": 11472,
+      "30s buffed": 19314.26,
+      "30s plain catalyst": 11472,
+      "30s buffed catalyst": 19314.26,
+      "600s plain": 227664,
+      "600s buffed": 383295.11,
+      "600s plain catalyst": 227664,
+      "600s buffed catalyst": 383295.11
     },
     "lord-of-wolves": {
       "30s plain": 32319,
@@ -1147,14 +1147,14 @@
       "600s buffed catalyst": 778013.71
     },
     "tractor-cannon": {
-      "30s plain": 8928,
-      "30s buffed": 15031.18,
-      "30s plain catalyst": 8928,
-      "30s buffed catalyst": 15031.18,
-      "600s plain": 8928,
-      "600s buffed": 15031.18,
-      "600s plain catalyst": 8928,
-      "600s buffed catalyst": 15031.18
+      "30s plain": 11457.6,
+      "30s buffed": 16882.85,
+      "30s plain catalyst": 11457.6,
+      "30s buffed catalyst": 16882.85,
+      "600s plain": 11457.6,
+      "600s buffed": 16882.85,
+      "600s plain catalyst": 11457.6,
+      "600s buffed catalyst": 16882.85
     },
     "traveler-s-chosen": {
       "30s plain": 9006,

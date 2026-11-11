@@ -4,7 +4,8 @@
 
 import { describe, expect, it } from "vitest";
 import rawStatus from "../src/data/weapon-status.json";
-import { weaponById } from "../src/ui/data";
+import { simulate, type SimulationResult } from "../src/engine/simulate";
+import { buckets, weaponById } from "../src/ui/data";
 import { bareWeaponRun } from "../src/ui/weaponBuild";
 
 const statusOf = (id: string) => rawStatus.weapons.find((w) => w.id === id)!;
@@ -73,5 +74,33 @@ describe("W8 part 2: super energy spent by a weapon", () => {
   it("Ager's Scepter: the Aegis row with Will Given Form lies 14 % above the model (finding)", () => {
     const r = aegisRow("ager-s-scepter", "trace-rifle-ager-s-scepter-average-will-given-form");
     expect(r.deviation).toBeCloseTo(-0.145, 2);
+  });
+});
+
+describe("W8 part 3: states of the target and of the player", () => {
+  const sorted = (run: SimulationResult) => [...run.damageInstances].sort((a, b) => a.timeMs - b.timeMs);
+
+  // Repulsor Force: a higher tier Weaken (30 %, Strong Weaken) for 10 s on hit; the first hit lands before it
+  it("Tractor Cannon: from the second shot on, every hit is weakened by 30 %", () => {
+    const hits = sorted(bareWeaponRun(weaponById("tractor-cannon"), false, 30, 3));
+    expect(hits[1]!.damage / hits[0]!.damage).toBeCloseTo(1.3, 6);
+    expect(hits[2]!.damage / hits[0]!.damage).toBeCloseTo(1.3, 6);
+  });
+
+  // Phase Converter: ADS is a Rapid-Fire Pulse Rifle (Quantum's ADS row 48 at 540 RPM against 25 at 900)
+  it("Lodestar: ADS is the default playstyle and lies within 2 % of Aegis' ADS burst row", () => {
+    expect(weaponById("lodestar").playstyles?.[0]?.id).toBe("ads");
+    const r = aegisRow("lodestar", "trace-rifle-lodestar-ads-burst");
+    expect(Math.abs(r.deviation!)).toBeLessThan(0.02);
+  });
+
+  // Superconductor while Arc Conductor: +10 % and a 33 % chance per shot to refill (so no reload)
+  it("Riskrunner: Arc Conductor gives x1.1 per hit and no reload", () => {
+    const riskrunner = weaponById("riskrunner");
+    const plain = simulate(riskrunner, 10, [], buckets);
+    const conductor = simulate(riskrunner, 10, [], buckets, { playstyle: "arc-conductor" });
+    expect(plain.reloadsMs.length).toBeGreaterThan(0);
+    expect(conductor.reloadsMs).toHaveLength(0);
+    expect(sorted(conductor)[0]!.damage / sorted(plain)[0]!.damage).toBeCloseTo(1.1, 6);
   });
 });
