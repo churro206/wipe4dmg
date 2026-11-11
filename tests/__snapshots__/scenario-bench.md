@@ -76,8 +76,8 @@ Fixtures from `tests/scenarios/`. Fitted rows are the Eichung of their item and 
 | Scenario | System | Source | Model | Deviation | Fitted | Lot | Note |
 | --- | --- | ---: | ---: | ---: | --- | --- | --- |
 | ager-s-scepter | base | 37 | 38 | +2.2 % |  | calibration |  |
-| ager-s-scepter-will-given-form | factor | 15516 | 7372 | −52.5 % |  | calibration |  |
-| ager-s-scepter-harsh-refraction | factor | 19631 | 7372 | −62.4 % |  | calibration |  |
+| ager-s-scepter-will-given-form | factor | 15516 | 13270 | −14.5 % |  | calibration |  |
+| ager-s-scepter-harsh-refraction | factor | 19631 | 13270 | −32.4 % |  | calibration |  |
 | barrow-dyad | parts | 4155 | 4848 | +16.7 % |  | calibration |  |
 | barrow-dyad-peacekeepers | factor | 5483 | 6268 | +14.3 % |  | check |  |
 | deterministic-chaos | volatile | 6074 | 6323 | +4.1 % |  | calibration |  |

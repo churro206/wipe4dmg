@@ -290,9 +290,68 @@
     ],
     "rules": [
       {
+        "id": "will-given-form",
+        "on": { "on": "phaseStart" },
+        "if": [{ "type": "hasItem", "id": "catalyst" }],
+        "do": [
+          {
+            "type": "refill",
+            "rounds": {
+              "value": 97,
+              "source": {
+                "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-ager-s-scepter-cata; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-ager-s-scepter",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $quantum[specials-trace-rifle-ager-s-scepter-cata].magazine - $quantum[specials-trace-rifle-ager-s-scepter].magazine (from the magazine of 97 to Quantum's overfilled 194 (Clarity says 192)); $quantum[specials-trace-rifle-ager-s-scepter-cata].magazine = 194 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-ager-s-scepter-cata); $quantum[specials-trace-rifle-ager-s-scepter].magazine = 97 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-ager-s-scepter)"
+              }
+            },
+            "overfill": true
+          },
+          { "type": "grantBuff", "buff": "will-given-form" }
+        ],
+        "source": {
+          "name": "Item file ager-s-scepter",
+          "retrieved": "2026-11-11",
+          "status": "derived",
+          "note": "Derived: the super bar is full before the phase (built before), so Will Given Form starts with it; once per phase, the bar does not fill again in it (no super energy in the model yet)",
+          "quote": "While at full Super Energy, Hold [Reload] to activate Will Given Form"
+        }
+      },
+      {
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ],
+    "buffs": [
+      {
+        "id": "will-given-form",
+        "name": "Will Given Form",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.8,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Ager's Scepter Catalyst",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Ager's Scepter Catalyst](\"80% increased damage\") / 100 (percent to factor (Quantum's cata row: 67 ÷ 38 = 1.76, rounded per hit)); $clarity[Ager's Scepter Catalyst](\"80% increased damage\") = 80 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Ager's Scepter Catalyst)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 12900,
+          "source": {
+            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-ager-s-scepter-cata",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $quantum[specials-trace-rifle-ager-s-scepter-cata].timeToEmptySeconds * 1000 (the effect ends with the overfilled magazine (Clarity \"until the magazine is emptied\"): Quantum's time to empty of that magazine, 12.9 s; the super energy (20 % + 4 % per second) lasts 20 s); $quantum[specials-trace-rifle-ager-s-scepter-cata].timeToEmptySeconds = 12.9 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-ager-s-scepter-cata)"
+          }
+        }
       }
     ],
     "intrinsics": [
@@ -311,49 +370,7 @@
     "catalyst": {
       "name": "Will Given Form, Ager's Scepter Catalyst",
       "description": "While at full Super Energy, Hold [Reload] to activate Will Given Form.\nWill Given Form immediately takes away 20% Super Energy, then drains at a rate of 4% Super Energy per second to grant the following benefits:\n• Overfills the magazine from reserves to 192\n• 80% increased damage\n• 20 [0] slow stacks per hit\nEffect lasts until deactivated by holding [Reload] again, or until the magazine is emptied, super energy is drained, or the weapon is stowed.\nDoes not count as a super for related effects or buffs.",
-      "effect": "unknown",
-      "timing": {
-        "fireRateRpm": {
-          "value": 2898.204,
-          "source": {
-            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-ager-s-scepter-cata",
-            "url": "https://destiny2.science/quantum-damage-ics",
-            "retrieved": "2026-10-20",
-            "status": "verified",
-            "note": "timing.fireRateRpm: Derived: (Time to Empty 12.9 s − 2 reloads × 1.44 s) ÷ 484 intervals (ADR 0013)"
-          }
-        },
-        "magazine": {
-          "value": 194,
-          "source": {
-            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-ager-s-scepter-cata",
-            "url": "https://destiny2.science/quantum-damage-ics",
-            "retrieved": "2026-10-20",
-            "status": "verified",
-            "note": "timing.magazine"
-          }
-        },
-        "totalShots": {
-          "value": 485,
-          "source": {
-            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-ager-s-scepter-cata",
-            "url": "https://destiny2.science/quantum-damage-ics",
-            "retrieved": "2026-10-20",
-            "status": "verified",
-            "note": "timing.totalShots"
-          }
-        },
-        "reloadTimeMs": {
-          "value": 1440,
-          "source": {
-            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-ager-s-scepter-cata",
-            "url": "https://destiny2.science/quantum-damage-ics",
-            "retrieved": "2026-10-20",
-            "status": "verified",
-            "note": "timing.reloadTimeMs"
-          }
-        }
-      }
+      "effect": "damage"
     },
     "reloadDurationIncluded": {
       "value": 0.9,

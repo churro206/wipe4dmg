@@ -93,7 +93,7 @@
     {
       "id": "ager-s-scepter",
       "name": "Ager's Scepter",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
@@ -102,44 +102,50 @@
           "s60": 18430
         },
         "catalyst": {
-          "s10": 14744,
-          "s30": 18430,
-          "s60": 18430
+          "s10": 10396.8,
+          "s30": 20641.6,
+          "s60": 24327.6
         }
       },
       "cause": {
         "class": "mechanic-missing",
-        "why": "Aegis -62.5 % with average, Will Given Form, Harsh Refraction."
+        "why": "Aegis -32.4 % with average, Will Given Form, Harsh Refraction."
       },
       "ruleShares": [],
       "sentences": [
         {
           "text": "Will Given Form immediately takes away 20% Super Energy, then drains at a rate of 4% Super Energy per second to grant the following benefits:",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs super energy (Q3): Will Given Form and a super cast at the start both take the full bar; the model grants both"
         },
         {
           "text": "• Overfills the magazine from reserves to 192",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by Quantum's cata magazine (194) in the rule will-given-form"
         },
         {
           "text": "• 80% increased damage",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "• 20 [0] slow stacks per hit",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (slow)"
         },
         {
           "text": "Stasis kills refills 10 ammo into the magazine from reserves.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "Intrinsically deals 30% more PvE damage than Legendary Trace Rifles.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by Quantum's damage"
         },
         {
           "text": "Weapon Kills trigger a burst of 100 [50] Stasis Slow in a 10 meter radius around the target.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         }
       ],
       "quantum": {
@@ -177,8 +183,8 @@
               "Will Given Form"
             ],
             "measured": 15516,
-            "model": 7372,
-            "deviation": -0.5249
+            "model": 13269.6,
+            "deviation": -0.1448
           },
           {
             "row": "trace-rifle-ager-s-scepter-average-will-given-form-harsh-refraction",
@@ -188,8 +194,8 @@
               "Harsh Refraction"
             ],
             "measured": 19631.4,
-            "model": 7372,
-            "deviation": -0.6245
+            "model": 13269.6,
+            "deviation": -0.3241
           }
         ]
       },

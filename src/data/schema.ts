@@ -623,10 +623,12 @@ export const Action = z.discriminatedUnion("type", [
   }),
   // Fills the magazine of the owner's weapon (or all weapons for an ability); omitted rounds: full.
   // `ofCounter`: instead `share` of a counter's value, rounded up (e.g. Rewind: 80 % of the hits).
+  // `overfill`: the rounds may fill the magazine past its size (Ager's Scepter, Will Given Form).
   z.object({
     type: z.literal("refill"),
     rounds: RuleValue.optional(),
     ofCounter: z.object({ counter: z.string(), share: RuleValue }).optional(),
+    overfill: z.boolean().optional(),
   }),
   // A stat modifier for a while; omitted durationMs: until the end of the phase
   z.object({

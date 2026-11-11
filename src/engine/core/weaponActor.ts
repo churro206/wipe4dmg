@@ -191,12 +191,14 @@ export function createWeaponActor(input: ActorInput) {
   // (generation, ADR 0018 B3b). A refill is reported at the time of its event, which is never before
   // the last shot that was handled: it falls between that shot and the planned one.
   type State = { index: number; shotMs: number; left: number; spent: number; done: boolean };
-  type Refill = { atMs: number; rounds?: number };
+  type Refill = { atMs: number; rounds?: number; overfill?: boolean };
   let before: State = { index, shotMs, left: leftInMagazine, spent, done };
   let refills: Refill[] = []; // reported since `before`
+  // An overfill may hold more than the magazine; the rounds still come from the reserves (`spent`)
+  const capOf = (r: Refill) => (r.overfill ? Infinity : magazine);
   const applyRefill = (r: Refill) => {
     leftInMagazine =
-      r.rounds === undefined ? magazine : Math.min(magazine, leftInMagazine + r.rounds);
+      r.rounds === undefined ? magazine : Math.min(capOf(r), leftInMagazine + r.rounds);
   };
   /** The first refill in [fromMs, untilMs): later ones in the same stretch of time are spent. */
   const refillBefore = (fromMs: number, untilMs: number): Refill | undefined =>
@@ -207,12 +209,16 @@ export function createWeaponActor(input: ActorInput) {
    * it fills the magazine up) or `rounds` more rounds (e.g. Polaris Lance's precision hit). Returns the
    * step planned anew if the refill changes the step that was planned last, else undefined.
    */
-  function refill(atMs: number, rounds?: number): ActorStep | undefined {
-    const report: Refill = { atMs, ...(rounds === undefined ? {} : { rounds }) };
+  function refill(atMs: number, rounds?: number, overfill?: boolean): ActorStep | undefined {
+    const report: Refill = {
+      atMs,
+      ...(rounds === undefined ? {} : { rounds }),
+      ...(overfill ? { overfill } : {}),
+    };
     // A few more rounds while the magazine is not empty change the state, not the planned shot
     if (rounds !== undefined && before.left > 0) {
       applyRefill(report);
-      before.left = Math.min(magazine, before.left + rounds);
+      before.left = Math.min(capOf(report), before.left + rounds);
       return undefined;
     }
     if (before.index === 0) return undefined; // nothing before the first shot

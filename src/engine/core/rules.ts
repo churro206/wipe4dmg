@@ -113,7 +113,7 @@ export type RuleHost = {
     durationMs?: number;
     timeMs: number;
   }) => void;
-  refill: (refill: { ownerId: string; rounds?: number; timeMs: number }) => void;
+  refill: (refill: { ownerId: string; rounds?: number; overfill?: boolean; timeMs: number }) => void;
   damage: (damage: {
     ownerId: string;
     id: string;
@@ -550,6 +550,7 @@ export function createRuleEngine(
                 ),
               }
             : {}),
+          ...(action.overfill ? { overfill: true } : {}),
           timeMs,
         });
         return;

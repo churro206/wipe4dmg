@@ -249,8 +249,8 @@ export function simulate(
             ),
         });
       },
-      refill: ({ rounds, timeMs }) => {
-        const step = actor.refill(timeMs, rounds);
+      refill: ({ rounds, overfill, timeMs }) => {
+        const step = actor.refill(timeMs, rounds, overfill);
         if (step) {
           refillsMs.push(timeMs);
           replan(step, current().schedule);

@@ -40,8 +40,38 @@ describe("W8 part 1: charge from hits", () => {
   });
 
   // White Nail refills the magazine after 3 precision hits: no reload, 37 shots at 72 RPM in 30 s.
+  // (the next test)
+  it("Whisper of the Worm: the Sustained row lies within 2 % too", () => {
+    const r = aegisRow("whisper-of-the-worm", "sustained-whisper-of-the-worm-whispered-breathing-sniper-s-meditation");
+    expect(Math.abs(r.deviation!)).toBeLessThan(0.02);
+  });
   it("Whisper of the Worm: White Nail keeps firing without a reload", () => {
     const perShot = 850; // Quantum precision damage of the plain row
     expect(statusOf("whisper-of-the-worm").damage.base.s30).toBeGreaterThanOrEqual(36 * perShot);
+  });
+});
+
+describe("W8 part 2: super energy spent by a weapon", () => {
+  // Will Given Form (catalyst, full super bar before the phase): the magazine of 97 overfills to
+  // Quantum's 194, every hit +80 % (Clarity) until it is empty; then the reload and plain shots of 38.
+  it("Ager's Scepter: 194 shots at x1.8, then the reload and plain shots", () => {
+    const run = bareWeaponRun(weaponById("ager-s-scepter"), true, 120, 195);
+    const hits = [...run.damageInstances].sort((a, b) => a.timeMs - b.timeMs);
+    expect(hits).toHaveLength(195);
+    expect(hits[193]!.damage).toBeCloseTo(38 * 1.8, 6);
+    expect(hits[194]!.damage).toBeCloseTo(38, 6);
+    expect(run.reloadsMs[0]).toBeLessThan(hits[194]!.timeMs);
+  });
+
+  it("Ager's Scepter: without the catalyst the magazine stays 97", () => {
+    const run = bareWeaponRun(weaponById("ager-s-scepter"), false, 120, 98);
+    expect(run.reloadsMs).toHaveLength(1);
+    expect(run.totalDamage).toBeCloseTo(98 * 38, 6);
+  });
+
+  // Finding (known-inaccuracies): Aegis and Quantum both count about 20 to 30 % more per magazine
+  it("Ager's Scepter: the Aegis row with Will Given Form lies 14 % above the model (finding)", () => {
+    const r = aegisRow("ager-s-scepter", "trace-rifle-ager-s-scepter-average-will-given-form");
+    expect(r.deviation).toBeCloseTo(-0.145, 2);
   });
 });

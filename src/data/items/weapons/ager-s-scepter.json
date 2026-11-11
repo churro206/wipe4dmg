@@ -27,13 +27,7 @@
   "catalyst": {
     "name": "Will Given Form, Ager's Scepter Catalyst",
     "description": "While at full Super Energy, Hold [Reload] to activate Will Given Form.\nWill Given Form immediately takes away 20% Super Energy, then drains at a rate of 4% Super Energy per second to grant the following benefits:\n• Overfills the magazine from reserves to 192\n• 80% increased damage\n• 20 [0] slow stacks per hit\nEffect lasts until deactivated by holding [Reload] again, or until the magazine is emptied, super energy is drained, or the weapon is stowed.\nDoes not count as a super for related effects or buffs.",
-    "effect": "unknown",
-    "timing": {
-      "fireRateRpm": "$quantum[specials-trace-rifle-ager-s-scepter-cata].timing.fireRateRpm",
-      "magazine": "$quantum[specials-trace-rifle-ager-s-scepter-cata].timing.magazine",
-      "totalShots": "$quantum[specials-trace-rifle-ager-s-scepter-cata].timing.totalShots",
-      "reloadTimeMs": "$quantum[specials-trace-rifle-ager-s-scepter-cata].timing.reloadTimeMs"
-    }
+    "effect": "damage"
   },
   "parts": {
     "shot": {
@@ -43,11 +37,63 @@
       "delivery": "impact"
     }
   },
+  "buffs": [
+    {
+      "id": "will-given-form",
+      "name": "Will Given Form",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[Ager's Scepter Catalyst](\"80% increased damage\") / 100",
+            "note": "percent to factor (Quantum's cata row: 67 ÷ 38 = 1.76, rounded per hit)"
+          },
+          "damageSources": ["weapon"]
+        }
+      ],
+      "durationMs": {
+        "expr": "$quantum[specials-trace-rifle-ager-s-scepter-cata].timeToEmptySeconds * 1000",
+        "note": "the effect ends with the overfilled magazine (Clarity \"until the magazine is emptied\"): Quantum's time to empty of that magazine, 12.9 s; the super energy (20 % + 4 % per second) lasts 20 s"
+      }
+    }
+  ],
   "rules": [
+    {
+      "id": "will-given-form",
+      "on": { "on": "phaseStart" },
+      "if": [{ "type": "hasItem", "id": "catalyst" }],
+      "do": [
+        {
+          "type": "refill",
+          "rounds": {
+            "expr": "$quantum[specials-trace-rifle-ager-s-scepter-cata].magazine - $quantum[specials-trace-rifle-ager-s-scepter].magazine",
+            "note": "from the magazine of 97 to Quantum's overfilled 194 (Clarity says 192)"
+          },
+          "overfill": true
+        },
+        { "type": "grantBuff", "buff": "will-given-form" }
+      ],
+      "source": {
+        "name": "Item file ager-s-scepter",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "While at full Super Energy, Hold [Reload] to activate Will Given Form",
+        "note": "Derived: the super bar is full before the phase (built before), so Will Given Form starts with it; once per phase, the bar does not fill again in it (no super energy in the model yet)"
+      }
+    },
     {
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
     }
+  ],
+  "notModelled": [
+    { "quote": "immediately takes away 20% Super Energy", "reason": "needs super energy (Q3): Will Given Form and a super cast at the start both take the full bar; the model grants both" },
+    { "quote": "Overfills the magazine from reserves to 192", "reason": "carried by Quantum's cata magazine (194) in the rule will-given-form" },
+    { "quote": "20 [0] slow stacks per hit", "reason": "no damage against a boss (slow)" },
+    { "quote": "Stasis kills refills 10 ammo", "reason": "no adds (ADR 0015)" },
+    { "quote": "Intrinsically deals 30% more PvE damage", "reason": "carried by Quantum's damage" },
+    { "quote": "Weapon Kills trigger a burst of 100 [50] Stasis Slow", "reason": "no adds (ADR 0015)" }
   ]
 }

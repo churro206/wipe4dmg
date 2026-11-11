@@ -143,6 +143,27 @@ describe("Fafnir: Strong Weaken (W6d)", () => {
   });
 });
 
+// W8: mechanics a player knows from the weapon's text
+describe("W8: missing mechanics", () => {
+  it("Ager's Scepter: Will Given Form doubles the first magazine (194) and adds 80 %, so the catalyst deals far more in 10 s", () => {
+    const ager = weaponById("ager-s-scepter");
+    const plain = run({ damagePhaseSeconds: 10 }, ager);
+    const wgf = run({ damagePhaseSeconds: 10, catalyst: true }, ager);
+    note("Ager's Scepter 10 s: Catalyst / ohne", `×${fmt(wgf.totalDamage / plain.totalDamage)}`, "×1,8 (kein Reload bis 12,9 s, +80 % je Treffer)");
+    expect(wgf.reloadsMs).toHaveLength(0);
+    expect(wgf.totalDamage / plain.totalDamage).toBeGreaterThan(1.8);
+  });
+
+  it("Hawkmoon: the final round of a magazine deals by far the most (Paracausal Shot at 7 stacks, ×18.36)", () => {
+    const shots = run({ damagePhaseSeconds: 10 }, weaponById("hawkmoon"))
+      .damageInstances.filter((d) => d.id === "shot")
+      .sort((a, b) => a.timeMs - b.timeMs);
+    note("Hawkmoon: Schuss 8 / Schuss 1", fmt(shots[7].damage / shots[0].damage), "18,36");
+    expect(shots[7].damage / shots[0].damage).toBeCloseTo(18.36, 2);
+    expect(shots[8].damage).toBeCloseTo(shots[0].damage, 3);
+  });
+});
+
 describe("Outbreak Perfected: nanites (ADR 0019, M2)", () => {
   it("nanites raise the weapon's damage over a long phase: 60 s deal clearly more per second than 10 s (x100 up to +300 %)", () => {
     const weapon = weaponById("outbreak-perfected");
