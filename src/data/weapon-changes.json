@@ -1,46 +1,44 @@
 {
-  "baseline": "c8f7c0d",
+  "baseline": "0320be9",
   "changes": [
     {
-      "id": "graviton-lance",
-      "name": "Graviton Lance",
+      "id": "d-a-r-c-i",
+      "name": "D.A.R.C.I.",
       "kind": "damage",
-      "time": "s10",
+      "time": "s30",
       "catalyst": true,
-      "from": 3195,
-      "to": 3834
+      "from": 24676,
+      "to": 29498.1
     },
     {
-      "id": "graviton-lance",
-      "name": "Graviton Lance",
+      "id": "d-a-r-c-i",
+      "name": "D.A.R.C.I.",
       "kind": "status",
       "from": "Partial",
       "to": "Complete"
     },
     {
-      "id": "tarrabah",
-      "name": "Tarrabah",
-      "kind": "damage",
-      "time": "s10",
-      "catalyst": false,
-      "from": 3128,
-      "to": 6156
-    },
-    {
-      "id": "tarrabah",
-      "name": "Tarrabah",
+      "id": "forerunner",
+      "name": "Forerunner",
       "kind": "status",
       "from": "Partial",
       "to": "Complete"
     },
     {
-      "id": "the-prospector",
-      "name": "The Prospector",
+      "id": "merciless",
+      "name": "Merciless",
       "kind": "damage",
       "time": "s10",
       "catalyst": false,
-      "from": 12150,
-      "to": 19440
+      "from": 15015,
+      "to": 18480
+    },
+    {
+      "id": "symmetry",
+      "name": "Symmetry",
+      "kind": "status",
+      "from": "Partial",
+      "to": "Complete"
     }
   ]
 }

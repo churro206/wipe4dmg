@@ -4479,9 +4479,316 @@
     ],
     "rules": [
       {
+        "id": "networked-1",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          {
+            "type": "counter",
+            "id": "networked",
+            "op": "=",
+            "value": {
+              "value": 1,
+              "source": {
+                "name": "Item file d-a-r-c-i",
+                "retrieved": "2026-11-11",
+                "status": "derived",
+                "note": "Derived: stage 1 of the table",
+                "quote": "Benefits at 1|2|3|4|5 Stacks"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "networked-1" }]
+      },
+      {
+        "id": "networked-2",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          {
+            "type": "counter",
+            "id": "networked",
+            "op": "=",
+            "value": {
+              "value": 2,
+              "source": {
+                "name": "Item file d-a-r-c-i",
+                "retrieved": "2026-11-11",
+                "status": "derived",
+                "note": "Derived: stage 2 of the table",
+                "quote": "Benefits at 1|2|3|4|5 Stacks"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "networked-2" }]
+      },
+      {
+        "id": "networked-3",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          {
+            "type": "counter",
+            "id": "networked",
+            "op": "=",
+            "value": {
+              "value": 3,
+              "source": {
+                "name": "Item file d-a-r-c-i",
+                "retrieved": "2026-11-11",
+                "status": "derived",
+                "note": "Derived: stage 3 of the table",
+                "quote": "Benefits at 1|2|3|4|5 Stacks"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "networked-3" }]
+      },
+      {
+        "id": "networked-4",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          {
+            "type": "counter",
+            "id": "networked",
+            "op": "=",
+            "value": {
+              "value": 4,
+              "source": {
+                "name": "Item file d-a-r-c-i",
+                "retrieved": "2026-11-11",
+                "status": "derived",
+                "note": "Derived: stage 4 of the table",
+                "quote": "Benefits at 1|2|3|4|5 Stacks"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "networked-4" }]
+      },
+      {
+        "id": "networked-5",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          {
+            "type": "counter",
+            "id": "networked",
+            "op": "=",
+            "value": {
+              "value": 5,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): D.A.R.C.I. Catalyst",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "Maximum of 5 stacks"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "networked-5" }]
+      },
+      {
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "networked-count",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          {
+            "type": "counter",
+            "id": "networked",
+            "op": "<",
+            "value": {
+              "value": 5,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): D.A.R.C.I. Catalyst",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "Maximum of 5 stacks"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "networked" }],
+        "source": {
+          "name": "Item file d-a-r-c-i",
+          "retrieved": "2026-11-11",
+          "status": "derived",
+          "note": "Derived: every shot hits the highlighted boss, so the stack counts on the shot and the next shot sees it; shots 0.43 s and reloads 1.7 s apart, so no stack falls off in 10.5 s",
+          "quote": "Hits on Highlighted targets grants one stack of 'Networked Targeting'"
+        }
+      },
+      {
+        "id": "jolt",
+        "on": { "on": "hit", "part": "shot" },
+        "do": [{ "type": "applyStatus", "status": "jolt" }],
+        "source": {
+          "name": "Item file d-a-r-c-i",
+          "retrieved": "2026-11-11",
+          "status": "derived",
+          "note": "Derived: every hit applies Jolt; its damage comes from the status container (keywords.json)",
+          "quote": "Hits apply Jolt"
+        }
+      }
+    ],
+    "buffs": [
+      {
+        "id": "networked-1",
+        "name": "Networked Targeting 1",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.028,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): D.A.R.C.I. Catalyst",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[D.A.R.C.I. Catalyst](\"2.8%|\") / 100 (percent to factor); $clarity[D.A.R.C.I. Catalyst](\"2.8%|\") = 2.8 (Clarity (Live-Clarity-Database, descriptions/clarity.json): D.A.R.C.I. Catalyst)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 1,
+          "source": {
+            "name": "Item file d-a-r-c-i",
+            "retrieved": "2026-11-11",
+            "status": "derived",
+            "note": "Derived: the buff belongs to its own shot only (the next shot has its own stage), so it lasts one millisecond",
+            "quote": "Benefits at 1|2|3|4|5 Stacks"
+          }
+        }
+      },
+      {
+        "id": "networked-2",
+        "name": "Networked Targeting 2",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.061,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): D.A.R.C.I. Catalyst",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[D.A.R.C.I. Catalyst](\"|6.1%|\") / 100 (percent to factor); $clarity[D.A.R.C.I. Catalyst](\"|6.1%|\") = 6.1 (Clarity (Live-Clarity-Database, descriptions/clarity.json): D.A.R.C.I. Catalyst)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 1,
+          "source": {
+            "name": "Item file d-a-r-c-i",
+            "retrieved": "2026-11-11",
+            "status": "derived",
+            "note": "Derived: one shot only, as networked-1"
+          }
+        }
+      },
+      {
+        "id": "networked-3",
+        "name": "Networked Targeting 3",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.091,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): D.A.R.C.I. Catalyst",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[D.A.R.C.I. Catalyst](\"|9.1%|\") / 100 (percent to factor); $clarity[D.A.R.C.I. Catalyst](\"|9.1%|\") = 9.1 (Clarity (Live-Clarity-Database, descriptions/clarity.json): D.A.R.C.I. Catalyst)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 1,
+          "source": {
+            "name": "Item file d-a-r-c-i",
+            "retrieved": "2026-11-11",
+            "status": "derived",
+            "note": "Derived: one shot only, as networked-1"
+          }
+        }
+      },
+      {
+        "id": "networked-4",
+        "name": "Networked Targeting 4",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.125,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): D.A.R.C.I. Catalyst",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[D.A.R.C.I. Catalyst](\"|12.5%|\") / 100 (percent to factor); $clarity[D.A.R.C.I. Catalyst](\"|12.5%|\") = 12.5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): D.A.R.C.I. Catalyst)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 1,
+          "source": {
+            "name": "Item file d-a-r-c-i",
+            "retrieved": "2026-11-11",
+            "status": "derived",
+            "note": "Derived: one shot only, as networked-1"
+          }
+        }
+      },
+      {
+        "id": "networked-5",
+        "name": "Networked Targeting 5",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.159,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): D.A.R.C.I. Catalyst",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[D.A.R.C.I. Catalyst](\"|15.9% increased damage\") / 100 (percent to factor); $clarity[D.A.R.C.I. Catalyst](\"|15.9% increased damage\") = 15.9 (Clarity (Live-Clarity-Database, descriptions/clarity.json): D.A.R.C.I. Catalyst)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 1,
+          "source": {
+            "name": "Item file d-a-r-c-i",
+            "retrieved": "2026-11-11",
+            "status": "derived",
+            "note": "Derived: one shot only, as networked-1"
+          }
+        }
       }
     ],
     "intrinsics": [
@@ -4500,7 +4807,7 @@
     "catalyst": {
       "name": "Networked Targeting, D.A.R.C.I. Catalyst",
       "description": "Passively grants 20 Stability.\nHits on Highlighted targets grants one stack of 'Networked Targeting' to you and allies within a 15 meter radius for 10.5 seconds. Maximum of 5 stacks.\nNetworked Targeting buffs D.A.R.C.I and Non-Exotic Sniper Rifles.\nBenefits at 1|2|3|4|5 Stacks:\n• 2.8%|6.1%|9.1%|12.5%|15.9% increased damage\n• ? Stability, Handling, Aim Assist, Flinch Resistance\nGranting the 5th stack to an ally increases D.A.R.C.I's damage by an additional 15%.",
-      "effect": "unknown",
+      "effect": "damageAndTiming",
       "timing": {
         "fireRateRpm": {
           "value": 162.162,
@@ -15327,9 +15634,52 @@
     ],
     "rules": [
       {
+        "id": "impetus",
+        "on": { "on": "phaseStart" },
+        "do": [{ "type": "grantBuff", "buff": "impetus" }],
+        "source": {
+          "name": "Item file merciless",
+          "retrieved": "2026-11-11",
+          "status": "derived",
+          "note": "Derived: a kill buff counts as built before (owner's rule): a kill and a reload just before the phase, so the buff runs from the start",
+          "quote": "grants 50% increased damage for 4.5 seconds"
+        }
+      },
+      {
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ],
+    "buffs": [
+      {
+        "id": "impetus",
+        "name": "Impetus",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.5,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Impetus",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Impetus](\"grants 50% increased damage\") / 100 (percent to factor); $clarity[Impetus](\"grants 50% increased damage\") = 50 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Impetus)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 4500,
+          "source": {
+            "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Impetus",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $clarity[Impetus](\"for 4.5 seconds\") * 1000 (seconds to milliseconds); $clarity[Impetus](\"for 4.5 seconds\") = 4.5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Impetus)"
+          }
+        }
       }
     ],
     "intrinsics": [
@@ -15348,7 +15698,7 @@
     "catalyst": {
       "name": "Heal Clip, Merciless Catalyst",
       "description": "Grants 40 Range and 40 Stability.\nFinishing a reload within 5.3? seconds of a Kill grants Cure x2 to you and Cure x1 to allies within 15 meters.",
-      "effect": "unknown"
+      "effect": "none"
     },
     "reloadDurationIncluded": {
       "value": 0.9,

@@ -207,14 +207,14 @@
       "600s buffed": 35750.12
     },
     "d-a-r-c-i": {
-      "30s plain": 24676,
-      "30s buffed": 41544.51,
-      "30s plain catalyst": 24676,
-      "30s buffed catalyst": 41544.51,
-      "600s plain": 24676,
-      "600s buffed": 41544.51,
-      "600s plain catalyst": 24676,
-      "600s buffed catalyst": 41544.51
+      "30s plain": 25964.69,
+      "30s buffed": 43026.51,
+      "30s plain catalyst": 29498.13,
+      "30s buffed catalyst": 48975.41,
+      "600s plain": 25964.69,
+      "600s buffed": 43026.51,
+      "600s plain catalyst": 29498.13,
+      "600s buffed catalyst": 48975.41
     },
     "dead-man-s-tale": {
       "30s plain": 10641.3,
@@ -645,14 +645,14 @@
       "600s buffed catalyst": 458513.31
     },
     "merciless": {
-      "30s plain": 21945,
-      "30s buffed": 36946.6,
-      "30s plain catalyst": 21945,
-      "30s buffed catalyst": 36946.6,
-      "600s plain": 21945,
-      "600s buffed": 36946.6,
-      "600s plain catalyst": 21945,
-      "600s buffed catalyst": 36946.6
+      "30s plain": 25410,
+      "30s buffed": 42780.28,
+      "30s plain catalyst": 25410,
+      "30s buffed catalyst": 42780.28,
+      "600s plain": 25410,
+      "600s buffed": 42780.28,
+      "600s plain catalyst": 25410,
+      "600s buffed catalyst": 42780.28
     },
     "microcosm": {
       "30s plain": 31955,

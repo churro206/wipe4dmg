@@ -1740,8 +1740,8 @@
         "group": "Energy",
         "inGame": "Grants 40 Range and 40 Stability.\nFinishing a reload within 5.3? seconds of a Kill grants Cure x2 to you and Cure x1 to allies within 15 meters.",
         "iconHash": 1149703256,
-        "inCalculator": "Not in the calculator yet: no source measured it",
-        "status": "missing",
+        "inCalculator": "No effect against one boss without adds",
+        "status": "leftOut",
         "iconKey": "named:merciless-catalyst"
       },
       {
@@ -1929,8 +1929,8 @@
         "group": "Power",
         "inGame": "Passively grants 20 Stability.\nHits on Highlighted targets grants one stack of 'Networked Targeting' to you and allies within a 15 meter radius for 10.5 seconds. Maximum of 5 stacks.\nNetworked Targeting buffs D.A.R.C.I and Non-Exotic Sniper Rifles.\nBenefits at 1|2|3|4|5 Stacks:\n• 2.8%|6.1%|9.1%|12.5%|15.9% increased damage\n• ? Stability, Handling, Aim Assist, Flinch Resistance\nGranting the 5th stack to an ally increases D.A.R.C.I's damage by an additional 15%.",
         "iconHash": 2085058762,
-        "inCalculator": "rate of fire 180 → 162, reload ms 2,000 → 1,700\nNot in the calculator yet: no source measured it",
-        "status": "missing",
+        "inCalculator": "rate of fire 180 → 162, reload ms 2,000 → 1,700",
+        "status": "full",
         "iconKey": "named:d-a-r-c-i-catalyst"
       },
       {

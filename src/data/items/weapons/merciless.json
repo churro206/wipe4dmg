@@ -15,8 +15,33 @@
   "catalyst": {
     "name": "Heal Clip, Merciless Catalyst",
     "description": "Grants 40 Range and 40 Stability.\nFinishing a reload within 5.3? seconds of a Kill grants Cure x2 to you and Cure x1 to allies within 15 meters.",
-    "effect": "unknown"
+    "effect": "none"
   },
+  "notModelled": [
+    { "quote": "Kills grant 34% decreased Reload Animation Duration", "reason": "no adds (ADR 0015): needs a kill" },
+    { "quote": "Maximum of 15 stacks", "reason": "below 2 %: Conserve Momentum's faster charge and lower damage sit in Quantum's time to empty and damage; Aegis Sustained −1 %, Weapons x0 −2.1 % and x15 +0.1 %, known-inaccuracies W8" },
+    { "quote": "7% decreased Charge Time and 0.84% decreased damage", "reason": "below 2 %, see \"Maximum of 15 stacks\"" },
+    { "quote": "80% decreased Charge Time and 11.93% decreased damage", "reason": "below 2 %, see \"Maximum of 15 stacks\"" },
+    { "quote": "Grants 40 Range and 40 Stability", "reason": "no damage against a boss (range, stability)" },
+    { "quote": "Finishing a reload within 5.3", "reason": "no adds (ADR 0015): needs a kill; Cure is no damage" },
+    { "quote": "grants Cure x2 to you and Cure x1 to allies within 15 meters", "reason": "no damage against a boss (healing)" },
+    { "quote": "Finishing a reload 6 seconds after a kill", "reason": "built before the phase (rule impetus); kills in the phase need adds (ADR 0015)" }
+  ],
+  "buffs": [
+    {
+      "id": "impetus",
+      "name": "Impetus",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": { "expr": "1 + $clarity[Impetus](\"grants 50% increased damage\") / 100", "note": "percent to factor" },
+          "damageSources": ["weapon"]
+        }
+      ],
+      "durationMs": { "expr": "$clarity[Impetus](\"for 4.5 seconds\") * 1000", "note": "seconds to milliseconds" }
+    }
+  ],
   "parts": {
     "shot": {
       "name": "Shot",
@@ -25,6 +50,18 @@
     }
   },
   "rules": [
+    {
+      "id": "impetus",
+      "on": { "on": "phaseStart" },
+      "do": [{ "type": "grantBuff", "buff": "impetus" }],
+      "source": {
+        "name": "Item file merciless",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "grants 50% increased damage for 4.5 seconds",
+        "note": "Derived: a kill buff counts as built before (owner's rule): a kill and a reload just before the phase, so the buff runs from the start"
+      }
+    },
     {
       "id": "shot",
       "on": { "on": "shot" },

@@ -39,5 +39,22 @@
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
     }
+  ],
+  "notModelled": [
+    { "quote": "Maximum of 15 stacks", "reason": "needs the Arc Seeker cycle: no source says how many rounds the reload refills (\"based on the number of stacks\") nor how many seekers one cycle fires (Clarity: 10 s, so 16 at Quantum's 96 RPM; Aegis Sustained: 10 per cycle); over 2 %, known-inaccuracies W8" },
+    { "quote": "remain ready until fired, after which point they last 10 seconds", "reason": "needs the Arc Seeker cycle, see \"Maximum of 15 stacks\"" },
+    { "quote": "30% [Varying] increased damage per stack of Revolution", "reason": "needs the Arc Seeker cycle; Quantum's seeker per stage (44, 108, 173, 238, 302 at x0 to x20) and Aegis (172.5 at x10, 302 at x20) confirm the 30 %" },
+    { "quote": "granting 33%|233% increased splash radius", "reason": "no damage against a boss (radius)" },
+    { "quote": "Arc Seekers generate x2 Bolt Charge for each hit", "reason": "needs the Arc Seeker cycle, see \"Maximum of 15 stacks\"" },
+    { "quote": "hits generate x3 Bolt Charge", "reason": "needs the Arc Seeker cycle, see \"Maximum of 15 stacks\"" },
+    { "quote": "reduces Fire Rate to 100 RPM", "reason": "needs the Arc Seeker cycle (Quantum: 96 RPM, 44 per seeker)" },
+    { "quote": "adds a multiplicative 50%", "reason": "needs the Arc Seeker cycle and the artifact mod Flashover" },
+    { "quote": "Grants 10 Reload Speed and 10 Handling", "reason": "below 2 % (10 reload speed on a 0.99 s reload every 20 shots), known-inaccuracies W8" },
+    { "quote": "increased by 5 (15🠚20)", "reason": "needs the Arc Seeker cycle, see \"Maximum of 15 stacks\"" },
+    { "quote": "after sprinting for 1.5 seconds", "reason": "no damage against a boss (sprint before the phase only)" },
+    { "quote": "20 Reload Speed", "reason": "no damage against a boss (needs sprinting)" },
+    { "quote": "0.95x Reload Duration Multiplier", "reason": "no damage against a boss (needs sprinting)" },
+    { "quote": "0.95x Handling Animation Duration Multiplier", "reason": "no damage against a boss (handling)" },
+    { "quote": "increases the Reload Speed stat bonus to 60", "reason": "needs Amplified (not linked)" }
   ]
 }

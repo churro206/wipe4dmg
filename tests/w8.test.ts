@@ -118,6 +118,27 @@ describe("W8 part 3: states of the target and of the player", () => {
   });
 });
 
+describe("W8 part 5: stages and kill buffs built before", () => {
+  const sorted = (run: SimulationResult) => [...run.damageInstances].sort((a, b) => a.timeMs - b.timeMs);
+
+  // Impetus: a kill and a reload before the phase, +50 % for 4.5 s (kill buffs count as built before)
+  it("Merciless: shots in the first 4.5 s deal x1.5, later ones x1", () => {
+    const shots = sorted(bareWeaponRun(weaponById("merciless"), false, 30)).filter((h) => h.id === "shot");
+    const early = shots.find((h) => h.timeMs < 4500)!;
+    const late = shots.find((h) => h.timeMs > 4500)!;
+    expect(early.damage / late.damage).toBeCloseTo(1.5, 6);
+  });
+
+  // Networked Targeting (catalyst): one stack per hit, 2.8|6.1|9.1|12.5|15.9 %; hits apply Jolt
+  it("D.A.R.C.I.: the 6th shot with the catalyst deals x1.159, and the hits jolt the boss", () => {
+    const shots = sorted(bareWeaponRun(weaponById("d-a-r-c-i"), true, 30)).filter((h) => h.id === "shot");
+    expect(shots[1]!.damage / shots[0]!.damage).toBeCloseTo(1.028, 6);
+    expect(shots[5]!.damage / shots[0]!.damage).toBeCloseTo(1.159, 6);
+    const run = bareWeaponRun(weaponById("d-a-r-c-i"), false, 30);
+    expect(run.damageInstances.some((d) => d.keywordId === "jolt")).toBe(true);
+  });
+});
+
 describe("W8 part 4: extra parts", () => {
   // Excavation: 3 cluster bombs per grenade; Quantum's rows with and without them: (1080 − 675) ÷ 3
   it("The Prospector: every grenade adds 3 cluster bombs of 135", () => {

@@ -17,7 +17,7 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 
 Waffen aus einer Item-Datei (B4a): Struktur von Hand, Zahlen als Verweise auf die Snapshots. **Prüfen**, wenn ein Text sich seit dem Schreiben der Datei geändert hat.
 
-Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **465**. Die Zahl sinkt je Block.
+Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **417**. Die Zahl sinkt je Block.
 
 | Waffe | Datei | Sätze ohne Regel | Prüfen |
 | --- | --- | ---: | --- |
@@ -42,7 +42,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **465**. D
 | Crimson | `src/data/items/weapons/crimson.json` | 7 | – |
 | Cryosthesia 77K | `src/data/items/weapons/cryosthesia-77k.json` | 2 | – |
 | Cull's Shadow | `src/data/items/weapons/cull-s-shadow.json` | 0 | – |
-| D.A.R.C.I. | `src/data/items/weapons/d-a-r-c-i.json` | 12 | – |
+| D.A.R.C.I. | `src/data/items/weapons/d-a-r-c-i.json` | 0 | – |
 | Dead Man's Tale | `src/data/items/weapons/dead-man-s-tale.json` | 0 | – |
 | Dead Messenger | `src/data/items/weapons/dead-messenger.json` | 3 | – |
 | Deathbringer | `src/data/items/weapons/deathbringer.json` | 0 | – |
@@ -64,7 +64,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **465**. D
 | Fighting Lion | `src/data/items/weapons/fighting-lion.json` | 0 | – |
 | Final Warning | `src/data/items/weapons/final-warning.json` | 0 | – |
 | Finality's Auger | `src/data/items/weapons/finality-s-auger.json` | 0 | – |
-| Forerunner | `src/data/items/weapons/forerunner.json` | 5 | – |
+| Forerunner | `src/data/items/weapons/forerunner.json` | 0 | – |
 | Gjallarhorn | `src/data/items/weapons/gjallarhorn.json` | 8 | – |
 | Grand Overture | `src/data/items/weapons/grand-overture.json` | 0 | – |
 | Graviton Lance | `src/data/items/weapons/graviton-lance.json` | 0 | – |
@@ -87,7 +87,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **465**. D
 | Lorentz Driver | `src/data/items/weapons/lorentz-driver.json` | 9 | – |
 | Lumina | `src/data/items/weapons/lumina.json` | 7 | – |
 | Malfeasance | `src/data/items/weapons/malfeasance.json` | 0 | – |
-| Merciless | `src/data/items/weapons/merciless.json` | 8 | – |
+| Merciless | `src/data/items/weapons/merciless.json` | 0 | – |
 | Microcosm | `src/data/items/weapons/microcosm.json` | 0 | – |
 | MIDA Multi-Tool | `src/data/items/weapons/mida-multi-tool.json` | 11 | – |
 | Monte Carlo | `src/data/items/weapons/monte-carlo.json` | 0 | – |
@@ -117,7 +117,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **465**. D
 | Sunshot | `src/data/items/weapons/sunshot.json` | 0 | – |
 | SUROS Regime | `src/data/items/weapons/suros-regime.json` | 0 | – |
 | Sweet Business | `src/data/items/weapons/sweet-business.json` | 5 | – |
-| Symmetry | `src/data/items/weapons/symmetry.json` | 15 | – |
+| Symmetry | `src/data/items/weapons/symmetry.json` | 0 | – |
 | Tarrabah | `src/data/items/weapons/tarrabah.json` | 0 | – |
 | Telesto | `src/data/items/weapons/telesto.json` | 5 | – |
 | Tessellation | `src/data/items/weapons/tessellation.json` | 12 | – |
@@ -152,7 +152,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **465**. D
 | Wavesplitter | `src/data/items/weapons/wavesplitter.json` | 0 | – |
 | Whirling Ovation | `src/data/items/weapons/whirling-ovation.json` | 15 | – |
 | Whisper of the Worm | `src/data/items/weapons/whisper-of-the-worm.json` | 0 | – |
-| Wicked Implement | `src/data/items/weapons/wicked-implement.json` | 8 | – |
+| Wicked Implement | `src/data/items/weapons/wicked-implement.json` | 0 | – |
 | Winterbite | `src/data/items/weapons/winterbite.json` | 0 | – |
 | Wish-Ender | `src/data/items/weapons/wish-ender.json` | 8 | – |
 | Wish-Keeper | `src/data/items/weapons/wish-keeper.json` | 49 | – |

@@ -2246,73 +2246,87 @@
     {
       "id": "d-a-r-c-i",
       "name": "D.A.R.C.I.",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
-          "s10": 15124,
-          "s30": 24676,
-          "s60": 24676
+          "s10": 15917,
+          "s30": 25964.7,
+          "s60": 25964.7
         },
         "catalyst": {
-          "s10": 14328,
-          "s30": 24676,
-          "s60": 24676
+          "s10": 17009.2,
+          "s30": 29498.1,
+          "s60": 29498.1
         }
       },
       "cause": {
-        "class": "mechanic-missing",
-        "why": "Everything on top of the hits ×0.96 against the Quantum row."
+        "class": "ok",
+        "why": "+1.1 % against Quantum, no Aegis row."
       },
-      "ruleShares": [],
+      "ruleShares": [
+        {
+          "id": "jolt",
+          "share": 0.0496
+        }
+      ],
       "sentences": [
         {
           "text": "Aiming at a target for 0.5 seconds highlights them and reports their Health and Shield percentages, Distance, and Power Level into the scope.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by Quantum's row (100 % uptime on Target Acquired)"
         },
         {
           "text": "Maximum Highlight Range of 150 Meters.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (range)"
         },
         {
           "text": "• 18.35% increased damage",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by Quantum's row (100 % uptime on Target Acquired)"
         },
         {
           "text": "• 31.34% increased precision damage",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by Quantum's row (100 % uptime on Target Acquired)"
         },
         {
           "text": "• 50% decreased Flinch, Recoil, and Accuracy Cone Size",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (flinch, recoil)"
         },
         {
           "text": "Buff lasts for 1 second after being off-target.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (the scope stays on the boss)"
         },
         {
           "text": "Passively grants 20 Stability.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (stability)"
         },
         {
           "text": "Hits on Highlighted targets grants one stack of 'Networked Targeting' to you and allies within a 15 meter radius for 10.5 seconds.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Maximum of 5 stacks.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Benefits at 1|2|3|4|5 Stacks:",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the rules networked-1 to networked-5"
         },
         {
           "text": "• 2.8%|6.1%|9.1%|12.5%|15.9% increased damage",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Granting the 5th stack to an ally increases D.A.R.C.I's damage by an additional 15%.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs an ally in range (no fireteam position in the model); Quantum's row cata-2 has it (971 against 844), over 2 %, known-inaccuracies W8"
         }
       ],
       "quantum": {
@@ -2320,8 +2334,8 @@
         "rowNote": "Considers 100% uptime on Target Acquired; considers jolt",
         "basis": "total",
         "measured": 25676,
-        "model": 24676,
-        "deviation": -0.0389,
+        "model": 25964.7,
+        "deviation": 0.0112,
         "circular": false,
         "catalystRow": false,
         "strippedRow": false,
@@ -2329,7 +2343,7 @@
           "shots": 1,
           "hitsPerShot": 1,
           "damagePerHit": 1,
-          "mechanic": 0.9610531235394922,
+          "mechanic": 1.0112435737653842,
           "rowPlain": false
         }
       },
@@ -4608,7 +4622,7 @@
     {
       "id": "forerunner",
       "name": "Forerunner",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
@@ -4630,23 +4644,28 @@
       "sentences": [
         {
           "text": "Holding [Reload] within 4 seconds of a kill consumes 4 ammo, refills the magazine, and grants 'The Rock'.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill: built before (kill buffs) it gives one Rock at the start, but its damage has no source on Quantum's scale (Clarity 2 072, Quantum has no Rock row); over 2 % in 10 s, known-inaccuracies W8"
         },
         {
           "text": "The Rock replaces your grenade ability with a tossed Kinetic grenade that explodes for 2072 [181] damage in a 9 meter radius, dealing 20% damage at the edge of its radius.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill, see \"Holding [Reload] within 4 seconds\""
         },
         {
           "text": "Detonates 0.6 seconds after it slows down enough.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill, see \"Holding [Reload] within 4 seconds\""
         },
         {
           "text": "• 33% decreased recoil",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (recoil)"
         },
         {
           "text": "Deals 181% increased Precision Damage to PvE Combatants.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by Quantum's damage"
         }
       ],
       "quantum": {
@@ -7075,53 +7094,65 @@
       "trust": "derived",
       "damage": {
         "base": {
-          "s10": 15015,
-          "s30": 21945,
-          "s60": 21945
+          "s10": 18480,
+          "s30": 25410,
+          "s60": 25410
         },
         "catalyst": {
-          "s10": 15015,
-          "s30": 21945,
-          "s60": 21945
+          "s10": 18480,
+          "s30": 25410,
+          "s60": 25410
         }
       },
       "cause": {
-        "class": "mechanic-missing",
-        "why": "Aegis -2.1 % with Conserve Momentum x0, full mag."
+        "class": "base-damage",
+        "why": "Damage per hit ×1.50 against the Quantum row."
       },
-      "ruleShares": [],
+      "ruleShares": [
+        {
+          "id": "impetus",
+          "share": 0.1364
+        }
+      ],
       "sentences": [
         {
           "text": "Kills grant 34% decreased Reload Animation Duration for 6 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015): needs a kill"
         },
         {
           "text": "Maximum of 15 stacks.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "below 2 %: Conserve Momentum's faster charge and lower damage sit in Quantum's time to empty and damage; Aegis Sustained −1 %, Weapons x0 −2.1 % and x15 +0.1 %, known-inaccuracies W8"
         },
         {
           "text": "• 7% decreased Charge Time and 0.84% decreased damage at the first stack",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "below 2 %, see \"Maximum of 15 stacks\""
         },
         {
           "text": "• 80% decreased Charge Time and 11.93% decreased damage at maximum stacks",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "below 2 %, see \"Maximum of 15 stacks\""
         },
         {
           "text": "Grants 40 Range and 40 Stability.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (range, stability)"
         },
         {
           "text": "Finishing a reload within 5.3?",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015): needs a kill; Cure is no damage"
         },
         {
           "text": "seconds of a Kill grants Cure x2 to you and Cure x1 to allies within 15 meters.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (healing)"
         },
         {
           "text": "Finishing a reload 6 seconds after a kill grants 50% increased damage for 4.5 seconds.",
-          "state": "open"
+          "state": "rule"
         }
       ],
       "quantum": {
@@ -7129,16 +7160,16 @@
         "rowNote": "Damage decreases per bolt at higher stacks of Conserve Momentum",
         "basis": "total",
         "measured": 22155,
-        "model": 21945,
-        "deviation": -0.0095,
+        "model": 25410,
+        "deviation": 0.1469,
         "circular": false,
         "catalystRow": false,
         "strippedRow": false,
         "factors": {
           "shots": 1,
           "hitsPerShot": 1,
-          "damagePerHit": 1,
-          "mechanic": 0.9905213270142179,
+          "damagePerHit": 1.5,
+          "mechanic": 0.7646129541864137,
           "rowPlain": true
         }
       },
@@ -7152,8 +7183,8 @@
               "full mag"
             ],
             "measured": 9232.6,
-            "model": 9240,
-            "deviation": 0.0008
+            "model": 12705,
+            "deviation": 0.3761
           },
           {
             "row": "fusion-rifle-merciless-conserve-momentum-x0-full-mag",
@@ -7162,15 +7193,15 @@
               "full mag"
             ],
             "measured": 9435.3,
-            "model": 9240,
-            "deviation": -0.0207
+            "model": 12705,
+            "deviation": 0.3465
           },
           {
             "row": "sustained-merciless",
             "assumptions": [],
             "measured": 54552,
-            "model": 54034.4,
-            "deviation": -0.0095
+            "model": 62566.2,
+            "deviation": 0.1469
           }
         ]
       },
@@ -10486,7 +10517,7 @@
     {
       "id": "symmetry",
       "name": "Symmetry",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
@@ -10508,63 +10539,78 @@
       "sentences": [
         {
           "text": "Maximum of 15 stacks.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs the Arc Seeker cycle: no source says how many rounds the reload refills (\"based on the number of stacks\") nor how many seekers one cycle fires (Clarity: 10 s, so 16 at Quantum's 96 RPM; Aegis Sustained: 10 per cycle); over 2 %, known-inaccuracies W8"
         },
         {
           "text": "Revolution stacks remain ready until fired, after which point they last 10 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs the Arc Seeker cycle, see \"Maximum of 15 stacks\""
         },
         {
           "text": "Arc Seekers gain 30% [Varying] increased damage per stack of Revolution, up to 450% increased damage.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs the Arc Seeker cycle; Quantum's seeker per stage (44, 108, 173, 238, 302 at x0 to x20) and Aegis (172.5 at x10, 302 at x20) confirm the 30 %"
         },
         {
           "text": "Arc Seekers also gain a non-linear increase to their splash radius, granting 33%|233% increased splash radius at x10|x20 Stacks (up to 4|7 meters in radius).",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (radius)"
         },
         {
           "text": "While Revolution's timer is active, Arc Seekers generate x2 Bolt Charge for each hit and gain the ability to discharge Bolt Charge stacks.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs the Arc Seeker cycle, see \"Maximum of 15 stacks\""
         },
         {
           "text": "At or above 10 stacks of Revolution, hits generate x3 Bolt Charge.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs the Arc Seeker cycle, see \"Maximum of 15 stacks\""
         },
         {
           "text": "Arc Seeker Mode reduces Fire Rate to 100 RPM and shoots tracking bolts that deal 76 [50] damage in a 3 meter radius.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs the Arc Seeker cycle (Quantum: 96 RPM, 44 per seeker)"
         },
         {
           "text": "This damage increase to Bolt Charge can be further compounded by the Flashover Artifact Mod from the Tablet of Ruin, which adds a multiplicative 50%.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs the Arc Seeker cycle and the artifact mod Flashover"
         },
         {
           "text": "Grants 10 Reload Speed and 10 Handling.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "below 2 % (10 reload speed on a 0.99 s reload every 20 shots), known-inaccuracies W8"
         },
         {
           "text": "Dynamic Charge's maximum stack count is is increased by 5 (15🠚20), allowing for up to 600% increased damage and 100% increased radius.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs the Arc Seeker cycle, see \"Maximum of 15 stacks\""
         },
         {
           "text": "Grants the following after sprinting for 1.5 seconds with the weapon readied:",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (sprint before the phase only)"
         },
         {
           "text": "• 20 Reload Speed",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (needs sprinting)"
         },
         {
           "text": "• 0.95x Reload Duration Multiplier",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (needs sprinting)"
         },
         {
           "text": "• 0.95x Handling Animation Duration Multiplier",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (handling)"
         },
         {
           "text": "Being Amplified removes the sprinting requirement and increases the Reload Speed stat bonus to 60.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs Amplified (not linked)"
         }
       ],
       "quantum": {
@@ -14339,35 +14385,43 @@
       "sentences": [
         {
           "text": "Stasis Shards grant 7 ammo on pickup that can overfill the magazine, up to 100% capacity.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a Stasis Shard (precision kill or shattered crystal); primary ammo is unlimited, the refill saves reloads only with crystals, see \"Landing 4 Precision Hits\""
         },
         {
           "text": "Due Tithing Harvest refilling the entire magazine on Stasis Shard pickup, the overfill effect only activates if your current magazine is above 13 shots remaining.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a Stasis Shard, see \"Stasis Shards grant 7 ammo\""
         },
         {
           "text": "Tier 1-2 Minor and Tier 1 Elite Combatants only spawn a Medium Stasis Crystal.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "Creating 5 Crystals within ?",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015): Headstone needs precision kills"
         },
         {
           "text": "seconds prevents the perk from activating for 5 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015): Headstone needs precision kills"
         },
         {
           "text": "Landing 4 Precision Hits within 4.5 seconds of each other grants 'Creeping Attrition' for 4.5 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs crystals on the boss: Quantum's magazine (1 882 = 20 × 61 + 662) and Aegis (shatters of 250, about 2.6 per magazine) both count shattered Stasis crystals, about +53 %; no text says how they form on a boss, over 2 %, known-inaccuracies W8"
         },
         {
           "text": "While Creeping Attrition is active, Precision Hits apply 40 [20] Slow for 4 seconds (8 [6] seconds with Whisper of Durance).",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs crystals on the boss, see \"Landing 4 Precision Hits\"; Slow itself is no damage"
         },
         {
           "text": "2 second cooldown between generating additional Stasis Shards.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a Stasis Shard, see \"Stasis Shards grant 7 ammo\""
         }
       ],
       "quantum": {

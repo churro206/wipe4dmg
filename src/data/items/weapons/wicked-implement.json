@@ -43,5 +43,15 @@
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
     }
+  ],
+  "notModelled": [
+    { "quote": "Stasis Shards grant 7 ammo on pickup", "reason": "needs a Stasis Shard (precision kill or shattered crystal); primary ammo is unlimited, the refill saves reloads only with crystals, see \"Landing 4 Precision Hits\"" },
+    { "quote": "above 13 shots remaining", "reason": "needs a Stasis Shard, see \"Stasis Shards grant 7 ammo\"" },
+    { "quote": "Tier 1-2 Minor and Tier 1 Elite Combatants", "reason": "no adds (ADR 0015)" },
+    { "quote": "Creating 5 Crystals within", "reason": "no adds (ADR 0015): Headstone needs precision kills" },
+    { "quote": "prevents the perk from activating for 5 seconds", "reason": "no adds (ADR 0015): Headstone needs precision kills" },
+    { "quote": "Landing 4 Precision Hits within 4.5 seconds", "reason": "needs crystals on the boss: Quantum's magazine (1 882 = 20 × 61 + 662) and Aegis (shatters of 250, about 2.6 per magazine) both count shattered Stasis crystals, about +53 %; no text says how they form on a boss, over 2 %, known-inaccuracies W8" },
+    { "quote": "Precision Hits apply 40 [20] Slow for 4 seconds", "reason": "needs crystals on the boss, see \"Landing 4 Precision Hits\"; Slow itself is no damage" },
+    { "quote": "2 second cooldown between generating additional Stasis Shards", "reason": "needs a Stasis Shard, see \"Stasis Shards grant 7 ammo\"" }
   ]
 }

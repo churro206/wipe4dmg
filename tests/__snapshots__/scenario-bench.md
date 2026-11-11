@@ -7,7 +7,7 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 
 - **Delta pairs (check set): 1 of 4 within 2 percentage points**
 - Rank (check set): Spearman 0.98 over 45 rows
-- Absolute, information only: within ±3 % 26 of 45 (check set), 95 of 180 (all counted rows, mostly Eichung)
+- Absolute, information only: within ±3 % 26 of 45 (check set), 93 of 180 (all counted rows, mostly Eichung)
 - Rows: 182 scenarios (32 by hand, 150 generated); fitted 18; calibration set 117; check set 45; not counted 2; core cannot run 0
 
 ## Delta pairs (check set)
@@ -166,7 +166,7 @@ Rows by what they check (column "Prüft" of `docs/product.md`). Coverage: Aegis 
 | Weapons | 417 | 180 | 43 % | 18 | 45 | 0.98 | 3/3 | 1 of 4 |
 | Supers | 68 | 18 | 26 % | 0 | 18 | 0.99 | 3/3 | 4 of 6 |
 | Heavy | 95 | 21 | 22 % | 0 | 21 | 0.99 | 3/3 | 5 of 5 |
-| Special | 84 | 10 | 12 % | 4 | 6 | 0.94 | 3/3 | 0 of 0 |
+| Special | 84 | 10 | 12 % | 4 | 6 | 0.89 | 3/3 | 0 of 0 |
 | Abilities | 239 | 95 | 40 % | 68 | 6 | 0.83 | 3/3 | 4 of 8 |
 
 ## Delta pairs by group (check set)
@@ -291,7 +291,7 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Special | sustained-forerunner | 51349 | 51363 | +0.0 % |
 | Special | sustained-ice-breaker-sniper-s-meditation | 34643 | 34659 | +0.0 % |
 | Special | sustained-j-tunn | 61950 | 67281 | +8.6 % |
-| Special | sustained-merciless | 54552 | 54034 | −0.9 % |
+| Special | sustained-merciless | 54552 | 62566 | +14.7 % |
 | Special | sustained-telesto | 51208 | 53052 | +3.6 % |
 | Abilities | grenade-tripmine-average-ember-of-ashes-with-ignition | 1242 | 805 | −35.2 % |
 | Abilities | grenade-vortex | 1122 | 1185 | +5.6 % |

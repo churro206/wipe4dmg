@@ -23,7 +23,7 @@
   "catalyst": {
     "name": "Networked Targeting, D.A.R.C.I. Catalyst",
     "description": "Passively grants 20 Stability.\nHits on Highlighted targets grants one stack of 'Networked Targeting' to you and allies within a 15 meter radius for 10.5 seconds. Maximum of 5 stacks.\nNetworked Targeting buffs D.A.R.C.I and Non-Exotic Sniper Rifles.\nBenefits at 1|2|3|4|5 Stacks:\n• 2.8%|6.1%|9.1%|12.5%|15.9% increased damage\n• ? Stability, Handling, Aim Assist, Flinch Resistance\nGranting the 5th stack to an ally increases D.A.R.C.I's damage by an additional 15%.",
-    "effect": "unknown",
+    "effect": "damageAndTiming",
     "timing": {
       "fireRateRpm": "$quantum[heavies-sniper-rifle-d-a-r-c-i-cata].timing.fireRateRpm",
       "magazine": "$quantum[heavies-sniper-rifle-d-a-r-c-i-cata].timing.magazine",
@@ -39,11 +39,63 @@
       "delivery": "impact"
     }
   },
+  "buffs": [
+    { "id": "networked-1", "name": "Networked Targeting 1", "modifiers": [{ "type": "multiplier", "bucketId": "weaponPerk", "multiplier": { "expr": "1 + $clarity[D.A.R.C.I. Catalyst](\"2.8%|\") / 100", "note": "percent to factor" }, "damageSources": ["weapon"] }], "durationMs": { "value": 1, "source": { "name": "Item file d-a-r-c-i", "retrieved": "2026-11-11", "status": "derived", "quote": "Benefits at 1|2|3|4|5 Stacks", "note": "Derived: the buff belongs to its own shot only (the next shot has its own stage), so it lasts one millisecond" } } },
+    { "id": "networked-2", "name": "Networked Targeting 2", "modifiers": [{ "type": "multiplier", "bucketId": "weaponPerk", "multiplier": { "expr": "1 + $clarity[D.A.R.C.I. Catalyst](\"|6.1%|\") / 100", "note": "percent to factor" }, "damageSources": ["weapon"] }], "durationMs": { "value": 1, "source": { "name": "Item file d-a-r-c-i", "retrieved": "2026-11-11", "status": "derived", "note": "Derived: one shot only, as networked-1" } } },
+    { "id": "networked-3", "name": "Networked Targeting 3", "modifiers": [{ "type": "multiplier", "bucketId": "weaponPerk", "multiplier": { "expr": "1 + $clarity[D.A.R.C.I. Catalyst](\"|9.1%|\") / 100", "note": "percent to factor" }, "damageSources": ["weapon"] }], "durationMs": { "value": 1, "source": { "name": "Item file d-a-r-c-i", "retrieved": "2026-11-11", "status": "derived", "note": "Derived: one shot only, as networked-1" } } },
+    { "id": "networked-4", "name": "Networked Targeting 4", "modifiers": [{ "type": "multiplier", "bucketId": "weaponPerk", "multiplier": { "expr": "1 + $clarity[D.A.R.C.I. Catalyst](\"|12.5%|\") / 100", "note": "percent to factor" }, "damageSources": ["weapon"] }], "durationMs": { "value": 1, "source": { "name": "Item file d-a-r-c-i", "retrieved": "2026-11-11", "status": "derived", "note": "Derived: one shot only, as networked-1" } } },
+    { "id": "networked-5", "name": "Networked Targeting 5", "modifiers": [{ "type": "multiplier", "bucketId": "weaponPerk", "multiplier": { "expr": "1 + $clarity[D.A.R.C.I. Catalyst](\"|15.9% increased damage\") / 100", "note": "percent to factor" }, "damageSources": ["weapon"] }], "durationMs": { "value": 1, "source": { "name": "Item file d-a-r-c-i", "retrieved": "2026-11-11", "status": "derived", "note": "Derived: one shot only, as networked-1" } } }
+  ],
   "rules": [
+    { "id": "networked-1", "on": { "on": "shot" }, "if": [{ "type": "hasItem", "id": "catalyst" }, { "type": "counter", "id": "networked", "op": "=", "value": { "value": 1, "source": { "name": "Item file d-a-r-c-i", "retrieved": "2026-11-11", "status": "derived", "quote": "Benefits at 1|2|3|4|5 Stacks", "note": "Derived: stage 1 of the table" } } }], "do": [{ "type": "grantBuff", "buff": "networked-1" }] },
+    { "id": "networked-2", "on": { "on": "shot" }, "if": [{ "type": "hasItem", "id": "catalyst" }, { "type": "counter", "id": "networked", "op": "=", "value": { "value": 2, "source": { "name": "Item file d-a-r-c-i", "retrieved": "2026-11-11", "status": "derived", "quote": "Benefits at 1|2|3|4|5 Stacks", "note": "Derived: stage 2 of the table" } } }], "do": [{ "type": "grantBuff", "buff": "networked-2" }] },
+    { "id": "networked-3", "on": { "on": "shot" }, "if": [{ "type": "hasItem", "id": "catalyst" }, { "type": "counter", "id": "networked", "op": "=", "value": { "value": 3, "source": { "name": "Item file d-a-r-c-i", "retrieved": "2026-11-11", "status": "derived", "quote": "Benefits at 1|2|3|4|5 Stacks", "note": "Derived: stage 3 of the table" } } }], "do": [{ "type": "grantBuff", "buff": "networked-3" }] },
+    { "id": "networked-4", "on": { "on": "shot" }, "if": [{ "type": "hasItem", "id": "catalyst" }, { "type": "counter", "id": "networked", "op": "=", "value": { "value": 4, "source": { "name": "Item file d-a-r-c-i", "retrieved": "2026-11-11", "status": "derived", "quote": "Benefits at 1|2|3|4|5 Stacks", "note": "Derived: stage 4 of the table" } } }], "do": [{ "type": "grantBuff", "buff": "networked-4" }] },
+    { "id": "networked-5", "on": { "on": "shot" }, "if": [{ "type": "hasItem", "id": "catalyst" }, { "type": "counter", "id": "networked", "op": "=", "value": "$clarity[D.A.R.C.I. Catalyst](\"Maximum of 5 stacks\")" }], "do": [{ "type": "grantBuff", "buff": "networked-5" }] },
     {
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "networked-count",
+      "on": { "on": "shot" },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        { "type": "counter", "id": "networked", "op": "<", "value": "$clarity[D.A.R.C.I. Catalyst](\"Maximum of 5 stacks\")" }
+      ],
+      "do": [{ "type": "addStacks", "counter": "networked" }],
+      "source": {
+        "name": "Item file d-a-r-c-i",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "Hits on Highlighted targets grants one stack of 'Networked Targeting'",
+        "note": "Derived: every shot hits the highlighted boss, so the stack counts on the shot and the next shot sees it; shots 0.43 s and reloads 1.7 s apart, so no stack falls off in 10.5 s"
+      }
+    },
+    {
+      "id": "jolt",
+      "on": { "on": "hit", "part": "shot" },
+      "do": [{ "type": "applyStatus", "status": "jolt" }],
+      "source": {
+        "name": "Item file d-a-r-c-i",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "Hits apply Jolt",
+        "note": "Derived: every hit applies Jolt; its damage comes from the status container (keywords.json)"
+      }
     }
+  ],
+  "notModelled": [
+    { "quote": "Aiming at a target for 0.5 seconds highlights them", "reason": "carried by Quantum's row (100 % uptime on Target Acquired)" },
+    { "quote": "Maximum Highlight Range of 150 Meters", "reason": "no damage against a boss (range)" },
+    { "quote": "18.35% increased damage", "reason": "carried by Quantum's row (100 % uptime on Target Acquired)" },
+    { "quote": "31.34% increased precision damage", "reason": "carried by Quantum's row (100 % uptime on Target Acquired)" },
+    { "quote": "50% decreased Flinch, Recoil, and Accuracy Cone Size", "reason": "no damage against a boss (flinch, recoil)" },
+    { "quote": "Buff lasts for 1 second after being off-target", "reason": "no damage against a boss (the scope stays on the boss)" },
+    { "quote": "Passively grants 20 Stability", "reason": "no damage against a boss (stability)" },
+    { "quote": "to you and allies within a 15 meter radius for 10.5 seconds", "reason": "carried by the counter networked (no stack falls off between shots)" },
+    { "quote": "Benefits at 1|2|3|4|5 Stacks", "reason": "carried by the rules networked-1 to networked-5" },
+    { "quote": "Granting the 5th stack to an ally increases D.A.R.C.I's damage by an additional 15%", "reason": "needs an ally in range (no fireteam position in the model); Quantum's row cata-2 has it (971 against 844), over 2 %, known-inaccuracies W8" }
   ]
 }

@@ -39,5 +39,12 @@
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
     }
+  ],
+  "notModelled": [
+    { "quote": "Holding [Reload] within 4 seconds of a kill consumes 4 ammo", "reason": "needs a kill: built before (kill buffs) it gives one Rock at the start, but its damage has no source on Quantum's scale (Clarity 2 072, Quantum has no Rock row); over 2 % in 10 s, known-inaccuracies W8" },
+    { "quote": "explodes for 2072 [181] damage", "reason": "needs a kill, see \"Holding [Reload] within 4 seconds\"" },
+    { "quote": "Detonates 0.6 seconds after it slows down enough", "reason": "needs a kill, see \"Holding [Reload] within 4 seconds\"" },
+    { "quote": "33% decreased recoil", "reason": "no damage against a boss (recoil)" },
+    { "quote": "Deals 181% increased Precision Damage to PvE Combatants", "reason": "carried by Quantum's damage" }
   ]
 }
