@@ -1,23 +1,37 @@
 {
-  "baseline": "82036ad",
+  "baseline": "251dd97",
   "changes": [
     {
-      "id": "fafnir",
-      "name": "Fafnir",
+      "id": "hawkmoon",
+      "name": "Hawkmoon",
       "kind": "damage",
-      "time": "s10",
+      "time": "s30",
       "catalyst": false,
-      "from": 12641.9,
-      "to": 18013.6
+      "from": 4656,
+      "to": 16409.5
     },
     {
-      "id": "turncoat",
-      "name": "Turncoat",
+      "id": "hawkmoon",
+      "name": "Hawkmoon",
+      "kind": "status",
+      "from": "Partial",
+      "to": "Complete"
+    },
+    {
+      "id": "whisper-of-the-worm",
+      "name": "Whisper of the Worm",
       "kind": "damage",
-      "time": "s60",
-      "catalyst": false,
-      "from": 14017.8,
-      "to": 24372.3
+      "time": "s10",
+      "catalyst": true,
+      "from": 10200,
+      "to": 16528.6
+    },
+    {
+      "id": "whisper-of-the-worm",
+      "name": "Whisper of the Worm",
+      "kind": "status",
+      "from": "Partial",
+      "to": "Complete"
     }
   ]
 }

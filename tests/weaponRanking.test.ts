@@ -155,7 +155,7 @@ describe("quantumCell", () => {
 
   it("keeps the light for a real comparison and for no row", () => {
     expect(quantumCell(rows.find((r) => r.name === "Cloudstrike")!, limits).color).toBe("green");
-    expect(quantumCell(rows.find((r) => r.name === "Hawkmoon")!, limits).color).toBe("red");
+    expect(quantumCell(rows.find((r) => r.name === "Wicked Implement")!, limits).color).toBe("red"); // Hawkmoon until W8
     expect(quantumCell(rows.find((r) => r.name === "Black Talon")!, limits)).toEqual({ color: null, label: "no row" });
   });
 
@@ -178,7 +178,8 @@ describe("the column Why off", () => {
     expect(of("Tommy's Matchbook")).toBe("Counting"); // Duality until W5 fixed its count
     expect(of("Thorn")).toBe("Rule too strong");
     expect(of("Divinity")).toBe("Wrong row or variant");
-    expect(of("Hawkmoon")).toBe("Mechanic missing");
+    expect(of("Still Hunt")).toBe("Mechanic missing"); // Hawkmoon until W8
+    expect(of("Hawkmoon")).toBe("Wrong row or variant");
     expect(of("The Colony")).toBe("Reads Quantum");
     expect(of("Black Talon")).toBe("No check");
   });

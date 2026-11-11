@@ -157,7 +157,7 @@ describe("scenarios of the other tabs (block P)", () => {
   // The 14 hand-made entries of the former meta probe (docs/meta-probe.md, column "Modell") are
   // fixtures now: the same build through the one scenario path gives the same value.
   // Q1 (ADR 0019) took six entries out; W5 brings five back at today's value (the old probe value and
-  // the reason in the comment). Whisper of the Worm stays out until its mechanics are back (−32 %).
+  // the reason in the comment). W8 brings Whisper of the Worm back (Whispered Breathing, White Nail).
   const PROBE_SUSTAINED: Record<string, number> = {
     // probe 71 555 (= Aegis); Quantum timing and arrow damage now, Aegis +1,3 %
     "sustained-leviathan-s-breath-archer-s-tempo": 72475,
@@ -171,6 +171,8 @@ describe("scenarios of the other tabs (block P)", () => {
     "sustained-xenophage": 50338,
     // W4: 16 rockets (Quantum) and clusters of 177 (Compendium) instead of 14 and 155 (Aegis): 81 580 before; Aegis says 85 454 (+13,6 %)
     "sustained-truth-prototype-truthseeker-argent-ordnance": 97051,
+    // probe 128 747 (= Aegis); W8: Whispered Breathing from Clarity (x1.35 x 1.1077), Aegis +1,6 %
+    "sustained-whisper-of-the-worm-whispered-breathing-sniper-s-meditation": 130859,
     "sustained-sleeper-simulant": 87747,
     "sustained-grand-overture-volleys-when-available": 144662,
     "sustained-the-queenbreaker-rewind-rounds-combat-sights": 97261,

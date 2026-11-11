@@ -17,7 +17,7 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 
 Waffen aus einer Item-Datei (B4a): Struktur von Hand, Zahlen als Verweise auf die Snapshots. **Prüfen**, wenn ein Text sich seit dem Schreiben der Datei geändert hat.
 
-Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **569**. Die Zahl sinkt je Block.
+Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **536**. Die Zahl sinkt je Block.
 
 | Waffe | Datei | Sätze ohne Regel | Prüfen |
 | --- | --- | ---: | --- |
@@ -70,7 +70,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **569**. D
 | Graviton Lance | `src/data/items/weapons/graviton-lance.json` | 9 | – |
 | Graviton Spike | `src/data/items/weapons/graviton-spike.json` | 0 | – |
 | Hard Light | `src/data/items/weapons/hard-light.json` | 3 | – |
-| Hawkmoon | `src/data/items/weapons/hawkmoon.json` | 9 | – |
+| Hawkmoon | `src/data/items/weapons/hawkmoon.json` | 0 | – |
 | Heartshadow | `src/data/items/weapons/heartshadow.json` | 0 | – |
 | Heir Apparent | `src/data/items/weapons/heir-apparent.json` | 8 | – |
 | Heirloom | `src/data/items/weapons/heirloom.json` | 11 | – |
@@ -151,7 +151,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **569**. D
 | Vigilance Wing | `src/data/items/weapons/vigilance-wing.json` | 7 | – |
 | Wavesplitter | `src/data/items/weapons/wavesplitter.json` | 0 | – |
 | Whirling Ovation | `src/data/items/weapons/whirling-ovation.json` | 15 | – |
-| Whisper of the Worm | `src/data/items/weapons/whisper-of-the-worm.json` | 24 | – |
+| Whisper of the Worm | `src/data/items/weapons/whisper-of-the-worm.json` | 0 | – |
 | Wicked Implement | `src/data/items/weapons/wicked-implement.json` | 8 | – |
 | Winterbite | `src/data/items/weapons/winterbite.json` | 0 | – |
 | Wish-Ender | `src/data/items/weapons/wish-ender.json` | 8 | – |

@@ -370,7 +370,9 @@ describe("src/data/weapon-status.json", () => {
       expect(of("tommy-s-matchbook").cause.class).toBe("counting");
       expect(of("thorn").cause.class).toBe("rule-too-strong");
       expect(of("divinity").cause.class).toBe("wrong-row");
-      expect(of("hawkmoon").cause.class).toBe("mechanic-missing");
+      // Hawkmoon was the sample until W8: its Quantum row has the catalyst, the comparison runs without
+      expect(of("hawkmoon").cause.class).toBe("wrong-row");
+      expect(of("still-hunt").cause.class).toBe("mechanic-missing");
     });
 
     // docs/known-inaccuracies.md, "Einordnung der Ausreißer (P0)"
@@ -381,7 +383,7 @@ describe("src/data/weapon-status.json", () => {
       ["izanagi-s-burden", "mechanic-missing"],
       ["barrow-dyad", "rule-too-strong"],
       ["ager-s-scepter", "mechanic-missing"],
-      ["whisper-of-the-worm", "mechanic-missing"],
+      ["whisper-of-the-worm", "ok"], // W8: Whispered Breathing and White Nail from the text
       ["tarrabah", "mechanic-missing"],
       ["symmetry", "mechanic-missing"],
       ["forerunner", "mechanic-missing"],

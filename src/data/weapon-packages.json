@@ -10273,9 +10273,850 @@
     ],
     "rules": [
       {
+        "id": "final-round",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst", "not": true },
+          {
+            "type": "counter",
+            "id": "rounds",
+            "op": "=",
+            "value": {
+              "value": 6,
+              "source": {
+                "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-hand-cannon-hawkmoon-cata; Clarity (Live-Clarity-Database, descriptions/clarity.json): Hawkmoon Catalyst",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $quantum[primaries-hand-cannon-hawkmoon-cata].timing.magazine - $clarity[Hawkmoon Catalyst](\"Magazine Size by 1\") - 2 (rounds fired before the second to last one of the magazine of 8); $quantum[primaries-hand-cannon-hawkmoon-cata].timing.magazine = 9 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-hand-cannon-hawkmoon-cata); $clarity[Hawkmoon Catalyst](\"Magazine Size by 1\") = 1 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Hawkmoon Catalyst)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "setMode", "mode": "round", "to": "final" }],
+        "source": {
+          "name": "Item file hawkmoon",
+          "retrieved": "2026-11-11",
+          "status": "derived",
+          "note": "Derived: the second to last shot marks the next one as the final round; the conditions of a shot see the state before it (engine), so the mark comes one shot early and the reload clears it"
+        }
+      },
+      {
+        "id": "final-round-catalyst",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          {
+            "type": "counter",
+            "id": "rounds",
+            "op": "=",
+            "value": {
+              "value": 7,
+              "source": {
+                "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-hand-cannon-hawkmoon-cata",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $quantum[primaries-hand-cannon-hawkmoon-cata].timing.magazine - 2 (rounds fired before the second to last one of the catalyst magazine of 9); $quantum[primaries-hand-cannon-hawkmoon-cata].timing.magazine = 9 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-hand-cannon-hawkmoon-cata)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "setMode", "mode": "round", "to": "final" }],
+        "source": {
+          "name": "Item file hawkmoon",
+          "retrieved": "2026-11-11",
+          "status": "derived",
+          "note": "Derived: as final-round, with the catalyst magazine"
+        }
+      },
+      {
+        "id": "charge-1",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "mode", "id": "round", "is": "final", "not": true },
+          {
+            "type": "counter",
+            "id": "charge",
+            "op": "=",
+            "value": {
+              "value": 1,
+              "source": {
+                "name": "Item file hawkmoon",
+                "retrieved": "2026-11-11",
+                "status": "derived",
+                "note": "Derived: stage 1 of the table",
+                "quote": "at 1|2|3|....|7| Stacks"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "charge-1" }]
+      },
+      {
+        "id": "charge-2",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "mode", "id": "round", "is": "final", "not": true },
+          {
+            "type": "counter",
+            "id": "charge",
+            "op": "=",
+            "value": {
+              "value": 2,
+              "source": {
+                "name": "Item file hawkmoon",
+                "retrieved": "2026-11-11",
+                "status": "derived",
+                "note": "Derived: stage 2 of the table",
+                "quote": "at 1|2|3|....|7| Stacks"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "charge-2" }]
+      },
+      {
+        "id": "charge-3",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "mode", "id": "round", "is": "final", "not": true },
+          {
+            "type": "counter",
+            "id": "charge",
+            "op": "=",
+            "value": {
+              "value": 3,
+              "source": {
+                "name": "Item file hawkmoon",
+                "retrieved": "2026-11-11",
+                "status": "derived",
+                "note": "Derived: stage 3 of the table",
+                "quote": "at 1|2|3|....|7| Stacks"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "charge-3" }]
+      },
+      {
+        "id": "charge-4",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "mode", "id": "round", "is": "final", "not": true },
+          {
+            "type": "counter",
+            "id": "charge",
+            "op": "=",
+            "value": {
+              "value": 4,
+              "source": {
+                "name": "Item file hawkmoon",
+                "retrieved": "2026-11-11",
+                "status": "derived",
+                "note": "Derived: stage 4 of the table (Clarity writes the 4th to 6th as dots)",
+                "quote": "at 1|2|3|....|7| Stacks"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "charge-4" }]
+      },
+      {
+        "id": "charge-5",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "mode", "id": "round", "is": "final", "not": true },
+          {
+            "type": "counter",
+            "id": "charge",
+            "op": "=",
+            "value": {
+              "value": 5,
+              "source": {
+                "name": "Item file hawkmoon",
+                "retrieved": "2026-11-11",
+                "status": "derived",
+                "note": "Derived: stage 5 of the table",
+                "quote": "at 1|2|3|....|7| Stacks"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "charge-5" }]
+      },
+      {
+        "id": "charge-6",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "mode", "id": "round", "is": "final", "not": true },
+          {
+            "type": "counter",
+            "id": "charge",
+            "op": "=",
+            "value": {
+              "value": 6,
+              "source": {
+                "name": "Item file hawkmoon",
+                "retrieved": "2026-11-11",
+                "status": "derived",
+                "note": "Derived: stage 6 of the table",
+                "quote": "at 1|2|3|....|7| Stacks"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "charge-6" }]
+      },
+      {
+        "id": "charge-7",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "mode", "id": "round", "is": "final", "not": true },
+          {
+            "type": "counter",
+            "id": "charge",
+            "op": "=",
+            "value": {
+              "value": 7,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "Maximum of 7 stacks"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "charge-7" }]
+      },
+      {
+        "id": "paracausal-1",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "mode", "id": "round", "is": "final" },
+          {
+            "type": "counter",
+            "id": "charge",
+            "op": "=",
+            "value": {
+              "value": 1,
+              "source": {
+                "name": "Item file hawkmoon",
+                "retrieved": "2026-11-11",
+                "status": "derived",
+                "note": "Derived: stage 1 of the table",
+                "quote": "at 1|2|3|...|7| stacks"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "paracausal-1" }]
+      },
+      {
+        "id": "paracausal-2",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "mode", "id": "round", "is": "final" },
+          {
+            "type": "counter",
+            "id": "charge",
+            "op": "=",
+            "value": {
+              "value": 2,
+              "source": {
+                "name": "Item file hawkmoon",
+                "retrieved": "2026-11-11",
+                "status": "derived",
+                "note": "Derived: stage 2 of the table",
+                "quote": "at 1|2|3|...|7| stacks"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "paracausal-2" }]
+      },
+      {
+        "id": "paracausal-3",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "mode", "id": "round", "is": "final" },
+          {
+            "type": "counter",
+            "id": "charge",
+            "op": "=",
+            "value": {
+              "value": 3,
+              "source": {
+                "name": "Item file hawkmoon",
+                "retrieved": "2026-11-11",
+                "status": "derived",
+                "note": "Derived: stage 3 of the table",
+                "quote": "at 1|2|3|...|7| stacks"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "paracausal-3" }]
+      },
+      {
+        "id": "paracausal-4",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "mode", "id": "round", "is": "final" },
+          {
+            "type": "counter",
+            "id": "charge",
+            "op": "=",
+            "value": {
+              "value": 4,
+              "source": {
+                "name": "Item file hawkmoon",
+                "retrieved": "2026-11-11",
+                "status": "derived",
+                "note": "Derived: stage 4 of the table (Clarity writes the 4th to 6th as dots)",
+                "quote": "at 1|2|3|...|7| stacks"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "paracausal-4" }]
+      },
+      {
+        "id": "paracausal-5",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "mode", "id": "round", "is": "final" },
+          {
+            "type": "counter",
+            "id": "charge",
+            "op": "=",
+            "value": {
+              "value": 5,
+              "source": {
+                "name": "Item file hawkmoon",
+                "retrieved": "2026-11-11",
+                "status": "derived",
+                "note": "Derived: stage 5 of the table",
+                "quote": "at 1|2|3|...|7| stacks"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "paracausal-5" }]
+      },
+      {
+        "id": "paracausal-6",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "mode", "id": "round", "is": "final" },
+          {
+            "type": "counter",
+            "id": "charge",
+            "op": "=",
+            "value": {
+              "value": 6,
+              "source": {
+                "name": "Item file hawkmoon",
+                "retrieved": "2026-11-11",
+                "status": "derived",
+                "note": "Derived: stage 6 of the table",
+                "quote": "at 1|2|3|...|7| stacks"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "paracausal-6" }]
+      },
+      {
+        "id": "paracausal-7",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "mode", "id": "round", "is": "final" },
+          {
+            "type": "counter",
+            "id": "charge",
+            "op": "=",
+            "value": {
+              "value": 7,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "Maximum of 7 stacks"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "paracausal-7" }]
+      },
+      {
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "rounds-count",
+        "on": { "on": "shot" },
+        "do": [{ "type": "addStacks", "counter": "rounds" }]
+      },
+      {
+        "id": "charge-count",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "charge",
+            "op": "<",
+            "value": {
+              "value": 7,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "Maximum of 7 stacks"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "charge" }],
+        "source": {
+          "name": "Item file hawkmoon",
+          "retrieved": "2026-11-11",
+          "status": "derived",
+          "note": "Derived: every shot of the item lands a precision hit (one hit per shot), so the stack counts on the shot; the next shot sees it. On the hit it would come after the reload of the final round. Kills need adds (ADR 0015)",
+          "quote": "On kill or Precision Hit, gain one stack of Paracausal Charge"
+        }
+      },
+      {
+        "id": "reload-reset",
+        "on": { "on": "reload", "edge": "start" },
+        "do": [
+          { "type": "resetCounter", "counter": "rounds" },
+          { "type": "resetCounter", "counter": "charge" },
+          { "type": "setMode", "mode": "round", "to": "normal" }
+        ],
+        "source": {
+          "name": "Item file hawkmoon",
+          "retrieved": "2026-11-11",
+          "status": "derived",
+          "note": "Derived: the magazine starts over with the reload",
+          "quote": "Stacks are removed on reload or any full magazine refill"
+        }
+      }
+    ],
+    "buffs": [
+      {
+        "id": "charge-1",
+        "name": "Paracausal Charge 1",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.21,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Paracausal Shot](\"21%|\") / 100 (percent to factor); $clarity[Paracausal Shot](\"21%|\") = 21 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 1,
+          "source": {
+            "name": "Item file hawkmoon",
+            "retrieved": "2026-11-11",
+            "status": "derived",
+            "note": "Derived: the buff belongs to its own shot only (the next shot has its own stage), so it lasts one millisecond",
+            "quote": "increased damage against Combatants at 1|2|3|....|7| Stacks"
+          }
+        }
+      },
+      {
+        "id": "charge-2",
+        "name": "Paracausal Charge 2",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.365,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Paracausal Shot](\"|36.5%|\") / 100 (percent to factor); $clarity[Paracausal Shot](\"|36.5%|\") = 36.5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 1,
+          "source": {
+            "name": "Item file hawkmoon",
+            "retrieved": "2026-11-11",
+            "status": "derived",
+            "note": "Derived: one shot only, as charge-1"
+          }
+        }
+      },
+      {
+        "id": "charge-3",
+        "name": "Paracausal Charge 3",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.48,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Paracausal Shot](\"|48%|\") / 100 (percent to factor); $clarity[Paracausal Shot](\"|48%|\") = 48 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 1,
+          "source": {
+            "name": "Item file hawkmoon",
+            "retrieved": "2026-11-11",
+            "status": "derived",
+            "note": "Derived: one shot only, as charge-1"
+          }
+        }
+      },
+      {
+        "id": "charge-4",
+        "name": "Paracausal Charge 4",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.55,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Paracausal Shot](\"|55%|\") / 100 (percent to factor); $clarity[Paracausal Shot](\"|55%|\") = 55 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 1,
+          "source": {
+            "name": "Item file hawkmoon",
+            "retrieved": "2026-11-11",
+            "status": "derived",
+            "note": "Derived: one shot only, as charge-1"
+          }
+        }
+      },
+      {
+        "id": "charge-5",
+        "name": "Paracausal Charge 5",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.6,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Paracausal Shot](\"|60%|\") / 100 (percent to factor); $clarity[Paracausal Shot](\"|60%|\") = 60 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 1,
+          "source": {
+            "name": "Item file hawkmoon",
+            "retrieved": "2026-11-11",
+            "status": "derived",
+            "note": "Derived: one shot only, as charge-1"
+          }
+        }
+      },
+      {
+        "id": "charge-6",
+        "name": "Paracausal Charge 6",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.63,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Paracausal Shot](\"|63%|\") / 100 (percent to factor); $clarity[Paracausal Shot](\"|63%|\") = 63 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 1,
+          "source": {
+            "name": "Item file hawkmoon",
+            "retrieved": "2026-11-11",
+            "status": "derived",
+            "note": "Derived: one shot only, as charge-1"
+          }
+        }
+      },
+      {
+        "id": "charge-7",
+        "name": "Paracausal Charge 7",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.66,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Paracausal Shot](\"|66%\") / 100 (percent to factor); $clarity[Paracausal Shot](\"|66%\") = 66 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 1,
+          "source": {
+            "name": "Item file hawkmoon",
+            "retrieved": "2026-11-11",
+            "status": "derived",
+            "note": "Derived: one shot only, as charge-1"
+          }
+        }
+      },
+      {
+        "id": "paracausal-1",
+        "name": "Paracausal Shot 1",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 3.92,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Paracausal Shot](\"PvE: 292%\") / 100 (percent to factor); $clarity[Paracausal Shot](\"PvE: 292%\") = 292 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 1,
+          "source": {
+            "name": "Item file hawkmoon",
+            "retrieved": "2026-11-11",
+            "status": "derived",
+            "note": "Derived: the bonus belongs to the final round only, so it lasts one millisecond",
+            "quote": "turns into Paracausal Shot on the final round of the magazine"
+          }
+        }
+      },
+      {
+        "id": "paracausal-2",
+        "name": "Paracausal Shot 2",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 4,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Paracausal Shot](\"|300%|\") / 100 (percent to factor); $clarity[Paracausal Shot](\"|300%|\") = 300 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 1,
+          "source": {
+            "name": "Item file hawkmoon",
+            "retrieved": "2026-11-11",
+            "status": "derived",
+            "note": "Derived: the final round only, as paracausal-1"
+          }
+        }
+      },
+      {
+        "id": "paracausal-3",
+        "name": "Paracausal Shot 3",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 4.4,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Paracausal Shot](\"|340%|\") / 100 (percent to factor); $clarity[Paracausal Shot](\"|340%|\") = 340 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 1,
+          "source": {
+            "name": "Item file hawkmoon",
+            "retrieved": "2026-11-11",
+            "status": "derived",
+            "note": "Derived: the final round only, as paracausal-1"
+          }
+        }
+      },
+      {
+        "id": "paracausal-4",
+        "name": "Paracausal Shot 4",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 5.25,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Paracausal Shot](\"|425%|\") / 100 (percent to factor); $clarity[Paracausal Shot](\"|425%|\") = 425 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 1,
+          "source": {
+            "name": "Item file hawkmoon",
+            "retrieved": "2026-11-11",
+            "status": "derived",
+            "note": "Derived: the final round only, as paracausal-1"
+          }
+        }
+      },
+      {
+        "id": "paracausal-5",
+        "name": "Paracausal Shot 5",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 7.67,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Paracausal Shot](\"|667%|\") / 100 (percent to factor); $clarity[Paracausal Shot](\"|667%|\") = 667 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 1,
+          "source": {
+            "name": "Item file hawkmoon",
+            "retrieved": "2026-11-11",
+            "status": "derived",
+            "note": "Derived: the final round only, as paracausal-1"
+          }
+        }
+      },
+      {
+        "id": "paracausal-6",
+        "name": "Paracausal Shot 6",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 11.71,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Paracausal Shot](\"|1071%|\") / 100 (percent to factor); $clarity[Paracausal Shot](\"|1071%|\") = 1071 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 1,
+          "source": {
+            "name": "Item file hawkmoon",
+            "retrieved": "2026-11-11",
+            "status": "derived",
+            "note": "Derived: the final round only, as paracausal-1"
+          }
+        }
+      },
+      {
+        "id": "paracausal-7",
+        "name": "Paracausal Shot 7",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 18.36,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Paracausal Shot](\"|1736%\") / 100 (percent to factor); $clarity[Paracausal Shot](\"|1736%\") = 1736 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Shot)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 1,
+          "source": {
+            "name": "Item file hawkmoon",
+            "retrieved": "2026-11-11",
+            "status": "derived",
+            "note": "Derived: the final round only, as paracausal-1"
+          }
+        }
       }
     ],
     "intrinsics": [
@@ -29057,13 +29898,13 @@
       }
     },
     "fireRateRpm": {
-      "value": 279.597,
+      "value": 72,
       "source": {
         "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-sniper-rifle-whisper-of-the-worm",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "timing.fireRateRpm: Derived: (Time to Empty 31.7 s − 12 reloads × 1.98 s) ÷ 37 intervals (ADR 0013)"
+        "note": "rpm"
       }
     },
     "magazine": {
@@ -29144,9 +29985,110 @@
     ],
     "rules": [
       {
+        "id": "whispered-breathing",
+        "on": { "on": "phaseStart" },
+        "if": [{ "type": "hasItem", "id": "catalyst" }],
+        "do": [{ "type": "grantBuff", "buff": "whispered-breathing" }],
+        "source": {
+          "name": "Item file whisper-of-the-worm",
+          "retrieved": "2026-11-11",
+          "status": "derived",
+          "note": "Derived: a sniper stays in ADS for the whole phase, so the buff is built before and holds to the end (optimal play)",
+          "quote": "grants 'Whispered Breathing' until you leave ADS"
+        }
+      },
+      {
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "white-nail-count",
+        "on": { "on": "hit", "part": "shot", "precision": true },
+        "if": [
+          {
+            "type": "counter",
+            "id": "white-nail",
+            "op": "<",
+            "value": {
+              "value": 2,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): White Nail IV",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[White Nail IV](\"Landing 3 Precision Hits\") - 1 (the counter stands at 0 and 1 for the hits before the 3rd); $clarity[White Nail IV](\"Landing 3 Precision Hits\") = 3 (Clarity (Live-Clarity-Database, descriptions/clarity.json): White Nail IV)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "white-nail" }]
+      },
+      {
+        "id": "white-nail",
+        "on": { "on": "hit", "part": "shot", "precision": true },
+        "if": [
+          {
+            "type": "counter",
+            "id": "white-nail",
+            "op": "=",
+            "value": {
+              "value": 2,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): White Nail IV",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[White Nail IV](\"Landing 3 Precision Hits\") - 1 (the 3rd precision hit); $clarity[White Nail IV](\"Landing 3 Precision Hits\") = 3 (Clarity (Live-Clarity-Database, descriptions/clarity.json): White Nail IV)"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "white-nail" },
+          { "type": "refill" }
+        ],
+        "source": {
+          "name": "Item file whisper-of-the-worm",
+          "retrieved": "2026-11-11",
+          "status": "derived",
+          "note": "Derived: shots at Quantum's 72 RPM are 0.83 s apart, within the 2.5 s; with a magazine of 3 the weapon never reloads. Quantum's 38 shots already hold the ammo from thin air",
+          "quote": "refills the magazine"
+        }
+      }
+    ],
+    "buffs": [
+      {
+        "id": "whispered-breathing",
+        "name": "Whispered Breathing",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.35,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Whispered Breathing",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Whispered Breathing](\"35% increased precision damage\") / 100 (percent to factor; every hit of the item is a precision hit); $clarity[Whispered Breathing](\"35% increased precision damage\") = 35 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Whispered Breathing)"
+              }
+            },
+            "damageSources": ["weapon"]
+          },
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.108,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Whispered Breathing",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Whispered Breathing](\"additional 10.77%\") / 100 (percent to factor; the boss is a combatant); $clarity[Whispered Breathing](\"additional 10.77%\") = 10.77 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Whispered Breathing)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ]
       }
     ],
     "intrinsics": [
@@ -29198,7 +30140,7 @@
     "catalyst": {
       "name": "Whisper Catalyst, Whispered Breathing",
       "description": "Grants 30 Reload Speed.\nAiming Down Sights for 1.2 seconds without shooting grants 'Whispered Breathing' until you leave ADS.\nWhispered Breathing grants 35% increased precision damage, and an additional 10.77% increased damage against combatants.\nGrants 30 Reload Speed.\nAiming Down Sights for 1.2 seconds without firing grants 'Whispered Breathing' until you leave ADS.\nWhispered Breathing grants 35% increased precision damage, and an additional 10.77% increased damage against PvE Combatants.",
-      "effect": "unknown"
+      "effect": "damage"
     },
     "reloadDurationIncluded": {
       "value": 0.9,

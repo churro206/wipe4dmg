@@ -41,11 +41,129 @@
       "delivery": "impact"
     }
   },
+  "buffs": [
+    { "id": "charge-1", "name": "Paracausal Charge 1", "modifiers": [{ "type": "multiplier", "bucketId": "weaponPerk", "multiplier": { "expr": "1 + $clarity[Paracausal Shot](\"21%|\") / 100", "note": "percent to factor" }, "damageSources": ["weapon"] }], "durationMs": { "value": 1, "source": { "name": "Item file hawkmoon", "retrieved": "2026-11-11", "status": "derived", "quote": "increased damage against Combatants at 1|2|3|....|7| Stacks", "note": "Derived: the buff belongs to its own shot only (the next shot has its own stage), so it lasts one millisecond" } } },
+    { "id": "charge-2", "name": "Paracausal Charge 2", "modifiers": [{ "type": "multiplier", "bucketId": "weaponPerk", "multiplier": { "expr": "1 + $clarity[Paracausal Shot](\"|36.5%|\") / 100", "note": "percent to factor" }, "damageSources": ["weapon"] }], "durationMs": { "value": 1, "source": { "name": "Item file hawkmoon", "retrieved": "2026-11-11", "status": "derived", "note": "Derived: one shot only, as charge-1" } } },
+    { "id": "charge-3", "name": "Paracausal Charge 3", "modifiers": [{ "type": "multiplier", "bucketId": "weaponPerk", "multiplier": { "expr": "1 + $clarity[Paracausal Shot](\"|48%|\") / 100", "note": "percent to factor" }, "damageSources": ["weapon"] }], "durationMs": { "value": 1, "source": { "name": "Item file hawkmoon", "retrieved": "2026-11-11", "status": "derived", "note": "Derived: one shot only, as charge-1" } } },
+    { "id": "charge-4", "name": "Paracausal Charge 4", "modifiers": [{ "type": "multiplier", "bucketId": "weaponPerk", "multiplier": { "expr": "1 + $clarity[Paracausal Shot](\"|55%|\") / 100", "note": "percent to factor" }, "damageSources": ["weapon"] }], "durationMs": { "value": 1, "source": { "name": "Item file hawkmoon", "retrieved": "2026-11-11", "status": "derived", "note": "Derived: one shot only, as charge-1" } } },
+    { "id": "charge-5", "name": "Paracausal Charge 5", "modifiers": [{ "type": "multiplier", "bucketId": "weaponPerk", "multiplier": { "expr": "1 + $clarity[Paracausal Shot](\"|60%|\") / 100", "note": "percent to factor" }, "damageSources": ["weapon"] }], "durationMs": { "value": 1, "source": { "name": "Item file hawkmoon", "retrieved": "2026-11-11", "status": "derived", "note": "Derived: one shot only, as charge-1" } } },
+    { "id": "charge-6", "name": "Paracausal Charge 6", "modifiers": [{ "type": "multiplier", "bucketId": "weaponPerk", "multiplier": { "expr": "1 + $clarity[Paracausal Shot](\"|63%|\") / 100", "note": "percent to factor" }, "damageSources": ["weapon"] }], "durationMs": { "value": 1, "source": { "name": "Item file hawkmoon", "retrieved": "2026-11-11", "status": "derived", "note": "Derived: one shot only, as charge-1" } } },
+    { "id": "charge-7", "name": "Paracausal Charge 7", "modifiers": [{ "type": "multiplier", "bucketId": "weaponPerk", "multiplier": { "expr": "1 + $clarity[Paracausal Shot](\"|66%\") / 100", "note": "percent to factor" }, "damageSources": ["weapon"] }], "durationMs": { "value": 1, "source": { "name": "Item file hawkmoon", "retrieved": "2026-11-11", "status": "derived", "note": "Derived: one shot only, as charge-1" } } },
+    { "id": "paracausal-1", "name": "Paracausal Shot 1", "modifiers": [{ "type": "multiplier", "bucketId": "weaponPerk", "multiplier": { "expr": "1 + $clarity[Paracausal Shot](\"PvE: 292%\") / 100", "note": "percent to factor" }, "damageSources": ["weapon"] }], "durationMs": { "value": 1, "source": { "name": "Item file hawkmoon", "retrieved": "2026-11-11", "status": "derived", "quote": "turns into Paracausal Shot on the final round of the magazine", "note": "Derived: the bonus belongs to the final round only, so it lasts one millisecond" } } },
+    { "id": "paracausal-2", "name": "Paracausal Shot 2", "modifiers": [{ "type": "multiplier", "bucketId": "weaponPerk", "multiplier": { "expr": "1 + $clarity[Paracausal Shot](\"|300%|\") / 100", "note": "percent to factor" }, "damageSources": ["weapon"] }], "durationMs": { "value": 1, "source": { "name": "Item file hawkmoon", "retrieved": "2026-11-11", "status": "derived", "note": "Derived: the final round only, as paracausal-1" } } },
+    { "id": "paracausal-3", "name": "Paracausal Shot 3", "modifiers": [{ "type": "multiplier", "bucketId": "weaponPerk", "multiplier": { "expr": "1 + $clarity[Paracausal Shot](\"|340%|\") / 100", "note": "percent to factor" }, "damageSources": ["weapon"] }], "durationMs": { "value": 1, "source": { "name": "Item file hawkmoon", "retrieved": "2026-11-11", "status": "derived", "note": "Derived: the final round only, as paracausal-1" } } },
+    { "id": "paracausal-4", "name": "Paracausal Shot 4", "modifiers": [{ "type": "multiplier", "bucketId": "weaponPerk", "multiplier": { "expr": "1 + $clarity[Paracausal Shot](\"|425%|\") / 100", "note": "percent to factor" }, "damageSources": ["weapon"] }], "durationMs": { "value": 1, "source": { "name": "Item file hawkmoon", "retrieved": "2026-11-11", "status": "derived", "note": "Derived: the final round only, as paracausal-1" } } },
+    { "id": "paracausal-5", "name": "Paracausal Shot 5", "modifiers": [{ "type": "multiplier", "bucketId": "weaponPerk", "multiplier": { "expr": "1 + $clarity[Paracausal Shot](\"|667%|\") / 100", "note": "percent to factor" }, "damageSources": ["weapon"] }], "durationMs": { "value": 1, "source": { "name": "Item file hawkmoon", "retrieved": "2026-11-11", "status": "derived", "note": "Derived: the final round only, as paracausal-1" } } },
+    { "id": "paracausal-6", "name": "Paracausal Shot 6", "modifiers": [{ "type": "multiplier", "bucketId": "weaponPerk", "multiplier": { "expr": "1 + $clarity[Paracausal Shot](\"|1071%|\") / 100", "note": "percent to factor" }, "damageSources": ["weapon"] }], "durationMs": { "value": 1, "source": { "name": "Item file hawkmoon", "retrieved": "2026-11-11", "status": "derived", "note": "Derived: the final round only, as paracausal-1" } } },
+    { "id": "paracausal-7", "name": "Paracausal Shot 7", "modifiers": [{ "type": "multiplier", "bucketId": "weaponPerk", "multiplier": { "expr": "1 + $clarity[Paracausal Shot](\"|1736%\") / 100", "note": "percent to factor" }, "damageSources": ["weapon"] }], "durationMs": { "value": 1, "source": { "name": "Item file hawkmoon", "retrieved": "2026-11-11", "status": "derived", "note": "Derived: the final round only, as paracausal-1" } } }
+  ],
   "rules": [
+    {
+      "id": "final-round",
+      "on": { "on": "shot" },
+      "if": [
+        { "type": "hasItem", "id": "catalyst", "not": true },
+        {
+          "type": "counter",
+          "id": "rounds",
+          "op": "=",
+          "value": {
+            "expr": "$quantum[primaries-hand-cannon-hawkmoon-cata].timing.magazine - $clarity[Hawkmoon Catalyst](\"Magazine Size by 1\") - 2",
+            "note": "rounds fired before the second to last one of the magazine of 8"
+          }
+        }
+      ],
+      "do": [{ "type": "setMode", "mode": "round", "to": "final" }],
+      "source": {
+        "name": "Item file hawkmoon",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "note": "Derived: the second to last shot marks the next one as the final round; the conditions of a shot see the state before it (engine), so the mark comes one shot early and the reload clears it"
+      }
+    },
+    {
+      "id": "final-round-catalyst",
+      "on": { "on": "shot" },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        {
+          "type": "counter",
+          "id": "rounds",
+          "op": "=",
+          "value": {
+            "expr": "$quantum[primaries-hand-cannon-hawkmoon-cata].timing.magazine - 2",
+            "note": "rounds fired before the second to last one of the catalyst magazine of 9"
+          }
+        }
+      ],
+      "do": [{ "type": "setMode", "mode": "round", "to": "final" }],
+      "source": {
+        "name": "Item file hawkmoon",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "note": "Derived: as final-round, with the catalyst magazine"
+      }
+    },
+    { "id": "charge-1", "on": { "on": "shot" }, "if": [{ "type": "mode", "id": "round", "is": "final", "not": true }, { "type": "counter", "id": "charge", "op": "=", "value": { "value": 1, "source": { "name": "Item file hawkmoon", "retrieved": "2026-11-11", "status": "derived", "quote": "at 1|2|3|....|7| Stacks", "note": "Derived: stage 1 of the table" } } }], "do": [{ "type": "grantBuff", "buff": "charge-1" }] },
+    { "id": "charge-2", "on": { "on": "shot" }, "if": [{ "type": "mode", "id": "round", "is": "final", "not": true }, { "type": "counter", "id": "charge", "op": "=", "value": { "value": 2, "source": { "name": "Item file hawkmoon", "retrieved": "2026-11-11", "status": "derived", "quote": "at 1|2|3|....|7| Stacks", "note": "Derived: stage 2 of the table" } } }], "do": [{ "type": "grantBuff", "buff": "charge-2" }] },
+    { "id": "charge-3", "on": { "on": "shot" }, "if": [{ "type": "mode", "id": "round", "is": "final", "not": true }, { "type": "counter", "id": "charge", "op": "=", "value": { "value": 3, "source": { "name": "Item file hawkmoon", "retrieved": "2026-11-11", "status": "derived", "quote": "at 1|2|3|....|7| Stacks", "note": "Derived: stage 3 of the table" } } }], "do": [{ "type": "grantBuff", "buff": "charge-3" }] },
+    { "id": "charge-4", "on": { "on": "shot" }, "if": [{ "type": "mode", "id": "round", "is": "final", "not": true }, { "type": "counter", "id": "charge", "op": "=", "value": { "value": 4, "source": { "name": "Item file hawkmoon", "retrieved": "2026-11-11", "status": "derived", "quote": "at 1|2|3|....|7| Stacks", "note": "Derived: stage 4 of the table (Clarity writes the 4th to 6th as dots)" } } }], "do": [{ "type": "grantBuff", "buff": "charge-4" }] },
+    { "id": "charge-5", "on": { "on": "shot" }, "if": [{ "type": "mode", "id": "round", "is": "final", "not": true }, { "type": "counter", "id": "charge", "op": "=", "value": { "value": 5, "source": { "name": "Item file hawkmoon", "retrieved": "2026-11-11", "status": "derived", "quote": "at 1|2|3|....|7| Stacks", "note": "Derived: stage 5 of the table" } } }], "do": [{ "type": "grantBuff", "buff": "charge-5" }] },
+    { "id": "charge-6", "on": { "on": "shot" }, "if": [{ "type": "mode", "id": "round", "is": "final", "not": true }, { "type": "counter", "id": "charge", "op": "=", "value": { "value": 6, "source": { "name": "Item file hawkmoon", "retrieved": "2026-11-11", "status": "derived", "quote": "at 1|2|3|....|7| Stacks", "note": "Derived: stage 6 of the table" } } }], "do": [{ "type": "grantBuff", "buff": "charge-6" }] },
+    { "id": "charge-7", "on": { "on": "shot" }, "if": [{ "type": "mode", "id": "round", "is": "final", "not": true }, { "type": "counter", "id": "charge", "op": "=", "value": "$clarity[Paracausal Shot](\"Maximum of 7 stacks\")" }], "do": [{ "type": "grantBuff", "buff": "charge-7" }] },
+    { "id": "paracausal-1", "on": { "on": "shot" }, "if": [{ "type": "mode", "id": "round", "is": "final" }, { "type": "counter", "id": "charge", "op": "=", "value": { "value": 1, "source": { "name": "Item file hawkmoon", "retrieved": "2026-11-11", "status": "derived", "quote": "at 1|2|3|...|7| stacks", "note": "Derived: stage 1 of the table" } } }], "do": [{ "type": "grantBuff", "buff": "paracausal-1" }] },
+    { "id": "paracausal-2", "on": { "on": "shot" }, "if": [{ "type": "mode", "id": "round", "is": "final" }, { "type": "counter", "id": "charge", "op": "=", "value": { "value": 2, "source": { "name": "Item file hawkmoon", "retrieved": "2026-11-11", "status": "derived", "quote": "at 1|2|3|...|7| stacks", "note": "Derived: stage 2 of the table" } } }], "do": [{ "type": "grantBuff", "buff": "paracausal-2" }] },
+    { "id": "paracausal-3", "on": { "on": "shot" }, "if": [{ "type": "mode", "id": "round", "is": "final" }, { "type": "counter", "id": "charge", "op": "=", "value": { "value": 3, "source": { "name": "Item file hawkmoon", "retrieved": "2026-11-11", "status": "derived", "quote": "at 1|2|3|...|7| stacks", "note": "Derived: stage 3 of the table" } } }], "do": [{ "type": "grantBuff", "buff": "paracausal-3" }] },
+    { "id": "paracausal-4", "on": { "on": "shot" }, "if": [{ "type": "mode", "id": "round", "is": "final" }, { "type": "counter", "id": "charge", "op": "=", "value": { "value": 4, "source": { "name": "Item file hawkmoon", "retrieved": "2026-11-11", "status": "derived", "quote": "at 1|2|3|...|7| stacks", "note": "Derived: stage 4 of the table (Clarity writes the 4th to 6th as dots)" } } }], "do": [{ "type": "grantBuff", "buff": "paracausal-4" }] },
+    { "id": "paracausal-5", "on": { "on": "shot" }, "if": [{ "type": "mode", "id": "round", "is": "final" }, { "type": "counter", "id": "charge", "op": "=", "value": { "value": 5, "source": { "name": "Item file hawkmoon", "retrieved": "2026-11-11", "status": "derived", "quote": "at 1|2|3|...|7| stacks", "note": "Derived: stage 5 of the table" } } }], "do": [{ "type": "grantBuff", "buff": "paracausal-5" }] },
+    { "id": "paracausal-6", "on": { "on": "shot" }, "if": [{ "type": "mode", "id": "round", "is": "final" }, { "type": "counter", "id": "charge", "op": "=", "value": { "value": 6, "source": { "name": "Item file hawkmoon", "retrieved": "2026-11-11", "status": "derived", "quote": "at 1|2|3|...|7| stacks", "note": "Derived: stage 6 of the table" } } }], "do": [{ "type": "grantBuff", "buff": "paracausal-6" }] },
+    { "id": "paracausal-7", "on": { "on": "shot" }, "if": [{ "type": "mode", "id": "round", "is": "final" }, { "type": "counter", "id": "charge", "op": "=", "value": "$clarity[Paracausal Shot](\"Maximum of 7 stacks\")" }], "do": [{ "type": "grantBuff", "buff": "paracausal-7" }] },
     {
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "rounds-count",
+      "on": { "on": "shot" },
+      "do": [{ "type": "addStacks", "counter": "rounds" }]
+    },
+    {
+      "id": "charge-count",
+      "on": { "on": "shot" },
+      "if": [{ "type": "counter", "id": "charge", "op": "<", "value": "$clarity[Paracausal Shot](\"Maximum of 7 stacks\")" }],
+      "do": [{ "type": "addStacks", "counter": "charge" }],
+      "source": {
+        "name": "Item file hawkmoon",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "On kill or Precision Hit, gain one stack of Paracausal Charge",
+        "note": "Derived: every shot of the item lands a precision hit (one hit per shot), so the stack counts on the shot; the next shot sees it. On the hit it would come after the reload of the final round. Kills need adds (ADR 0015)"
+      }
+    },
+    {
+      "id": "reload-reset",
+      "on": { "on": "reload", "edge": "start" },
+      "do": [
+        { "type": "resetCounter", "counter": "rounds" },
+        { "type": "resetCounter", "counter": "charge" },
+        { "type": "setMode", "mode": "round", "to": "normal" }
+      ],
+      "source": {
+        "name": "Item file hawkmoon",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "Stacks are removed on reload or any full magazine refill",
+        "note": "Derived: the magazine starts over with the reload"
+      }
     }
+  ],
+  "notModelled": [
+    { "quote": "Paracausal Charge grants increased damage against Combatants at", "reason": "carried by the rules charge-1 to charge-7 (the stage numbers)" },
+    { "quote": "Paracausal Shot's damage bonus at", "reason": "carried by the rules paracausal-1 to paracausal-7 (the stage numbers)" },
+    { "quote": "PvP: 30%", "reason": "PvP only" },
+    { "quote": "Grants the following benefits at", "reason": "carried by the Quantum cata row (timing; range and handling are no damage against a boss)" },
+    { "quote": "8|14|22|26|28|29|30 Range", "reason": "no damage against a boss (range)" },
+    { "quote": "15|25|35|40|50|50|50 Reload Speed", "reason": "carried by the Quantum cata row (timing)" }
   ]
 }

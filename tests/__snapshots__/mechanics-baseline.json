@@ -487,14 +487,14 @@
       "600s buffed catalyst": 230612.79
     },
     "hawkmoon": {
-      "30s plain": 4656,
-      "30s buffed": 7838.84,
-      "30s plain catalyst": 4947,
-      "30s buffed catalyst": 8328.77,
-      "600s plain": 92053,
-      "600s buffed": 154980.43,
-      "600s plain catalyst": 95351,
-      "600s buffed catalyst": 160532.94
+      "30s plain": 16409.49,
+      "30s buffed": 27627.02,
+      "30s plain catalyst": 15275.56,
+      "30s buffed catalyst": 25717.93,
+      "600s plain": 323360.65,
+      "600s buffed": 544410,
+      "600s plain catalyst": 315871.28,
+      "600s buffed catalyst": 531800.9
     },
     "heartshadow": {
       "30s plain": 38568.32,
@@ -1277,14 +1277,14 @@
       "600s buffed catalyst": 74769.41
     },
     "whisper-of-the-worm": {
-      "30s plain": 30600,
-      "30s buffed": 51518.16,
-      "30s plain catalyst": 30600,
-      "30s buffed catalyst": 51518.16,
+      "30s plain": 31450,
+      "30s buffed": 52949.22,
+      "30s plain catalyst": 47042.91,
+      "30s buffed catalyst": 79201.44,
       "600s plain": 32300,
       "600s buffed": 54380.28,
-      "600s plain catalyst": 32300,
-      "600s buffed catalyst": 54380.28
+      "600s plain catalyst": 48314.34,
+      "600s buffed catalyst": 81342.02
     },
     "wicked-implement": {
       "30s plain": 6344,

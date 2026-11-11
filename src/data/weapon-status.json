@@ -4278,7 +4278,7 @@
         "check": "no independent check",
         "rows": []
       },
-      "planBlock": "W6d"
+      "planBlock": null
     },
     {
       "id": "fighting-lion",
@@ -5276,49 +5276,95 @@
     {
       "id": "hawkmoon",
       "name": "Hawkmoon",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
-          "s10": 1552,
-          "s30": 4656,
-          "s60": 9312
+          "s10": 5469.8,
+          "s30": 16409.5,
+          "s60": 32819
         },
         "catalyst": {
-          "s10": 1746,
-          "s30": 4947,
-          "s60": 9603
+          "s10": 5791.9,
+          "s30": 15275.6,
+          "s60": 31855.3
         }
       },
       "cause": {
-        "class": "mechanic-missing",
-        "why": "Everything on top of the hits ×0.31 against the Quantum row."
+        "class": "wrong-row",
+        "why": "Another Aegis row fits, \"hand-cannon-hawkmoon-illegally-modded-holster-paracausal-shot-full-mag\" is +42.3 %: it measures something else than the model."
       },
-      "ruleShares": [],
+      "ruleShares": [
+        {
+          "id": "final-round",
+          "share": 0.5923
+        },
+        {
+          "id": "charge-1",
+          "share": 0.0074
+        },
+        {
+          "id": "charge-2",
+          "share": 0.0129
+        },
+        {
+          "id": "charge-3",
+          "share": 0.017
+        },
+        {
+          "id": "charge-4",
+          "share": 0.0195
+        },
+        {
+          "id": "charge-5",
+          "share": 0.0213
+        },
+        {
+          "id": "charge-6",
+          "share": 0.0223
+        },
+        {
+          "id": "paracausal-7",
+          "share": 0.6157
+        },
+        {
+          "id": "rounds-count",
+          "share": 0.5923
+        },
+        {
+          "id": "charge-count",
+          "share": 0.7163
+        },
+        {
+          "id": "reload-reset",
+          "share": -4.034
+        }
+      ],
       "sentences": [
         {
           "text": "Maximum of 7 stacks.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Paracausal Charge grants increased damage against Combatants at 1|2|3|....|7| Stacks:",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "21%|36.5%|48%|55%|60%|63%|66%",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Paracausal Shot's damage bonus at 1|2|3|...|7| stacks:",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "PvE: 292%|300%|340%|425%|667%|1071%|1736%",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "PvP: 30%|33%|46%|80.5%|154%|288%|509%",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "PvP only"
         },
         {
           "text": "Increases Magazine Size by 1 (8🠚9).",
@@ -5326,15 +5372,17 @@
         },
         {
           "text": "Grants the following benefits at 1|2|3|...|7| stacks of Paracausal Charge:",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "• 8|14|22|26|28|29|30 Range",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (range)"
         },
         {
           "text": "• 15|25|35|40|50|50|50 Reload Speed",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum cata row (timing)"
         }
       ],
       "quantum": {
@@ -5342,8 +5390,8 @@
         "rowNote": "x7 Paracausal Shot on final round",
         "basis": "magazine",
         "measured": 2785,
-        "model": 873,
-        "deviation": -0.6865,
+        "model": 2831.9,
+        "deviation": 0.0168,
         "circular": false,
         "catalystRow": true,
         "strippedRow": false,
@@ -5351,7 +5399,7 @@
           "shots": 1,
           "hitsPerShot": 1,
           "damagePerHit": 1,
-          "mechanic": 0.3134649910233393,
+          "mechanic": 1.0168456014362657,
           "rowPlain": false
         }
       },
@@ -5373,8 +5421,8 @@
               "full mag"
             ],
             "measured": 4617.7,
-            "model": 1370.8,
-            "deviation": -0.7031
+            "model": 6569.4,
+            "deviation": 0.4227
           },
           {
             "row": "hand-cannon-hawkmoon-illegally-modded-holster-paracausal-shot-full-mag-pre-stacked-using-heavy-burst",
@@ -5385,8 +5433,8 @@
               "pre-stacked using heavy burst"
             ],
             "measured": 7947.3,
-            "model": 1370.8,
-            "deviation": -0.8275
+            "model": 6569.4,
+            "deviation": -0.1734
           }
         ]
       },
@@ -13284,7 +13332,7 @@
         "check": "no independent check",
         "rows": []
       },
-      "planBlock": "W6d"
+      "planBlock": null
     },
     {
       "id": "two-tailed-fox",
@@ -13995,121 +14043,138 @@
     {
       "id": "whisper-of-the-worm",
       "name": "Whisper of the Worm",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
-          "s10": 10200,
-          "s30": 30600,
+          "s10": 11050,
+          "s30": 31450,
           "s60": 32300
         },
         "catalyst": {
-          "s10": 10200,
-          "s30": 30600,
-          "s60": 32300
+          "s10": 16528.6,
+          "s30": 47042.9,
+          "s60": 48314.3
         }
       },
       "cause": {
-        "class": "mechanic-missing",
-        "why": "Aegis -32.1 % with Whispered Breathing."
+        "class": "ok",
+        "why": "Within the limit: Aegis +1.6 %."
       },
       "ruleShares": [],
       "sentences": [
         {
           "text": "Grants 35% Flinch Resistance after 1 second of Aiming Down Sights (ADS) without firing.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (flinch)"
         },
         {
           "text": "Weapon Hits grant Stacks of Enlightened Action for 2 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (handling; reload speed, but White Nail refills before every reload)"
         },
         {
           "text": "Maximum of 12 Stacks.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (handling; reload speed, but White Nail refills before every reload)"
         },
         {
           "text": "Stat bonuses at 1|2|…|12 Stacks:",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (handling; reload speed, but White Nail refills before every reload)"
         },
         {
           "text": "2|7|12|15|20|25|30|35|38|40|45|50 Handling and Reload Speed",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (handling; reload speed, but White Nail refills before every reload)"
         },
         {
           "text": "• Hand Cannons: 3 Stacks",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (handling, other weapons)"
         },
         {
           "text": "• Automatic Weapons: 1 Stack",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (handling, other weapons)"
         },
         {
           "text": "• 50 Reload Speed",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (White Nail refills before every reload)"
         },
         {
           "text": "• 0.8x Reload Duration Multiplier",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (White Nail refills before every reload)"
         },
         {
           "text": "• 0.8x Ready/Stow Duration Multiplier",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (handling)"
         },
         {
           "text": "Passively grants 20 Ammo Generation stat.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (ammo pickup)"
         },
         {
           "text": "(50% more than 1 Ammo Generation armor mod)",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (ammo pickup)"
         },
         {
           "text": "Grants 30 Reload Speed.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (White Nail refills before every reload)"
         },
         {
           "text": "Aiming Down Sights for 1.2 seconds without shooting grants 'Whispered Breathing' until you leave ADS.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Whispered Breathing grants 35% increased precision damage, and an additional 10.77% increased damage against combatants.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Grants 30 Reload Speed.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (White Nail refills before every reload)"
         },
         {
           "text": "Aiming Down Sights for 1.2 seconds without firing grants 'Whispered Breathing' until you leave ADS.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Whispered Breathing grants 35% increased precision damage, and an additional 10.77% increased damage against PvE Combatants.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Landing 3 Precision Hits within 2.5 seconds of each refills the magazine.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Pulls 2 shots from reserves and generates 1 ammo from thin air.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by Quantum's total shots (38)"
         },
         {
           "text": "Landing 3 Precision Hits within 2.5 seconds of each refills the magazine.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Pulls 2 shots from reserves and generates 1 ammo from thin air.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by Quantum's total shots (38)"
         },
         {
           "text": "Landing 3 Precision Hits within 2.5 seconds of each refills the magazine.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Pulls 2 shots from reserves and generates 1 ammo from thin air.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by Quantum's total shots (38)"
         }
       ],
       "quantum": {
@@ -14140,8 +14205,8 @@
               "Sniper's Meditation"
             ],
             "measured": 128747,
-            "model": 87484.3,
-            "deviation": -0.3205
+            "model": 130859,
+            "deviation": 0.0164
           },
           {
             "row": "sniper-rifle-whisper-of-the-worm-whispered-breathing",
@@ -14149,8 +14214,8 @@
               "Whispered Breathing"
             ],
             "measured": 1251.9,
-            "model": 850,
-            "deviation": -0.321
+            "model": 1271.4,
+            "deviation": 0.0156
           }
         ]
       },

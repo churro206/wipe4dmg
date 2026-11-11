@@ -7,7 +7,7 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 
 - **Delta pairs (check set): 1 of 4 within 2 percentage points**
 - Rank (check set): Spearman 0.98 over 45 rows
-- Absolute, information only: within ±3 % 26 of 45 (check set), 93 of 180 (all counted rows, mostly Eichung)
+- Absolute, information only: within ±3 % 26 of 45 (check set), 94 of 180 (all counted rows, mostly Eichung)
 - Rows: 182 scenarios (32 by hand, 150 generated); fitted 18; calibration set 117; check set 45; not counted 2; core cannot run 0
 
 ## Delta pairs (check set)
@@ -165,7 +165,7 @@ Rows by what they check (column "Prüft" of `docs/product.md`). Coverage: Aegis 
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Weapons | 417 | 180 | 43 % | 18 | 45 | 0.98 | 3/3 | 1 of 4 |
 | Supers | 68 | 18 | 26 % | 0 | 18 | 0.99 | 3/3 | 4 of 6 |
-| Heavy | 95 | 21 | 22 % | 0 | 21 | 0.94 | 2/3 | 5 of 5 |
+| Heavy | 95 | 21 | 22 % | 0 | 21 | 0.99 | 3/3 | 5 of 5 |
 | Special | 84 | 10 | 12 % | 4 | 6 | 0.94 | 3/3 | 0 of 0 |
 | Abilities | 239 | 95 | 40 % | 68 | 6 | 0.83 | 3/3 | 4 of 8 |
 
@@ -285,7 +285,7 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Heavy | sustained-thunderlord-assumes-only-one-reload-post-nerf | 101659 | 110372 | +8.6 % |
 | Heavy | sustained-tractor-cannon | 22149 | 21027 | −5.1 % |
 | Heavy | sustained-truth-prototype-truthseeker-argent-ordnance | 85454 | 97051 | +13.6 % |
-| Heavy | sustained-whisper-of-the-worm-whispered-breathing-sniper-s-meditation | 128747 | 87484 | −32.0 % |
+| Heavy | sustained-whisper-of-the-worm-whispered-breathing-sniper-s-meditation | 128747 | 130859 | +1.6 % |
 | Heavy | sustained-xenophage | 67645 | 50338 | −25.6 % |
 | Special | sustained-arbalest | 58835 | 56154 | −4.6 % |
 | Special | sustained-forerunner | 51349 | 51363 | +0.0 % |

@@ -21,14 +21,14 @@
       "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
     }
   },
-  "fireRateRpm": "$quantum[heavies-sniper-rifle-whisper-of-the-worm].timing.fireRateRpm",
+  "fireRateRpm": "$quantum[heavies-sniper-rifle-whisper-of-the-worm].rpm",
   "magazine": "$quantum[heavies-sniper-rifle-whisper-of-the-worm].timing.magazine",
   "totalShots": "$quantum[heavies-sniper-rifle-whisper-of-the-worm].timing.totalShots",
   "reloadTimeMs": "$quantum[heavies-sniper-rifle-whisper-of-the-worm].timing.reloadTimeMs",
   "catalyst": {
     "name": "Whisper Catalyst, Whispered Breathing",
     "description": "Grants 30 Reload Speed.\nAiming Down Sights for 1.2 seconds without shooting grants 'Whispered Breathing' until you leave ADS.\nWhispered Breathing grants 35% increased precision damage, and an additional 10.77% increased damage against combatants.\nGrants 30 Reload Speed.\nAiming Down Sights for 1.2 seconds without firing grants 'Whispered Breathing' until you leave ADS.\nWhispered Breathing grants 35% increased precision damage, and an additional 10.77% increased damage against PvE Combatants.",
-    "effect": "unknown"
+    "effect": "damage"
   },
   "parts": {
     "shot": {
@@ -38,11 +38,110 @@
       "delivery": "impact"
     }
   },
+  "buffs": [
+    {
+      "id": "whispered-breathing",
+      "name": "Whispered Breathing",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[Whispered Breathing](\"35% increased precision damage\") / 100",
+            "note": "percent to factor; every hit of the item is a precision hit"
+          },
+          "damageSources": ["weapon"]
+        },
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[Whispered Breathing](\"additional 10.77%\") / 100",
+            "note": "percent to factor; the boss is a combatant"
+          },
+          "damageSources": ["weapon"]
+        }
+      ]
+    }
+  ],
   "rules": [
+    {
+      "id": "whispered-breathing",
+      "on": { "on": "phaseStart" },
+      "if": [{ "type": "hasItem", "id": "catalyst" }],
+      "do": [{ "type": "grantBuff", "buff": "whispered-breathing" }],
+      "source": {
+        "name": "Item file whisper-of-the-worm",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "grants 'Whispered Breathing' until you leave ADS",
+        "note": "Derived: a sniper stays in ADS for the whole phase, so the buff is built before and holds to the end (optimal play)"
+      }
+    },
     {
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "white-nail-count",
+      "on": { "on": "hit", "part": "shot", "precision": true },
+      "if": [
+        {
+          "type": "counter",
+          "id": "white-nail",
+          "op": "<",
+          "value": {
+            "expr": "$clarity[White Nail IV](\"Landing 3 Precision Hits\") - 1",
+            "note": "the counter stands at 0 and 1 for the hits before the 3rd"
+          }
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "white-nail" }]
+    },
+    {
+      "id": "white-nail",
+      "on": { "on": "hit", "part": "shot", "precision": true },
+      "if": [
+        {
+          "type": "counter",
+          "id": "white-nail",
+          "op": "=",
+          "value": {
+            "expr": "$clarity[White Nail IV](\"Landing 3 Precision Hits\") - 1",
+            "note": "the 3rd precision hit"
+          }
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "white-nail" },
+        { "type": "refill" }
+      ],
+      "source": {
+        "name": "Item file whisper-of-the-worm",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "refills the magazine",
+        "note": "Derived: shots at Quantum's 72 RPM are 0.83 s apart, within the 2.5 s; with a magazine of 3 the weapon never reloads. Quantum's 38 shots already hold the ammo from thin air"
+      }
     }
+  ],
+  "notModelled": [
+    { "quote": "Grants 35% Flinch Resistance", "reason": "no damage against a boss (flinch)" },
+    { "quote": "Remains active until you're no longer ADS", "reason": "no damage against a boss (flinch)" },
+    { "quote": "Weapon Hits grant Stacks of Enlightened Action", "reason": "no damage against a boss (handling; reload speed, but White Nail refills before every reload)" },
+    { "quote": "Maximum of 12 Stacks", "reason": "no damage against a boss (handling; reload speed, but White Nail refills before every reload)" },
+    { "quote": "Stat bonuses at 1|2|…|12 Stacks", "reason": "no damage against a boss (handling; reload speed, but White Nail refills before every reload)" },
+    { "quote": "Handling and Reload Speed", "reason": "no damage against a boss (handling; reload speed, but White Nail refills before every reload)" },
+    { "quote": "Hand Cannons: 3 Stacks", "reason": "no damage against a boss (handling, other weapons)" },
+    { "quote": "Automatic Weapons: 1 Stack", "reason": "no damage against a boss (handling, other weapons)" },
+    { "quote": "50 Reload Speed", "reason": "no damage against a boss (White Nail refills before every reload)" },
+    { "quote": "0.8x Reload Duration Multiplier", "reason": "no damage against a boss (White Nail refills before every reload)" },
+    { "quote": "0.8x Ready/Stow Duration Multiplier", "reason": "no damage against a boss (handling)" },
+    { "quote": "Passively grants 20 Ammo Generation", "reason": "no damage against a boss (ammo pickup)" },
+    { "quote": "50% more than 1 Ammo Generation", "reason": "no damage against a boss (ammo pickup)" },
+    { "quote": "Grants 30 Reload Speed", "reason": "no damage against a boss (White Nail refills before every reload)" },
+    { "quote": "Aiming Down Sights for 1.2 seconds", "reason": "built before the phase (rule whispered-breathing, ADS held)" },
+    { "quote": "Pulls 2 shots from reserves and generates 1 ammo from thin air", "reason": "carried by Quantum's total shots (38)" }
   ]
 }
