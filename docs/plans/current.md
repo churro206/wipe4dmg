@@ -7,10 +7,11 @@ Höchstens 4 KB. Nach jedem Block: `docs/changelog.md`, `docs/known-inaccuracies
 Format: `- [ ] <Block>: <Ziel>. Gate: <Prüfung>.`, „(Opus)“ für Herleitungen; erledigt `- [x] … (<Commit>)`.
 
 - [x] A1, Q0, Q1, M1, M2, S0, V1–V4, P0, A3, W0–W4 (`history-2026-11.md`, `changelog.md`). Euphony auf Aegis (Ausnahme des Inhabers, ADR 0019).
-- [ ] W5 Bilanz Waffen (Opus). Teil 1 erledigt (siehe Commit): Bilanz in `known-inaccuracies.md` („W5 Bilanz Waffen“), Magazin-Catalysts (7 Waffen, Clarity a🠚b, Munition bleibt wie bei Fourth Horseman), Wish-Ender und Vigilance Wing Catalyst `none`, fünf Sustained-Proben und Burst-Primaries wieder an (Test `tests/w5.test.ts`). **Stopp: Folgeblöcke unten warten auf Freigabe des Inhabers.**
+- [ ] W5 Bilanz Waffen (Opus). Teil 1 erledigt (siehe Commit): Bilanz in `known-inaccuracies.md` („W5 Bilanz Waffen“), Magazin-Catalysts (7 Waffen, Clarity a🠚b, Munition bleibt wie bei Fourth Horseman), Wish-Ender und Vigilance Wing Catalyst `none`, fünf Sustained-Proben und Burst-Primaries wieder an (Test `tests/w5.test.ts`). Folgeblöcke W6–W8 vom Inhaber freigegeben 2026-11-11, je Block eine frische Sitzung.
+- [ ] W6, W7, W8 (Ziel und Gate unten).
 - [ ] A2 Aufräumen: Aegis-Paketpfad in `weaponPackages.ts`, `weapon-overrides.json`, `WeaponOverride` samt Tests weg; `pickBaseRow` nur für Szenarien. Gate: tsc, lint, Tests, Bericht gleich bis auf Entferntes.
 
-## Vorschlag Folgeblöcke (W5, wartet auf Freigabe)
+## Folgeblöcke (freigegeben 2026-11-11)
 
 - W6 Pakete und Aegis-Items: 16 Pakete als Items (5 mit Quantum-Variante: Cull's Shadow, Finality's Auger, Ice Breaker, Jötunn, Prometheus Lens; 11 ohne Quantum aus Clarity/Compendium), `$aegis` raus bei Heartshadow (4 × 507 je Orb), Black Talon, Ergo Sum, Heirloom, The Lament, Whirling Ovation. Voraussetzung für A2. Widerspruch: die Reihenfolge legt „Exotics ohne Quantum“ in die Gegenprobe, A2 entfernt aber ihren Paketpfad. Gate: `check:block -- W6`, keine Waffe mehr als Paket.
 - W7 Gerüst-Sätze: die 37 Items der Klasse „liest Quantum“ (rund 300 offene Sätze) nach Vorlage oder `notModelled`, in Teilen je Vorlage. Gate: offene Sätze mit Zahl dieser Waffen 0, `check:block`.
